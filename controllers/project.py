@@ -274,19 +274,26 @@ def nasp():
     if not request.vars:
         redirect(URL(c='default', f='index'))
     else:
+        #TODO: Verificar a necessidade de implementar os outros retornos
         if request.vars.status_pagamento == '4':
             db(db.project_donation.id == request.vars.id_transacao).update(
                 status = True,
                 status_text = "Creditado"
                 )
-            get_project_data = db(db.project.id == request.vars.id_transacao).select()
+            get_project_data = db(db.project_donation.id == request.vars.id_transacao).select()
             for data in get_project_data:
-                db(db.project.id == data.id).update(
-                    project_total_collected = float(request.vars.valor[:-2]) + data.project_total_collected,
-                    project_total_donor = data.project_total_donor + 1
-                )
-    
-        return request.vars.id_transacao
+                update_project_data = db(db.project.id == data.id_project).select()
+                for item in update_project_data:
+                    donation_amount = item.project_total_collected or 0.00
+                    total_backers = item.project_total_donor or 0
+                    db(db.project.id == item.id).update(
+                        project_total_collected = float(request.vars.valor[:-2]) + donation_amount,
+                        project_total_donor = total_backers + 1
+                 )
+   
+            return 'OK'
+        else:
+            raise HTTP(404)
 
 def paypal_return():
     if request.args(0) == 'paypal':
