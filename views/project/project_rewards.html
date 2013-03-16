@@ -1,0 +1,75 @@
+{{extend 'layout.html'}}
+      <div class="container">       
+        <div class="row-fluid">  
+          <section>
+            <div class="span12">
+                <h1>
+                  {{=T("Rewards")}}
+                  <a class="btn a-return" href="{{=URL(c='user', f='profile')}}">{{=T("Back")}}</a>
+                </h1>
+                <hr>
+            </div>
+          </section>
+          <section>
+            <div class="span12 well">                 
+              <div class="row-fluid">
+                <div class="span12 nav-profile">
+                  <ul class="nav nav-tabs">
+                    <li class="active">
+                      <a href="#list-rewards" data-toggle="tab">{{=T("Rewards")}}</a>
+                    </li>
+                    <li>
+                      <a href="#new-reward" data-toggle="tab">{{=T("New Reward")}}</a>
+                    </li>
+                  </ul>         
+                </div>
+                <div class="row-fluid tab-content side-project">
+                  <div id="list-rewards" class="tab-pane active">
+                    <table class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>{{=T("Value")}}</th>
+                          <th>{{=T("Description")}}</th>
+                          <th colspan="2" class="th_action">{{=T("Action")}}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{for reward in project_rewards:}}
+                        <tr>
+                          <td>{{=("%.2f" % reward.reward_value)}}</td>
+                          <td>{{=reward.reward_description}}</td>
+                          <td class="th_action">
+                            <a href="{{=URL(c='project', f='project_reward_edit', args=[reward.id_project, reward.id])}}">{{=T("Edit")}}</a>
+                          </td>
+                          <td class="th_action">
+                            <a href="{{=URL(c='project', f='project_reward_delete', args=[reward.id_project, reward.id])}}">
+                              {{=T("Delete")}}
+                            </a>
+                          </td>
+                        </tr>
+                        {{pass}}                   
+                      </tbody>
+                    </table>
+                  </div>
+                  <div id="new-reward" class="tab-pane">
+                      {{=form_project_reward.custom.begin}}
+                      <p>
+                        <label for="">{{=T("Value")}}:</label>
+                        {{=form_project_reward.custom.widget.reward_value}}
+                      </p>
+                      <p>
+                        <label for="">{{=T("Description")}}:</label>
+                        {{=form_project_reward.custom.widget.reward_description}}
+                      </p>
+                      <input type="hidden" value="{{=request.args(0)}}" name="id_project">
+                      <input type="hidden" value="{{=auth.user.id}}" name="id_auth_user">
+                      <p class="btn-submit">
+                        <input type="submit" value="{{=T('Send')}}" class="btn btn-warning btn-large">
+                      </p> 
+                      {{=form_project_reward.custom.end}}
+                  </div>
+                <div>
+              </div>
+          </section>              
+        </div>
+      </div>

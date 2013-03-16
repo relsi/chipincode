@@ -1,0 +1,169 @@
+{{extend 'layout.html'}}
+      <div class="container">       
+        <div class="row-fluid">  
+          <section>
+            <div class="span12">
+                <h1>{{=T("User profile")}}</h1>
+                <hr>
+              </div>
+          </section>
+          <section>
+            <div class="span12 well">                 
+              <div class="row-fluid">
+                <div class="span2">
+                  {{if not auth.user.avatar:}}
+                  <img src="{{=default_avatar}}" class="avatar" alt="{{=auth.user.first_name}} {{=auth.user.last_name}}">
+                  {{else:}}
+                  <img src="{{=URL('download', args=auth.user.avatar)}}" class="avatar" alt="{{=auth.user.first_name}} {{=auth.user.last_name}}">
+                  {{pass}}
+                </div>
+                <div class="span10">
+                  <h2>{{=auth.user.first_name}} {{=auth.user.last_name}}</h2>
+                  <a href="{{=URL(c='user', f='profile_edit')}}" class="btn btn-warning btn-small">{{=T("Edit profile")}}</a>
+                </div> 
+              </div>
+              <div class="row-fluid">
+                <div class="span12 nav-profile">
+                  <ul class="nav nav-tabs">
+                    <li class="active">
+                      <a href="#your-data" data-toggle="tab">{{=T("Your info")}}</a>
+                    </li>
+                    <li>
+                      <a href="#supported-projects" data-toggle="tab">{{=T("Pojects that you help")}}</a>
+                    </li>
+                    <li>
+                      <a href="#created-projects" data-toggle="tab">{{=T("Your Projects")}}</a>
+                    </li>
+                    <li>
+                      <a href="#your-credits" data-toggle="tab">{{=T("Your credits")}}</a>
+                    </li>
+                  </ul>         
+                </div>
+              </div>
+              <div class="row-fluid tab-content side-project">
+                <div id="your-data" class="tab-pane  active">
+                  <p class="alert">
+                    {{=T("Your data will not be publicly visible. Only when you support a project is that the project owner will receive your email and your information to provide the rewards later. We also need some information if you have registered any project.")}}
+                  </p>
+                  <p>
+                    <strong>{{=T("Bio")}}:</strong> {{=auth.user.about or ''}}
+                  </p>
+                  <p>
+                    <strong>{{=T("Address")}}:</strong> {{=auth.user.address or ''}}, {{=auth.user.u_city or ''}}/{{=auth.user.u_state or ''}}, {{=auth.user.zip or ''}}
+                  </p>
+                  <p>
+                    <strong>{{=T("Phone")}}:</strong> {{=auth.user.phone or ''}}
+                  </p>
+                  <p>
+                    <strong>{{=T("EIN")}}:</strong> {{=auth.user.ein or ''}}
+                  </p> 
+                  <p>
+                    <strong>{{=T("Website")}}:</strong> {{=auth.user.website or ''}}
+                  </p> 
+                                    <p>
+                    <strong>{{=T("Facebook")}}:</strong> {{=auth.user.facebook or ''}}
+                  </p> 
+                                    <p>
+                    <strong>{{=T("Twitter")}}:</strong> {{=auth.user.twitter or ''}}
+                  </p>             
+                </div>
+                <div id="supported-projects" class="tab-pane">
+                  <div class="span12">
+                    <table class="table table-bordered table-striped refund">
+                      <thead>
+                        <tr>
+                          <th>{{=T("Project")}}</th>
+                          <th>{{=T("Date of the donations")}}</th>
+                          <th>{{=T("Value of the donation")}}</th>
+                          <th>{{=T("Status of the project")}}</th>
+                          <th>{{=T("Reverse donation")}}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{for project in suported_projects:}}
+                        <tr>
+                          <td>{{=project.project.project_name}}</td>
+                          <td>{{=project.project_donation.donation_date.strftime('%d/%m/%Y') or ''}}</td>
+                          <td>{{=("%.2f" % project.project_donation.donation_value)}}</td>
+                          <td>{{=project.project.status_text}}</td>
+                          <td>
+                            {{if project.project.status == True:}}
+                              <form method="post" enctype="multipart/form-data" action="" class="form-inline">
+                                <input type="hidden" name="id_auth_user" value="{{=auth.user.id}}">
+                                <input type="hidden" name="id_project" value="{{=project.project.id}}">
+                                <input type="hidden" name="donation_value" value="{{=project.project_donation.donation_value}}">
+                                <input type="hidden" name="_formname" value="reverse/donation">
+                                <button class="btn btn-danger btn-mini" type="submit">
+                                  {{=T("Reverse")}}
+                                </button>
+                              </form>
+                            {{else:}}
+                              {{=T("Closed Project")}}
+                            {{pass}}
+                          </td>
+                        </tr>
+                        {{pass}}                   
+                      </tbody>
+                    </table>
+                  </div>                   
+                </div>
+                <div id="created-projects" class="tab-pane">
+                  <div class="span12">
+                    <table class="table table-bordered table-striped refund">
+                      <thead>
+                        <tr>
+                          <th>{{=T("Project")}}/th>
+                          <th>{{=T("Date")}}</th>
+                          <th>{{=T("Status")}}</th>
+                          <th colspan="4" class="th_action">{{=T("Action")}}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{for project_created in created_projects:}}
+                        <tr>
+                          <td>{{=project_created.project_name}}</td>
+                          <td>{{=project_created.register_date.strftime('%d/%m/%Y')}}</td>
+                          <td>{{=project_created.status_text or ''}}</td>
+                          {{if project_created.status == True:}}
+                          <td class="th_action">
+                            <a href="{{=URL(c='project', f='show', args=[project_created.id, project_created.project_slug])}}" target="_blank">
+                            	{{=T("View")}}
+                            </a>
+                          </td>
+                          <td class="th_action">
+                            <a href="{{=URL(c='project', f='project_edit', args=project_created.id)}}">{{=T("Edit")}}</a>
+                          </td>
+                          <td class="th_action">
+                            <a href="{{=URL(c='project', f='project_updates', args=project_created.id)}}">
+                              {{=T("Update")}}
+                            </a>
+                          </td>
+                          <td class="th_action">
+                            <a href="{{=URL(c='project', f='project_rewards', args=project_created.id)}}">
+                              {{=T("Insert reward")}}
+                            </a>
+                          </td>
+                          {{else:}}
+                          <td class="th_action">
+                            <a href="{{=URL(c='project', f='show', args=[project_created.id, project_created.project_slug])}}" target="_blank">
+                            {{=T("View")}}
+                            </a>
+                          </td>
+                          <td colspan="3"></td>
+                          {{pass}}
+                        </tr>
+                        {{pass}}                   
+                      </tbody>
+                    </table>
+                  </div>                   
+                </div>
+                <div id="your-credits" class="tab-pane">
+                  <div class="span12">
+                    <h3>{{=T("You have")}} <span class="credits">{{=T("R$")}} {{=("%.2f" % total_credit)}}</span> {{=T("in crédits")}}.</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>              
+        </div>
+      </div>

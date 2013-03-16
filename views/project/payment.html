@@ -1,0 +1,55 @@
+{{extend 'layout.html'}}
+      <div class="container">       
+            <div class="row-fluid">  
+              <section>
+                <div class="span12">
+                    <h1>{{=T("Payment")}}</h1>
+                    <hr>                     
+                </div>
+                <div class="span12 well form-project">
+                <table class="table">
+                  {{if float(total_credits) > float(session.payment_data.value): }}
+                  <tr>
+                    <td>
+                      <img src="{{=URL('static', 'images/btn_credit.png')}}">
+                    </td>
+                    <td>
+                      <form>
+                        <input type="hidden" name="donation_visibility" value="{{=session.payment_data.donation_visibility or True}}">
+                        <input type="hidden" name="id_auth_user" value="{{=session.payment_data.id_auth_user}}">
+                        <input type="hidden" name="id_project" value="{{=session.payment_data.id_project}}">
+                        <input type="hidden" name="id_project_rewards" value="{{=session.payment_data.id_project_rewards or 0}}">
+                        <input type="hidden" name="value" value="{{=session.payment_data.value}}">
+                        <input type="hidden" name="payment_gateway" value="credits">
+                         <button type="submit">
+                          {{=T('Confirm Payment')}}
+                        </button>
+                      </form>
+                    </td>
+                    <td>{{=T('You have R$')}} {{=('%.2f' % total_credits)}} {{=T('in credits.')}}</td>
+                  </tr>
+                  {{pass}}
+                  <tr>
+                    <td>
+                      <img src="{{=URL('static', 'images/btn_paypal.png')}}">
+                    </td>
+                    <td>
+                      <form>
+                        <input type="hidden" name="donation_visibility" value="{{=session.payment_data.donation_visibility or True}}">
+                        <input type="hidden" name="id_auth_user" value="{{=session.payment_data.id_auth_user}}">
+                        <input type="hidden" name="id_project" value="{{=session.payment_data.id_project}}">
+                        <input type="hidden" name="id_project_rewards" value="{{=session.payment_data.id_project_rewards or 0}}">
+                        <input type="hidden" name="value" value="{{=session.payment_data.value}}">
+                        <input type="hidden" name="payment_gateway" value="paypal">
+                        <button type="submit">
+                          {{=T('Confirm Payment')}}
+                        </button>
+                      </form>
+                    </td>
+                    <td>{{=T('You will be directed to Paypal page.')}}</td>
+                  </tr>
+                </table>
+                </div>
+              </section>           
+            </div>           
+        </div>

@@ -1,0 +1,81 @@
+{{extend 'layout.html'}}
+      <div class="container">       
+            <div class="row-fluid">  
+              <section>
+                <div class="span12">
+                    <h1>{{=T("Sign in")}}</h1>
+                    <hr>
+                  </div>
+              </section>
+              <section>
+                <div class="span12 well form-project">                  
+            <div class="span4">
+              <h3>{{=T("Sign in")}}</h3>
+                {{=form_login.custom.begin}}
+                  <p>
+                    <label for="email-login">E-mail:</label>
+                    {{=form_login.custom.widget.email}}                  
+                  </p>
+                  <p>
+                    <label for="senha-login">{{=T("Password")}}:</label>
+                    {{=form_login.custom.widget.password}}                 
+                  </p>
+                  <p>
+                    <input type="checkbox" class="remember" name="remember" checked >{{=T("Remember me")}}    
+                  </p>
+                  <p>
+                    <a href="{{=URL(c='user', f='request_password', args='request_reset_password')}}">{{=T("Lost my password")}}</a>
+                  </p>
+                  <p>
+                    <input type="submit" value="Efetuar login" class="btn btn-warning">
+                  </p>
+                {{=form_login.custom.end}}
+            </div>
+            <div class="span4">
+              <h3>{{=T("Join")}}</h3>
+                {{=form_register.custom.begin}}
+                  <p>
+                    <label for="nome-cadastro">{{=T("Name")}}:</label>
+                      {{=form_register.custom.widget.first_name}}
+                  </p>
+                  <p>
+                    <label for="sobre-nome-cadastro">{{=T("Last name")}}:</label>
+                      {{=form_register.custom.widget.last_name}}  
+                  </p>
+                  <p>
+                    <label for="email-cadastro">E-mail:</label>
+                      {{=form_register.custom.widget.email}}
+                  </p>
+                  <p>
+                    <label for="senha-cadastro">{{=T("Password")}}:</label>
+                      {{=form_register.custom.widget.password}}
+                  </p>
+                  <p>
+                    <label for="resenha-cadastro">{{=T("Confirm the password")}}:</label>
+                    {{=form_register.custom.widget.password_two}}
+                  </p>
+                    <input type="hidden" value="" id="set_username" name="username">
+                    <input type="submit" value="{{=T('Register')}}" class="btn btn-warning">
+                  </p>                         
+                {{=form_register.custom.end}}                      
+            </div>
+            <div class="span4">               
+              <h3>{{=T("Login with Facebook")}}</h3>
+              <p id="log-face">
+                <a href="{{=URL(r=request, f='login_fb', vars={'social_media':'facebook'})}}">
+                  <img src="{{=URL('static', 'images/login-facebook.png')}}">
+                </a>
+              </p>
+            </div>            
+                </div>
+              </section>
+          </div>
+      </div>
+      <script type="text/javascript">
+        $(function(){
+          $("#password").focus(function(){
+            var username = $("#user_email").val();
+            $("#set_username").val(username);
+          });
+        })
+      </script>

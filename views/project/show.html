@@ -1,0 +1,181 @@
+{{extend 'layout.html'}}
+	    <div class="container">	    	
+            <div class="row-fluid">  
+            	<section>
+	            	<div class="span12">
+              			<h1>{{=T("Project details")}}</h1>
+              			<hr>
+	              	</div>
+	            </section>
+	            {{for item in project_details:}}
+	            <section>
+	          		<div class="span12 well">	          			
+	          			<div class="row-fluid">
+	          				<div class="span2">
+								<img src="{{=URL('download', args=item.project.image)}}" class="thumb-project" alt="{{=item.project.project_name}}">
+	          				</div>
+	          				<div class="span10">
+	          					<h2>{{=item.project.project_name}}</h2>
+	          					<p>{{=T("A project of")}} 
+		          					<span>
+		          						<a href="{{=URL(c='project', f='show_category', args=item.project_categories.id)}}" title="{{=item.project_categories.category_name}}">
+		          							{{=item.project_categories.category_name}}
+		          						</a>
+		          					</span> 
+		          					{{=T("A project by")}} 
+		          					<span>
+		          						<a href="{{=URL(c='user', f='show_user', args=item.auth_user.id)}}" title="{{=item.auth_user.first_name}} {{=item.auth_user.last_name}}">
+		          							{{=item.auth_user.first_name}} {{=item.auth_user.last_name}}
+		          						</a>
+		          					</span>
+		          				</p>
+		          				<p>
+		          					{{=item.project.short_description}}
+		          				</p>
+		          				<p>
+								<!-- social buttons-->
+								<div class="fb-like" data-href="{{=item.project.short_url}}" data-send="true" data-width="300" data-show-faces="false"></div>
+								<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{=URL(c='default', f='index')}}" data-text="{{=T('I liked this project in')}} {{=response.title or request.application}}: {{=item.project.short_url}}" data-lang="pt">{{=T('Tweet')}}</a>
+								<script>
+									!function(d,s,id){
+										var js,fjs=d.getElementsByTagName(s)[0];
+										if(!d.getElementById(id)){
+											js=d.createElement(s);
+											js.id=id;js.src="//platform.twitter.com/widgets.js";
+											fjs.parentNode.insertBefore(js,fjs);
+										}
+									}(document,"script","twitter-wjs");
+								</script>
+		          				</p>	
+	          				</div>          				
+	          			</div>
+	          			<div class="row-fluid">
+	          				<div class="span12 nav-profile">
+	          					<ul class="nav nav-tabs">
+								    <li class="active">
+								  	  <a href="#project" data-toggle="tab">{{=T("About the project")}}</a>
+								    </li>
+								    <li>
+								    	<a href="#updates" data-toggle="tab">{{=T("Project Updates")}}</a>
+								    </li>
+								    <li >
+								    	<a href="#donors" data-toggle="tab">{{=T("Backers")}}</a>
+								    </li>
+								    <li>
+								    	<a href="#comments" data-toggle="tab">{{=T("Comments")}}</a>
+								    </li>
+								</ul>	        
+          					</div>
+          				</div>
+          				<div class="row-fluid side-project">
+          					<div class="span8 project tab-content">
+								<div id="project" class="tab-pane  active">
+									{{if not item.project.video:}}
+		      						<img src="{{=URL('download', args=item.project.image)}}" class="project-img" alt="{{=item.project.project_name}}">
+		      						{{else:}}
+		      						<iframe src="http://player.vimeo.com/video/{{=item.project.video}}" width="745" height="596" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+		      						{{pass}}		      						
+		      						<hr>
+		      						<h3>{{=T("The project")}}</h3>
+		      						<ul class="project-urls">
+		      							<li>{{=item.project.website or ''}}</li>
+		      							<li>{{=item.project.facebook or ''}}</li>
+		      							<li>{{=item.project.twitter or ''}}</li>
+		      						</ul>
+		      						<p>{{=XML(item.project.description)}}</p>
+								</div>
+								<div id="updates"  class="tab-pane">
+									{{for content in updates:}}
+									<div class="post">	      
+		      							<h4>{{=content.title}}</h4>
+		      							<p>{{=XML(content.update_content)}}</p>
+			      					</div>
+			      					<hr>
+			      					{{pass}}
+								</div>
+								<div id="donors" class="tab-pane">
+									{{for donor in show_donors:}}
+									<div id="donor" class="row-fluid">
+			      						<div class="span6">	      
+				      						<div class="project-sup">
+				      						{{if donor.project_donation.donation_visibility == True:}}
+				      							{{if not donor.auth_user.avatar:}}
+													<img src="{{=default_avatar}}">
+												{{else:}}
+													<img src="{{=URL('download', args=donor.auth_user.avatar)}}">
+												{{pass}}
+												<h4>
+													{{=donor.auth_user.first_name}} {{=donor.auth_user.last_name}}
+												</h4>
+												{{=T("Donated")}}: {{=("%.2f" % donor.project_donation.donation_value)}}
+											{{else:}}
+												<img src="{{=anonymous_avatar}}">
+												<h4>{{=T("Anonymous ")}}</h4>
+												{{=T("Donated")}}: {{=("%.2f" % donor.project_donation.donation_value)}}
+											{{pass}}
+											</div>	
+				      					</div>
+				      					<div class="span12 m_left">	 
+				      						<hr>
+				      					</div>
+				      				</div>
+				      				{{pass}}
+								</div>
+								<div id="comments" class="tab-pane">
+		          					<div class="fb-comments" data-href="{{=URL(c='project', f='show', args=[item.project.id, item.project.project_slug], host=True, scheme=True)}}" data-width="740" data-num-posts="100">
+		          					</div>
+								</div>
+          					</div>
+          					<div class="span4">
+          						<div class="alert alert-block sign-project">
+									<ul>
+										<li><h1>{{=item.project.project_total_donor or 0}}</h1><span>{{=T("backers")}}</span></li>
+										<li>
+											<h1>R${{total=item.project.project_total_collected or 0}} {{=("%.2f" % total)}}</h1>
+											<span>{{=T("reached of R$")}} {{=("%.2f" % item.project.project_value)}}<span>
+										</li>
+										<li>
+											{{if remaining_days.days < 0:}}
+											<h1>0</h1>
+											<span>{{=T("days left")}}</span>
+											<p>{{=T("This project is closed.")}}</p>
+											{{else:}}
+											<h1>{{=remaining_days.days}}</h1>
+											<span>{{=T("days left")}}</span>
+											<p>
+												<a class="btn btn-warning btn-large" href="{{=URL(c='project', f='donate', args=item.project.id)}}">
+													{{=T("Help the Project")}}
+												</a>
+											</p>
+											<p>{{=T("This project will only be funded if at least R$")}} {{=("%.2f" % item.project.project_value)}} {{=T("are collected until")}} {{=item.project.end_date.strftime('%d/%m/%Y')}}</p>	
+											{{pass}}	
+										</li>							
+									</ul>
+				
+								</div>
+								<div class="project-author">
+									<h4>{{=T("Project by")}} {{=item.auth_user.first_name}} {{=item.auth_user.last_name}}</h4>
+									{{if not item.auth_user.avatar:}}
+										<img src="{{=default_avatar}}">
+									{{else:}}
+										<img src="{{=URL('download', args=item.auth_user.avatar)}}">
+									{{pass}}
+									{{=item.auth_user.u_city}}/{{=item.auth_user.u_state}}<br>
+									{{=item.auth_user.website or ''}}<br>
+									{{=item.auth_user.facebook or ''}}<br>
+									{{=item.auth_user.twitter or ''}}<br>
+								</div>								
+								<hr>
+								{{for reward in show_rewards:}}
+								<div class="alert alert-block">
+									<h3>{{=T("To R$")}} {{=("%.2f" % reward.reward_value)}} {{=T("or more.")}}</h3>
+									<p>{{=reward.reward_description}}</p>
+								</div>
+								{{pass}}
+          					</div>
+	          			</div>
+	              	</div>
+	            </section>
+	            {{pass}}	            
+	        </div>
+	    </div>

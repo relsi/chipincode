@@ -1,0 +1,107 @@
+{{extend 'layout.html'}}
+      <div class="container">       
+        <div class="row-fluid">  
+          <section>
+            <div class="span12">
+              <h1>
+                {{=T("Edit the Project")}}
+                <a class="btn a-return" href="{{=URL(c='user', f='profile')}}">{{=T("Back")}}</a>
+              </h1>
+              <hr>
+            </div>
+          </section>
+          <section>
+            <div class="span12 well form-project">
+              <div class="row-fluid">
+                <div class="span12 nav-profile">
+                  <ul class="nav nav-tabs">
+                    <li class="active">
+                      <a href="#project-description" data-toggle="tab">{{=T("Project Description")}}</a>
+                    </li>
+                    <li>
+                      <a href="#project-data" data-toggle="tab">{{=T("Other Data")}}</a>
+                    </li>
+                  </ul>         
+                </div>
+              </div>
+              {{=form_edit.custom.begin}}
+              <div class="row-fluid tab-content side-project">
+                <div id="project-description" class="tab-pane  active">
+                  <p>
+                    <label for="project_project_name">{{=T("Project Name")}}:</label>
+                    {{=form_edit.custom.widget.project_name}}
+                  </p>
+                  <p>
+                    <label for="project_description">{{=T("Description")}}:</label>
+                    {{=form_edit.custom.widget.description}}
+                  </p>
+                </div>
+                <div id="project-data" class="tab-pane">
+                      <p>
+                        <label class="label-textarea" for="project_short_description">{{=T("Short Description")}}:</label>
+                        {{=form_edit.custom.widget.short_description}}
+                      </p>
+                      <p>
+                        <label for="project_id_category">{{=T("Category")}}:</label>
+                          {{=form_edit.custom.widget.id_category}}
+                      </p>
+                      <p>
+                        <label for="project_website">{{=T("Website")}}:</label>
+                        {{=form_edit.custom.widget.website}}
+                      </p>
+                      <p>
+                        <label for="project_facebook">{{=T("Facebook Page")}}:</label>
+                        {{=form_edit.custom.widget.facebook}}
+                      </p>
+                      <p>
+                        <label for="project_twitter">{{=T("Twitter account")}}:</label>
+                        {{=form_edit.custom.widget.twitter}}
+                      </p>
+                      <p>
+                        <label for="project_video">{{=T("ID of the video in vimeo.com")}}:</label>
+                        {{=form_edit.custom.widget.video}}
+                      </p>
+                      <p>
+                        <label for="project_image">{{=T("Featured image")}}:</label>
+                       {{=form_edit.custom.widget.image}}
+                      </p>
+                </div>
+                <p class="btn-submit">
+                  <input type="submit" value="Salvar Alterações" class="btn btn-warning btn-large">
+                </p>  
+              </div>
+            </div>
+            {{=form_edit.custom.end}}
+          </section>
+        </div>        
+      </div>
+<!-- nicEdit"-->  
+<script type="text/javascript">
+//<![CDATA[
+  bkLib.onDomLoaded(function() {
+  new nicEditor({
+      buttonList :[
+    'bold',
+    'italic',
+    'underline',
+    'left',
+    'center',
+    'right',
+    'justify',
+    'ol',
+    'ul',
+    'subscript',
+    'superscript',
+    'strikethrough',
+    'removeformat',
+    'hr',
+    'image',
+    'link',
+    'unlink',
+    'fontSize',
+    'xhtml'],
+    maxHeight : 700,
+    iconsPath : '{{=URL("static", "nicEditIcons-latest.gif",scheme=True,host=True)}}'}).panelInstance('project_description');
+});
+//]]>
+</script>

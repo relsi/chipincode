@@ -1,0 +1,198 @@
+/* ------------------------------------
+/* Folha de Estilos para Chip In Code
+/* author: CodeUp - Apps Studio
+/* http://www.codeup.com.br
+/* ----------------------------------*/
+
+/* ------------------------------------
+/* Folha de Estilos para Chip In Code
+/* author: CodeUp - Apps Studio
+/* http://www.codeup.com.br
+/* ----------------------------------*/
+
+body {padding-top: 120px; font-family: Arial, Verdana, sans-serif;}
+
+a {color: #ff7f2a;}
+a:hover {color: #442300; text-decoration: none;}
+
+h1, h2, h3, h4, h5 {font-family: 'Roboto Condensed', sans-serif !important; font-weight: normal; color: #483737;}
+
+.sidebar-nav {padding: 9px 0;}
+
+ ul.top-nav {margin-top: 20px !important; font-family: 'Quattrocento Sans', sans-serif;}
+ .navbar .nav > li > a {font-size: 1.3em;}
+
+.details {height: 400px;}
+.details img {width: 100%;}
+.details h4 {line-height: 1.1em; width: 230px;}
+.details h4 a {text-decoration: none; color: #ff7f2a;}
+.details h4 a:hover {color: #442300;}
+.details p {font-family: Arial, Verdana, sans-serif; font-size: 0.9em; margin-top: 10px; margin-bottom: 7px; color: #333; }
+.details p.details-author {font-size: 0.8em; margin-top: 10px;}
+.details .progress {margin-bottom: 0px;}
+.details ul {list-style: none; margin-left: -4px; width: 255px;}
+.details ul li {width: 85px; float: left; text-align: center;}
+.details ul li p {color: #000; font-size: 0.7em; letter-spacing: 1px; font-weight: bold; text-transform: uppercase;}
+.details ul li p span {color: #000; letter-spacing: 0px; font-weight: normal;}
+
+.m_left {margin-left: 0px !important;}
+
+.footer-container {background: #612915; margin-top: 50px; font-family: 'Quattrocento Sans', sans-serif;}
+.footer-container hr {border-bottom: none;}
+
+.sub-footer ul {list-style-type: none;}
+.sub-footer h4, .sub-footer h3 {margin-top: 25px; color: #FDF1C6;}
+.sub-footer form.cadastra-news input.btn {margin-top: -10px; height: 30px;}
+
+ul.lista-midias {margin-left: -2px; float: none;}
+ul.lista-midias li {line-height: 25px; display: block; font-size: 1.2em;}
+ul.lista-midias li.facebook-rod {background: url(../img/facebook-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.twitter-rod {background: url(../img/twitter-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.youtube-rod {background: url(../img/youtube-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.feed-rod {background: url(../img/feed-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.google-rod{background: url(../img/google-rod.png) no-repeat left center; padding: 10px;  padding-left: 40px; margin-left: 3px;}
+
+ul.categories {width: 300px; margin-right: 83px;}
+ul.categories li {line-height: 35px; display: block; font-size: 1.2em;}
+
+footer p {text-align: left; color: #D0AB9E;}
+footer ul {float: right;}
+footer li {display: inline; margin-left: 15px;}
+footer a:link, footer a:visited {text-decoration: none; color: #d0ab9e;}
+footer a:hover {color: #fff;}
+
+div.flexslider {width: 1170px; height: 350px;}
+ol.flex-control-nav {position: absolute; left: 985px; bottom: 10px;}
+
+.form-project {font-family: Arial, Verdana, sans-serif;}
+.textarea-send {height: 150px;}
+.terms {margin-top: 20px;}
+input.remember {margin-right: 10px; margin-bottom: 5px;}
+.terms a {color: #ff7f2a;}
+.terms a:hover {color: #483737; text-decoration: none;}
+
+.article-container {height: 450px;}
+.thumb-project {width: 170px; height: 130px; border: 1px solid #DDD;}
+.avatar {width: 150px; height: 170px; border: 1px solid #DDD;}
+.nav-profile {margin-top: 20px; margin-bottom: -20px;}
+input[type="file"] {background: #fff !important;}
+
+.icon-title {margin-top: 20px;}
+.credits {color: #FF7F2A;}
+.refund th {background: #fff;}
+
+.project h3 {color: #FF7F2A;}
+.project-img {width: 745px; height: 560px; margin-bottom: 15px;}
+.sign-project ul {list-style-type: none;}
+.sign-project ul li {padding-bottom: 15px;}
+.sign-project ul li h1 {margin-bottom: 0px;}
+.sign-project p {margin: 10px 0px 20px 0px !important; font-style: italic;}
+.sign-project button {margin-left: 70px; margin-bottom: 15px;}
+.project-author {margin: 46px 0px !important;}
+.project-author img {width: 120px; height: 140px; border: 1px solid #DDD;}
+.project-author h5 {width: 62.5%; float: right; margin-right: 0px; margin-top: 30px;}
+.project-author p {font-size: 90%; float: right; margin-right: 125px; margin-top: -70px;}
+.project-sup img {width: 50px; height: 60px; border: 1px solid #DDD;}
+.project-sup h4 {width: 40.5%; float: right; margin-right: 150px; margin-top: 5px;}
+.project-sup ul {list-style-type: none; font-size: 90%; float: right; margin-right: 55px; margin-top: -70px;}
+
+
+.modal-body {
+  background:#FFFFFF!important;
+}
+
+table .th_action{
+    text-align: center!important;
+}
+
+.side-project {
+    background: #ffffff;
+    padding: 5px;
+}
+
+/*********** niceedit ***********/
+#update_content > div{
+    width: 730px!important;
+}
+
+.nicEdit-main  {
+    min-width: 720px!important;
+    min-height: 500px!important;
+}
+
+.a-return{
+    float: right;
+}
+
+.check_reward{
+    float: left;
+    margin-top: 20px;
+}
+
+#donation_symbol{
+    font-size: 150%;
+    float: left;
+    margin-top: 3px;
+    margin-right: 5px;
+}
+/*********** facebook like box ***********/
+.fb-like-box {
+background:#fdf2cb;
+width:350px;
+padding:0px;
+margin:10px 0px;
+border:solid 6px #f9a42b;
+}
+
+/*********** web2py specific ***********/
+div.flash {
+    font-weight:bold;
+    display:none;
+    position:fixed;
+    padding:10px;
+    top:85px;
+    right:500px;
+    min-width:280px;
+    opacity:0.95;
+    margin:0px 0px 10px 10px;
+    vertical-align:middle;
+    cursor:pointer;
+    color:#fff;
+    background-color:#000;
+    border:2px solid #fff;
+    border-radius:8px;
+    -o-border-radius: 8px;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    background-image: -webkit-linear-gradient(top,#222,#000);
+    background-image: -o-linear-gradient(top,#222,#000);
+    background-image: -moz-linear-gradient(90deg, #222, #000);
+    background-image: linear-gradient(top,#222,#000);
+    background-repeat: repeat-x;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    z-index:2000;
+}
+
+div.flash #closeflash{color:inherit; float:right; margin-left:15px;}
+.ie-lte7  div.flash #closeflash
+{color:expression(this.parentNode.currentStyle['color']);float:none;position:absolute;right:4px;}
+
+div.flash:hover { opacity:0.25; }
+
+div.error_wrapper {display:block}
+div.error {
+    width: 298px;
+    background:red;
+    border: 2px solid #d00;
+    color:white;
+    padding:5px;
+    display:inline-block;
+    background-image: -webkit-linear-gradient(left,#f00,#fdd);
+    background-image: -o-linear-gradient(left,#f00,#fdd);
+    background-image: -moz-linear-gradient(0deg, #f00, #fdd);
+    background-image: linear-gradient(left,#f00,#fdd);
+    background-repeat: repeat-y;
+}
+
+	

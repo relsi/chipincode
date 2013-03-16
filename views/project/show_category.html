@@ -1,0 +1,28 @@
+{{extend 'layout.html'}}
+      <div class="container">       
+            <div class="row-fluid">  
+              <section>
+                  <div class="span12">
+                     <!-- <img src="{{=URL('static', 'images/14.png')}}" alt=""> -->                     
+                  </div>  
+              </section>
+              <section>
+                {{if not projects:}}
+                <div class="span12">
+                    <h1>{{=T("No project found")}}!</h1>
+                    <hr>                     
+                </div>
+                {{else:}}
+                <div class="span12">
+                    <h1>{{=T("Show projects in the category")}} {{=category_name}}</h1>
+                    <hr>                     
+                </div>
+                <div class="row-fluid">
+                  {{for project in projects:}}
+                    {{=XML(project)}}
+                  {{pass}}
+                </div>
+                {{pass}}
+              </section>           
+            </div>           
+        </div>

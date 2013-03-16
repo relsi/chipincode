@@ -1,0 +1,88 @@
+{{extend 'layout.html'}}
+      <div class="container">       
+            <div class="row-fluid">  
+              <section>
+                <div class="span12">
+                    <h1>{{=T("Send your Project")}}</h1>
+                    <hr>
+                  </div>
+              </section>
+              <section>
+                <div class="span12 well form-project">
+                  <h3>{{=T("Fill the form for send your project")}}</h3>
+                  {{=form_project.custom.begin}}
+                    <div class="span6">
+                      <p>
+                        <label for="project_value">{{=T("Project name")}}:</label>
+                        {{=form_project.custom.widget.project_name}}
+                      </p>
+                      <p>
+                        <label for="project_value">{{=T("Value that you need")}}:</label>
+                        {{=form_project.custom.widget.project_value}}
+                      </p>
+                      <p>
+                        <label class="label-textarea" for="project_short_description">{{=T("Short description")}}:</label>
+                        {{=form_project.custom.widget.short_description}}
+                      </p>
+                      <p>
+                        <label for="project_id_category">{{=T("Project category")}}:</label>
+                          {{=form_project.custom.widget.id_category}}
+                      </p>
+                      <p>
+                        <label class="label-textarea" for="project_description">{{=T("Project description")}}:</label>
+                        {{=form_project.custom.widget.description}}
+                      </p>
+                    </div>
+                    <div class="span6">
+                      <p>
+                        <label for="project_website">{{=T("Website")}}:</label>
+                        {{=form_project.custom.widget.website}}
+                      </p>
+                      <p>
+                        <label for="project_facebook">{{=T("Facebook page")}}:</label>
+                        {{=form_project.custom.widget.facebook}}
+                      </p>
+                      <p>
+                        <label for="project_twitter">{{=T("Twitter account")}}:</label>
+                        {{=form_project.custom.widget.twitter}}
+                      </p>
+                      <p>
+                        <label for="project_video">{{=T("ID of the video in vimeo.com")}}:</label>
+                        {{=form_project.custom.widget.video}}
+                      </p>
+                      <p>
+                        <label for="project_image">{{=T("Featured image")}}:</label>
+                       {{=form_project.custom.widget.image}}
+                      </p>
+                      <p class="terms">                        
+                        {{=form_project.custom.widget.terms_of_use}}{{=T("I have read and agree to the")}} 
+                        <a href="#show_terms" data-toggle="modal">{{=T("Terms of Use")}}</a>
+                      </p>
+                      <p class="btn-submit">
+                        <input type="submit" value="{{=T('Send Project')}}" class="btn btn-warning btn-large">
+                      </p>  
+                    </div>
+                   {{=form_project.custom.widget.status_text}} 
+                   {{=form_project.custom.widget.register_date}} 
+                   <input type="hidden" name="id_auth_user" value="{{=auth.user.id}}">             
+                  {{=form_project.custom.end}}  
+                </div>
+              </section>
+          </div>
+         
+            </div>           
+        </div>
+
+        <div class="modal" id="show_terms" style="display: none;">
+        <div class="modal-header">
+            <button class="close" data-dismiss="modal">×</button>
+                <h3>{{=T("Terms of use")}}</h3>
+        </div>
+        <div class="modal-body">
+            {{=XML(terms_of_use)}}
+        </div>
+        <div class="modal-footer">
+            <a href="#" data-dismiss="modal"><button class="btn">{{=T("Close")}}</button></a>
+           
+        </div>
+    </div>

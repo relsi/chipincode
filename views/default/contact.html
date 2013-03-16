@@ -1,0 +1,30 @@
+{{extend 'layout.html'}}
+      <div class="container">       
+            <div class="row-fluid">  
+              <section>
+                <div class="span12">
+                    <h1>{{=T("Contact us")}}</h1>
+                    <hr>                     
+                </div>
+                <div class="span12 well form-project">  
+                    <form action="{{=URL()}}" enctype="multipart/form-data" method="post" >
+                      <p>
+                        <strong>{{=T("Name")}}:</strong><br />
+                        <input type="text" name="name" id="name" placeholder="Informe seu nome!"  class="span4" required/>
+                      </p>
+                      <p>
+                        <strong>{{=T("Email")}}:</strong><br />
+                        <input type="text" name="email" id="email" placeholder="Informe seu E-mail!" class="span4" required/>
+                      </p>
+                      <p>
+                        <strong>{{=T("Message")}}:</strong><br />
+                        <textarea name="message" id="message" cols="52" rows="6" class="span8"></textarea>
+                      </p>
+                      <p>
+                      <button type="submit" name="Submit" class="btn btn-primary btn-large"/>{{=T("Send")}}</button>
+                      </p>
+                    </form>
+                </div>
+              </section>           
+            </div>           
+        </div>

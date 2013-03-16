@@ -1,0 +1,34 @@
+{{extend 'layout.html'}}
+<script type="text/javascript">
+  $(function(){
+    $("#paypal_form").submit();
+  })
+</script>
+      <div class="container">       
+            <div class="row-fluid">  
+              <section>
+                <div class="span12">
+                    <h1>{{=T("Redirecting to Paypal page")}}</h1>
+                    <hr>                     
+                </div>
+                <div class="span12 well form-project">
+                    <form id="paypal_form" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                        <input type="hidden" name="business" value="{{=paypal_id}}">
+                        <input type="image" src="https://www.sandbox.paypal.com/en_US/1/btn_buynowCC_LG.gif" border="0" name="submit" alt="Paypal">
+                        <img src="https://www.sandbox.paypal.com/en_US/1/src/pixel.gif" border="0" width="1" height="1" alt="Paypal">
+                        <input type="hidden" name="cmd" value="_xclick">
+                        <input type="hidden" name="upload" value="1">
+                        <input type="hidden" name="charset" value="utf-8">
+                        <input type="hidden" name="display" value="1">
+                        <input type="hidden" name="notify_url" value="{{=ipn_handler}}">
+                        <input type="hidden" name="return" value="{{=paypal_return_url}}">
+                        <input type="hidden" name="custom" value="{{=session.payment_data.id_auth_user}}">
+                        <input type="hidden" name="invoice" value="{{=session.donate_id}}">
+                        <input type="hidden" name="amount" value="{{=session.payment_data.value}}">
+                        <input type="hidden" name="item_name" value="Chip in Code Project Donation">
+                        <input type="hidden" name="item_number" value="{{=session.donate_id}}">
+                    </form>
+                </div>
+              </section>           
+            </div>           
+        </div>

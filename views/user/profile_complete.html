@@ -1,0 +1,91 @@
+{{extend 'layout.html'}}
+      <div class="container">       
+        <div class="row-fluid">  
+          <section>
+            <div class="span12">
+                <h1>{{=T("Complet you profile")}}</h1>
+                <hr>
+            </div>
+          </section>
+          <section>
+            <div class="span12 well">                 
+              <div class="row-fluid">
+                <div class="span12 nav-profile">
+                  <ul class="nav nav-tabs">
+                    <li class="active">
+                      <a href="#update-content" data-toggle="tab">{{=T("Your info")}}</a>
+                    </li>
+                  </ul>         
+                </div>
+                <div class="row-fluid tab-content side-project">
+                  <p class="alert">
+                    {{=T("To submit your project, we need you to enter or confirm some data.")}}
+                  </p>
+                  <div id="update-content" class="tab-pane  active">
+                      {{=form_profile_complete.custom.begin}}
+                      <p>
+                        <label for="">{{=T("Name")}} *:</label>
+                        {{=form_profile_complete.custom.widget.first_name}}
+                      </p>
+                      <p>
+                        <label for="">{{=T("Last name")}} *:</label>
+                        {{=form_profile_complete.custom.widget.last_name}}
+                      </p>                      
+                      <p>
+                        <label for="">Email *:</label>
+                        {{=form_profile_complete.custom.widget.email}}
+                      </p>
+                      <p>
+                        <label for="">{{=T("Address")}} *:</label>
+                        {{=form_profile_complete.custom.widget.address}}
+                      </p>
+                      <p>
+                        <label for="">{{=T("City/State")}} *:</label>
+                        {{=form_profile_complete.custom.widget.u_city}}{{=form_profile_complete.custom.widget.u_state}}
+                      </p>
+                      <p>
+                        <label for="">{{=T("Zip code")}} *:</label>
+                        {{=form_profile_complete.custom.widget.zip}}
+                      </p>
+                      <p>
+                        <label for="">{{=T("Phone")}} *:</label>
+                        {{=form_profile_complete.custom.widget.phone}}
+                      </p>
+                      <p>
+                        <label for="">{{=T("EIN")}} *:</label>
+                        {{=form_profile_complete.custom.widget.ein}}
+                      </p>
+                      <p>
+                        <label for="">{{=T("About you")}}:</label>
+                        {{=form_profile_complete.custom.widget.about}}
+                      </p>
+                      <p>
+                        <label for="">{{=T("Website")}}:</label>
+                        {{=form_profile_complete.custom.widget.website}}
+                      </p>
+                      <p>
+                        <label for="">Facebook:</label>
+                        {{=form_profile_complete.custom.widget.facebook}}
+                      </p>
+                      <p>
+                        <label for="">Twitter:</label>
+                        {{=form_profile_complete.custom.widget.twitter}}
+                      </p>
+                      <p>
+                        <label for="">{{=T("Your avatar")}}:</label>
+                        {{=form_profile_complete.custom.widget.avatar}}
+                      </p>
+                      <p class="alert">
+                        * {{=T("Required Fields")}}.
+                      </p>
+                      <p class="btn-submit">
+                        <input type="hidden" value="True" name="completed_registration">
+                        <input type="submit" value="{{=T('Update Your info')}}" class="btn btn-warning btn-large">
+                      </p> 
+                      {{=form_profile_complete.custom.end}}
+                  </div>
+                <div>
+              </div>
+          </section>              
+        </div>
+      </div>

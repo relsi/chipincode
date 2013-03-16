@@ -1,0 +1,92 @@
+{{extend 'layout.html'}}
+<script type="text/javascript">
+$(function(){
+	$("input[type=radio]").click(function(){
+		var donation_value = this.value;
+		var donation_id = this.id;
+    	$("#donation_value").val(donation_value);
+    	$("#id_reward").val(donation_id);
+	});
+})
+</script>
+	    <div class="container">	    	
+            <div class="row-fluid">  
+            	<section>
+	            	<div class="span12">
+              			<h1>{{=T("Support the Project")}}</h1>
+              			<hr>
+	              	</div>
+	            </section>
+	            <section>
+	          		<div class="span12 well">	          				          			          			
+          				<div class="row-fluid">
+          					<div class="span8 project">									      						
+	      						<br>
+	      						<h4>{{=T("How much would you like donate?")}}</h4>
+	      						<form action="#">
+									<p class="valor-apoio">
+										<label id="donation_symbol" for="donation_value">{{=T("R$")}}</label>
+										<input type="text" id="donation_value" class="span4 format_value" name="value" required>
+										<input type="hidden" name="id_auth_user" value="{{=auth.user.id}}">
+										<input type="hidden" name="id_project" value="{{=request.args(0)}}">
+										<input type="hidden" id="id_reward" name="id_project_rewards">
+									</p>
+									<br>      						
+									<h4>{{=T("Choose your reward")}}:</h4>
+									<br>
+									<div class="row-fluid">
+										<p class="recompensas">
+											<div class="check_reward">
+												<input type="radio" id="0" name="reward_value" value="0" checked>
+											</div>
+											<div class="alert alert-block span11">
+												<h4>{{=T("Do not want to receive reward")}}</h4>
+												<p>{{=T("Thank you. I just want to help the project.")}}</p>						
+											</div>
+										</p>											
+									</div>						
+									<br>
+									{{for item in project_rewards:}}
+									<div class="row-fluid">
+										<p class="recompensas">
+											<div class="check_reward">
+												<input type="radio" id="{{=item.id}}" name="reward_value" value="{{=('%.2f' %item.reward_value)}}">
+											</div>
+											<div class="alert alert-block span11">
+												<h4>{{=("%.2f" % item.reward_value)}} ou +</h4>
+												<p>{{=item.reward_description}}</p>						
+											</div>
+										</p>											
+									</div>						
+									<br>
+									{{pass}}
+									<div class="row-fluid">
+										<p>
+											<input type="checkbox" class="remember" name="donation_visibility" value="False">
+											{{=T("I want that my help is anonymous")}}
+										</p>
+										<br>										
+										<p>
+											<input type="submit" value="Realizar pagamento" class="btn btn-large btn-warning">
+										</p>
+									</div>									
+								</form>
+          					</div>
+          					<div class="span4">
+          						<div class="row-fluid">
+          						{{for info in project_info:}}
+          							{{remaining_days = info.project.end_date - date.today()}}
+          							<h4>{{=info.project.project_name}}</h4>
+          							<img src="{{=URL('download', args=info.project.image)}}" class="payment-img" alt="{{=info.project.project_name}}">
+          							<p>Projeto de <a href="#">{{=info.auth_user.first_name}} {{=info.auth_user.last_name}}</a></p>
+          							<p>{{=info.project.short_description}}</p>
+          							<p>{{=remaining_days.days}} dias restantes</p>
+          						{{pass}}       
+          							<hr>
+          						</div>
+          					</div>
+	          			</div>
+	              	</div>
+	            </section>	            
+	        </div>
+	    </div>
