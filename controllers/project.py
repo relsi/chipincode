@@ -274,7 +274,7 @@ def nasp():
     if not request.vars:
         redirect(URL(c='default', f='index'))
     else:
-        if request.vars.status_pagamento == 4:
+        if request.vars.status_pagamento == '4':
             db(db.project_donation.id == request.vars.id_transacao).update(
                 status = True,
                 status_text = "Creditado"
