@@ -1,0 +1,27 @@
+{{extend 'layout.html'}}
+<script type="text/javascript">
+  $(function(){
+    $("#moip_form").submit();
+  })
+</script>
+    <div class="container">       
+          <div class="row-fluid">  
+            <section>
+              <div class="span12">
+                  <h1>{{=T("Redirecting to Moip page")}}</h1>
+                  <hr>                     
+              </div>
+              <div class="span12 well form-project">
+                <form id="moip_form" method='post' action='https://desenvolvedor.moip.com.br/sandbox/PagamentoMoIP.do'>
+                  <input type='hidden' name='id_carteira' value='{{=moip_id}}'/>
+                  <input type='hidden' name='valor' value='{{=session.payment_data.value.replace(".","")}}'/>
+                  <input type='hidden' name='nome' value='Doação Chip in code'/>
+                  <input type='hidden' name='descricao' value='{{=session.payment_data.project_id}}'/>
+                  <input type='hidden' name='id_transacao' value='{{=session.donate_id}}'/>
+                  <input type='hidden' name='pagador_nome' value='{{=auth.user.first_name}} {{=auth.user.last_name}} '/>
+                  <input type='hidden' name='pagador_email' value='{{=auth.user.email}}'/>
+                </form>
+              </div>
+            </section>           
+          </div>           
+      </div>
