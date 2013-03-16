@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 def index():
     redirect(URL(c='default', f='index'))
     pass
@@ -110,7 +109,6 @@ def project_send():
             response.flash = T("Please, check the form errors!")
 
         return dict(form_project = form_project, terms_of_use=terms_of_use)
-
 
 def show_category():
     donation_sum = db.project_donation.donation_value.sum()
@@ -226,7 +224,7 @@ def payment():
             )
             session.flash = T("Donation registered successfully")
             redirect(URL(c='user', f='profile'))
-        else:
+        elif request.vars.payment_gateway == 'paypal':
             status_text = "Waiting gateway confirmation"
             status = False
             donate_id = db.project_donation.insert(
@@ -243,11 +241,52 @@ def payment():
             session.donate_id = donate_id
             response.flash = T("Donation registered successfully")
             redirect(URL(c='project', f='redirect_paypal'))
+        elif request.vars.payment_gateway == 'moip':
+            status_text = "Waiting gateway confirmation"
+            status = False
+            donate_id = db.project_donation.insert(
+                id_auth_user=request.vars.id_auth_user,
+                id_project=request.vars.id_project,
+                id_project_rewards=request.vars.id_project_rewards,
+                donation_value=request.vars.value,
+                status_text=status_text,
+                status=status,
+                payment_gateway=request.vars.payment_gateway,
+                donation_date=date.today(),
+                donation_visibility=request.vars.donation_visibility
+            )
+            session.donate_id = donate_id
+            response.flash = T("Donation registered successfully")
+            redirect(URL(c='project', f='redirect_moip'))
     return locals()
-
+    
+def redirect_moip():
+    return locals()
+    
+def moip_return():
+    return locals()
+    
 @auth.requires_login()
 def redirect_paypal():
     return locals()
+
+def nasp():
+    if not request.vars:
+        redirect(URL(c='default', f='index'))
+    else:
+        if request.vars.status_pagamento == '4':
+            db(db.project_donation.id == request.vars.id_transacao).update(
+                status = True,
+                status_text = "Creditado"
+                )
+            get_project_data = db(db.project.id == request.vars.id_transacao).select()
+            for data in get_project_data:
+                db(db.project.id == data.id).update(
+                    project_total_collected = float(request.vars.valor[:-2]) + data.project_total_collected,
+                    project_total_donor = data.project_total_donor + 1
+                )
+    
+        return request.vars.id_transacao
 
 def paypal_return():
     if request.args(0) == 'paypal':
@@ -257,29 +296,30 @@ def paypal_return():
             db(db.project_donation.id == request.vars.invoice).update(
                 status_text = request.vars.payment_status 
                 )
-            message = "<p class='alert alert-success'>Ooooops! The paypal sent the following warning "+request.vars.payment_status+".</p>"            
+            message = "<p class='alert alert-error'>Ooooops! The paypal sent the following warning "+request.vars.payment_status+".</p>"            
     else:
         redirect(URL(c='default', f='index'))
+
+    return locals()
 
 def ipn():
     import json
     if request.vars.payment_status == 'Completed':
-        db(db.project_donation.id == request.vars.invoice).update(
+        db(db.project_donation.id == request.vars.item_number).update(
             status = True,
             status_text = "Credited" 
             )
+        get_project_data = db(db.project.id == request.vars.invoice).select()
+        for data in get_project_data:
+            db(db.project.id == data.id).update(
+                                                project_total_collected = float(request.vars.payment_gross) + data.project_total_collected,
+                                                project_total_donor = data.project_total_donor + 1
+                                                ) 
     else:
         db(db.project_donation.id == request.vars.invoice).update(
             status_text = request.vars.payment_status 
             )
     return json.dumps(request.vars)
-
-def nasp():
-    if not request.vars:
-        redirect(URL(c='default', f='index'))
-    else:
-        response.flash="Recebendo argumentos: "+request.vars.projeto+" - "+request.vars.dot
-    return locals()
 
 @auth.requires_login()
 def project_edit():

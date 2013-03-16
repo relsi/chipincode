@@ -29,6 +29,7 @@
                     <td>{{=T('You have R$')}} {{=('%.2f' % total_credits)}} {{=T('in credits.')}}</td>
                   </tr>
                   {{pass}}
+                  {{if paypal_enable == True:}}
                   <tr>
                     <td>
                       <img src="{{=URL('static', 'images/btn_paypal.png')}}">
@@ -48,6 +49,28 @@
                     </td>
                     <td>{{=T('You will be directed to Paypal page.')}}</td>
                   </tr>
+                  {{pass}}
+                  {{if moip_enable == True:}}
+                  <tr>
+                    <td>
+                      <img src="{{=URL('static', 'images/btn_moip.png')}}">
+                    </td>
+                    <td>
+                      <form>
+                        <input type="hidden" name="donation_visibility" value="{{=session.payment_data.donation_visibility or True}}">
+                        <input type="hidden" name="id_auth_user" value="{{=session.payment_data.id_auth_user}}">
+                        <input type="hidden" name="id_project" value="{{=session.payment_data.id_project}}">
+                        <input type="hidden" name="id_project_rewards" value="{{=session.payment_data.id_project_rewards or 0}}">
+                        <input type="hidden" name="value" value="{{=session.payment_data.value}}">
+                        <input type="hidden" name="payment_gateway" value="moip">
+                      <button type="submit">
+                        {{=T('Confirm Payment')}}
+                      </button>
+                      </form>
+                    </td>
+                    <td>{{=T('You will be directed to MoIP page.')}}</td>
+                  </tr>
+                  {{pass}}
                 </table>
                 </div>
               </section>           
