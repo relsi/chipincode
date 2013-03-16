@@ -25,11 +25,13 @@ response.email_login = 'user_name:password'
 response.projects_email = "user_name@gmail.com"
 
 #paypal configurations
+paypal_enable = True
 paypal_id = "YOUR-PAYPAL-ID"
 ipn_handler = URL(c='project', f='ipn', host=True, scheme=True)
 paypal_return_url =  URL(c='project', f='paypal_return', args='paypal', host=True, scheme=True)
 
 #moip configurations
+paypal_enable = True
 moip_id = 'SEU-EMAIL-DO-MOIP'
 nasp_url = URL(c='project', f='nasp', host=True, scheme=True)
 moip_return_url =  URL(c='project', f='moip_return', host=True, scheme=True)
