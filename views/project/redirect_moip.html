@@ -11,7 +11,7 @@
                   <h1>{{=T("Redirecting to Moip page")}}</h1>
                   <hr>                     
               </div>
-              <div class="span12 well form-project">
+              <div class="span12 well form-project m_left">
                 <form id="moip_form" method='post' action='https://desenvolvedor.moip.com.br/sandbox/PagamentoMoIP.do'>
                   <input type='hidden' name='id_carteira' value='{{=moip_id}}'/>
                   <input type='hidden' name='valor' value='{{=session.payment_data.value.replace(".","")}}'/>
