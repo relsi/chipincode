@@ -14,27 +14,27 @@ def profile():
     created_projects = db(db.project.id_auth_user == auth.user.id).select()
     
     #reverse donation
-    if request.post_vars:
-        user_credit = db(db.user_credit.id_auth_user == request.post_vars.id_auth_user).select()
-        if not user_credit:
-            credit_insert =  db.user_credit.insert(
-                id_auth_user = request.post_vars.id_auth_user, 
-                credit_value = request.post_vars.donation_value
-                )
-            donation_delete = db((db.project_donation.id_auth_user == request.post_vars.id_auth_user)&(db.project_donation.id_project == request.post_vars.id_project)).delete()
-            response.flash = T("Donation reversed!")
-        else:
-            user_credit = db(db.user_credit.id_auth_user == request.post_vars.id_auth_user).select()
-            for item in user_credit:
-                credit_value = item.credit_value
-                new_value = credit_value + float(request.post_vars.donation_value)
-                new_credit = db(db.user_credit.id_auth_user == request.post_vars.id_auth_user).update(credit_value = new_value)
-                donation_delete = db((db.project_donation.id_auth_user == request.post_vars.id_auth_user)&(db.project_donation.id_project == request.post_vars.id_project)).delete()
-                response.flash = T("Donation reversed!")
+    #if request.post_vars:
+    #    user_credit = db(db.user_credit.id_auth_user == request.post_vars.id_auth_user).select()
+    #    if not user_credit:
+    #        credit_insert =  db.user_credit.insert(
+    #            id_auth_user = request.post_vars.id_auth_user, 
+    #            credit_value = request.post_vars.donation_value
+    #            )
+    #        donation_delete = db((db.project_donation.id_auth_user == request.post_vars.id_auth_user)&(db.project_donation.id_project == request.post_vars.id_project)).delete()
+    #        response.flash = T("Donation reversed!")
+    #    else:
+    #        user_credit = db(db.user_credit.id_auth_user == request.post_vars.id_auth_user).select()
+    #        for item in user_credit:
+    #            credit_value = item.credit_value
+    #            new_value = credit_value + float(request.post_vars.donation_value)
+    #            new_credit = db(db.user_credit.id_auth_user == request.post_vars.id_auth_user).update(credit_value = new_value)
+    #            donation_delete = db((db.project_donation.id_auth_user == request.post_vars.id_auth_user)&(db.project_donation.id_project == request.post_vars.id_project)).delete()
+    #            response.flash = T("Donation reversed!")
 
     total_user_credit = db(db.user_credit.id_auth_user == auth.user.id).select()
     for credit in total_user_credit:
-        total_credit = credit.credit_value
+        total_credit =+ credit.credit_value
     if not total_user_credit: 
         total_credit = 0.0
 

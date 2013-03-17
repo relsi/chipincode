@@ -1,0 +1,27 @@
+{{extend 'layoutadmin.html'}}
+        <div class="span9">
+          <div class="container-fluid well">
+            <h1>{{=T("Authorize Funding.")}}</h1>
+            <p>Set the start and end date of the funding</p>
+          </div>
+          <div class="container-fluid well">
+            <p>{{=T("Project")}}: {{=project_name}}</p>
+            {{=form.custom.begin}}
+            <p>
+              <label>{{=T("Start Date:")}}</label>
+              {{=form.custom.widget.start_date}}
+            </p>
+            <p>
+              <label>{{=T("End Date:")}}</label>
+              {{=form.custom.widget.end_date}}
+            </p>
+            <p>
+              <button type="submit" class="btn btn-success">{{=T("Authorize Funding")}}</button>
+            </p>
+            {{=form.custom.end}}
+            <p>
+              {{=BEAUTIFY(request.vars)}}
+          </div><!--/row-->
+        </div><!--/span-->
+      </div><!--/row-->
+      <hr>

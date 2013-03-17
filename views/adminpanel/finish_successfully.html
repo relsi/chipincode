@@ -1,0 +1,37 @@
+{{extend 'layoutadmin.html'}}
+        <div class="span9">
+          <div class="container-fluid well">
+            <h1>{{=T("Finish Successfully")}}</h1>
+            <p>{{=T("Finish project that obtain the goal")}}</p>
+          </div>
+          <div class="container-fluid well">
+            <p class="alert alert-error" id="project_warning">
+              {{=T("Warning, this operation is irreversible. Are you sure?")}}
+            </p>
+            <p>
+              <form action="" enctype="multipart/form-data" method="post" id="form_finish">
+                <div id="finish_buttons">
+                  <a href="{{=URL(c='adminpanel', f='list_expired_projects')}}" class="btn btn-warning btn-large">
+                  {{=T("No, I want to go back")}}
+                  </a>
+                  <input type="hidden" name="project_id" value="{{=request.args(0)}}">
+                  <button type="submit" class="btn btn-success btn-mini" id="btn_ok">{{=T("OK - Finish Successfully")}}</button>
+                </div>
+                <div id="loading" style="display:none;">
+                  <p class="alert alert-warning">
+                    <strong>{{=T("Wait! Do not close this page!")}}</strong> <img src="{{=URL('static', 'images/ajax-loader.gif')}}">
+                  </p>
+                </div>
+              </form>
+            </p>
+          </div><!--/row-->
+        </div><!--/span-->
+      </div><!--/row-->
+      <hr>
+      <script type="text/javascript">
+         $('#form_finish').submit(function(){
+            $("#project_warning").hide();
+            $("#finish_buttons").hide();
+            $("#loading").show();
+          })
+      </script>

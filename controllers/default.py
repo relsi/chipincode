@@ -129,13 +129,15 @@ def user():
     return dict(form_login=form_login, form_register=form_register)
 
 
+def not_autorized():
+    return locals()
+
 def download():
     """
     allows downloading of uploaded files
     http://..../[app]/default/download/[filename]
     """
     return response.download(request, db)
-
 
 def call():
     """

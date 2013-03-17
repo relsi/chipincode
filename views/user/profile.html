@@ -76,7 +76,6 @@
                           <th>{{=T("Date of the donations")}}</th>
                           <th>{{=T("Value of the donation")}}</th>
                           <th>{{=T("Status of the project")}}</th>
-                          <th>{{=T("Reverse donation")}}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -86,21 +85,6 @@
                           <td>{{=project.project_donation.donation_date.strftime('%d/%m/%Y') or ''}}</td>
                           <td>{{=("%.2f" % project.project_donation.donation_value)}}</td>
                           <td>{{=project.project.status_text}}</td>
-                          <td>
-                            {{if project.project.status == True:}}
-                              <form method="post" enctype="multipart/form-data" action="" class="form-inline">
-                                <input type="hidden" name="id_auth_user" value="{{=auth.user.id}}">
-                                <input type="hidden" name="id_project" value="{{=project.project.id}}">
-                                <input type="hidden" name="donation_value" value="{{=project.project_donation.donation_value}}">
-                                <input type="hidden" name="_formname" value="reverse/donation">
-                                <button class="btn btn-danger btn-mini" type="submit">
-                                  {{=T("Reverse")}}
-                                </button>
-                              </form>
-                            {{else:}}
-                              {{=T("Closed Project")}}
-                            {{pass}}
-                          </td>
                         </tr>
                         {{pass}}                   
                       </tbody>
@@ -112,7 +96,7 @@
                     <table class="table table-bordered table-striped refund">
                       <thead>
                         <tr>
-                          <th>{{=T("Project")}}/th>
+                          <th>{{=T("Project")}}</th>
                           <th>{{=T("Date")}}</th>
                           <th>{{=T("Status")}}</th>
                           <th colspan="4" class="th_action">{{=T("Action")}}</th>
