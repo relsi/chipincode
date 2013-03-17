@@ -76,10 +76,10 @@
                       </a>
                       <div class="nav-collapse collapse">                         
                           <ul class="nav pull-right top-nav">
-                              <li class="active">
+                              <li {{if request.url == URL(c='default', f='index'):}}class="active"{{pass}}>
                                   <a href="{{=URL(c='default', f='index')}}">Home</a>
                               </li>
-                              <li>
+                              <li {{if request.url == URL(c='project', f='show_category', args=request.args(0)):}}class="active"{{pass}}>
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     {{=T("Help a Project")}}
                                   </a>
@@ -93,16 +93,13 @@
                                       {{pass}}
                                    </ul>
                               </li>
-                              <li>
+                              <li {{if request.url == URL(c='project', f='project_send'):}}class="active"{{pass}}>
                                   <a href="{{=URL(c='project', f='project_send')}}">{{=T("Send a Project")}}</a>
                               </li>
-                              <li>
-                                  <a href="{{=URL(c='default', f='faq')}}">{{=T("FAQ")}}</a>
-                              </li>
-                              <li>
+                              <li {{if request.url == URL('default', 'contact'):}}class="active"{{pass}}>
                                   <a href="{{=URL(c='default', f='contact')}}">{{=T("Contact us")}}</a>
                               </li>
-                              <li>
+                              <li {{if request.url == URL('default', 'user', args='login'):}}class="active"{{pass}}>
                                 {{if auth.is_logged_in():}}
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                  {{=T("Hello")}} {{=auth.user.first_name}}
@@ -124,9 +121,7 @@
           </div>
       </header>
       <div class="flash">{{=response.flash or ''}}</div>  
-
       {{include}}
-
       <footer class="footer-container">
           <div class="container">
               <div class="row-fluid sub-footer">  
@@ -204,7 +199,6 @@
           </div>
             <nav class="span6">
               <ul>              
-                <li> <a href="{{=URL(c='default', f='faq')}}">{{=T("FAQ")}}</a></li>
                 <li><a href="{{=URL(c='default', f='contact')}}">{{=T("Contact us")}}</a></li>  
               </ul>
             </nav>
