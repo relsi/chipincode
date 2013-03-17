@@ -1,0 +1,31 @@
+{{extend 'layoutadmin.html'}}
+        <div class="span9">
+          <div class="container-fluid well">
+            <h1>{{=T("Website Images")}}</h1>
+            <p>Set here your images</p>
+          </div>
+          <div class="container-fluid well">
+            <p>
+              <h2>{{=T("Site Logo")}}</h2>
+              {{=form_logo}}
+            </p>
+            <hr>
+            <p>
+              <h2>{{=T("Home Banner")}}</h2>
+              {{=form_banner}}
+            </p>
+            <hr>
+            <p>
+              <h2>{{=T("Default Avatar")}}</h2>
+              {{=form_avatar}}
+            </p>
+            <hr>
+            <p>
+              <h2>{{=T("Anonymous Avatar")}}</h2>
+              {{=form_anonymous}}
+            </p>
+            <hr>
+          </div><!--/row-->
+        </div><!--/span-->
+      </div><!--/row-->
+      <hr>

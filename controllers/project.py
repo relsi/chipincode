@@ -205,9 +205,11 @@ def payment():
             )
             get_project_data = db(db.project.id == request.vars.id_project).select()
             for data in get_project_data:
+                total_collected = data.project_total_collected or 0.00
+                total_donor = data.project_total_donor or 0.00
                 db(db.project.id == data.id).update(
-                    project_total_collected = float(request.vars.value) + data.project_total_collected,
-                    project_total_donor = data.project_total_donor + 1
+                    project_total_collected = float(request.vars.value) + total_collected,
+                    project_total_donor = total_donor + 1
                 )           
             status_text = "Credited"
             status = True

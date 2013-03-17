@@ -67,6 +67,7 @@ auth.settings.extra_fields['auth_user']= [
 ]
 auth.define_tables(username=True)
 auth.settings.login_userfield = 'email'
+auth.settings.on_failed_authorization = URL(c='default', f='not_autorized')
 
 ## configure email
 mail = auth.settings.mailer
@@ -105,13 +106,29 @@ from datetime import *
 
 #image for home
 db.define_table("home_banner",
-  Field("image", "upload", uploadfolder=request.folder+'uploads/home_banner', label=T('Home Banner.'))
+  Field("image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Home Banner.'))
 )
 
 #image for logo
 db.define_table("logo_image",
-  Field("image", "upload", uploadfolder=request.folder+'uploads/logo_image', label=T('Logo Image.'))
+  Field("image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Logo Image.'))
 )
+
+db.define_table("default_avatar",
+  Field("image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Logo Image.'))
+)
+
+db.define_table("anonymous_avatar",
+  Field("image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Logo Image.'))
+)
+
+db.define_table("website_meta",
+    Field('site_title', 'string', label=T('Website Title')),
+    Field('meta_author', 'string', label=T('Website Author')),
+    Field('meta_description', 'string', label=T('Website description')),
+    Field('meta_keywords', 'string', label=T('Website keywords'))
+
+ )
 
 #project categories
 db.define_table("project_categories",
@@ -135,7 +152,7 @@ db.define_table("project",
     Field("video", "string", label=T('Video URL of the project.')),
     Field("image", "upload", uploadfolder=request.folder+'uploads/project_images', autodelete=True, label=T('Featured picture of the  project.')),
     Field("terms_of_use", "boolean", default=False, label=T('Terms of use of the Chip In Code Plataform')),
-    Field("id_auth_user", "integer", label=T('User owner of the project.')),
+    Field("id_auth_user", db.auth_user, label=T('User owner of the project.')),
     Field("status", "boolean", default=False, label=T('Status of the project.')),
     Field("status_text", "string", default=T('Waiting for approval'), label=T('Status text.')),
     Field("goal", "boolean", default=False, label=T('Goal of the project.')),
@@ -184,6 +201,14 @@ db.define_table("project_rewards",
 db.define_table("user_credit",
     Field("id_auth_user", "integer", label=T('User.')),
     Field("credit_value", "double", label=T('Credit value.'))
+)
+
+#user messages
+db.define_table("user_messages",
+    Field("id_auth_user", "integer", label=T('User')),
+    Field("message_title", "string", label=T('Title')),
+    Field("message_content", "text", label=T('Message')),
+    Field("message_read", "boolean", default=False),
 )
 
 #project updates

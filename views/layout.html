@@ -71,8 +71,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                       </a>
-                      <a class="brand" href="#" title="Chip in Code">
-                        <img src="{{=URL('static', 'images/logo.png')}}" alt="Chip in Code">
+                      <a class="brand" href="#" title="{{=response.title or request.application}}">
+                        <img src="{{=response.logo}}" alt="{{=response.title or request.application}}">
                       </a>
                       <div class="nav-collapse collapse">                         
                           <ul class="nav pull-right top-nav">

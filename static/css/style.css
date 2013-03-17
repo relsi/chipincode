@@ -195,4 +195,7 @@ div.error {
     background-repeat: repeat-y;
 }
 
-	
+div.web2py_console .hidden{
+    visibility: visible!important; 
+}	
+
