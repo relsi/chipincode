@@ -4,12 +4,6 @@
 /* http://www.codeup.com.br
 /* ----------------------------------*/
 
-/* ------------------------------------
-/* Folha de Estilos para Chip In Code
-/* author: CodeUp - Apps Studio
-/* http://www.codeup.com.br
-/* ----------------------------------*/
-
 body {padding-top: 120px; font-family: Arial, Verdana, sans-serif;}
 
 a {color: #ff7f2a;}
@@ -23,7 +17,7 @@ h1, h2, h3, h4, h5 {font-family: 'Roboto Condensed', sans-serif !important; font
  .navbar .nav > li > a {font-size: 1.3em;}
 
 .details {height: 400px;}
-.details img {width: 100%;}
+.details img {width: 100%; height: 40%;}
 .details h4 {line-height: 1.1em; width: 230px;}
 .details h4 a {text-decoration: none; color: #ff7f2a;}
 .details h4 a:hover {color: #442300;}
@@ -46,11 +40,11 @@ h1, h2, h3, h4, h5 {font-family: 'Roboto Condensed', sans-serif !important; font
 
 ul.lista-midias {margin-left: -2px; float: none;}
 ul.lista-midias li {line-height: 25px; display: block; font-size: 1.2em;}
-ul.lista-midias li.facebook-rod {background: url(../img/facebook-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
-ul.lista-midias li.twitter-rod {background: url(../img/twitter-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
-ul.lista-midias li.youtube-rod {background: url(../img/youtube-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
-ul.lista-midias li.feed-rod {background: url(../img/feed-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
-ul.lista-midias li.google-rod{background: url(../img/google-rod.png) no-repeat left center; padding: 10px;  padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.facebook-rod {background: url(../images/facebook-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.twitter-rod {background: url(../images/twitter-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.youtube-rod {background: url(../images/youtube-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.feed-rod {background: url(../images/feed-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.google-rod{background: url(../images/google-rod.png) no-repeat left center; padding: 10px;  padding-left: 40px; margin-left: 3px;}
 
 ul.categories {width: 300px; margin-right: 83px;}
 ul.categories li {line-height: 35px; display: block; font-size: 1.2em;}
@@ -67,7 +61,7 @@ ol.flex-control-nav {position: absolute; left: 985px; bottom: 10px;}
 .form-project {font-family: Arial, Verdana, sans-serif;}
 .textarea-send {height: 150px;}
 .terms {margin-top: 20px;}
-input.remember {margin-right: 10px; margin-bottom: 5px;}
+input.remember {margin-right: 10px !important; margin-bottom: 5px !important;}
 .terms a {color: #ff7f2a;}
 .terms a:hover {color: #483737; text-decoration: none;}
 
@@ -96,6 +90,7 @@ input[type="file"] {background: #fff !important;}
 .project-sup h4 {width: 40.5%; float: right; margin-right: 150px; margin-top: 5px;}
 .project-sup ul {list-style-type: none; font-size: 90%; float: right; margin-right: 55px; margin-top: -70px;}
 
+ul.help_project {left: auto; right: 470px !important;}
 
 .modal-body {
   background:#FFFFFF!important;
