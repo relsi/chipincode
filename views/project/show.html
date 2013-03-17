@@ -12,7 +12,7 @@
 	          		<div class="span12 well">	          			
 	          			<div class="row-fluid">
 	          				<div class="span2">
-								<img src="{{=URL('download', args=item.project.image)}}" class="thumb-project" alt="{{=item.project.project_name}}">
+								<img src="{{=image_url}}" class="thumb-project" alt="{{=item.project.project_name}}">
 	          				</div>
 	          				<div class="span10">
 	          					<h2>{{=item.project.project_name}}</h2>
@@ -71,7 +71,7 @@
           					<div class="span8 project tab-content">
 								<div id="project" class="tab-pane  active">
 									{{if not item.project.video:}}
-		      						<img src="{{=URL('download', args=item.project.image)}}" class="project-img" alt="{{=item.project.project_name}}">
+		      						<img src="{{=image_url}}" class="project-img" alt="{{=item.project.project_name}}">
 		      						{{else:}}
 		      						<iframe src="http://player.vimeo.com/video/{{=item.project.video}}" width="745" height="596" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 		      						{{pass}}		      						

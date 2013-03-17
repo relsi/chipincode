@@ -58,6 +58,8 @@ else:
 
 anonymous_avatar = anonymous
 
+default_image = URL('static', 'images/default_image.png')
+
 #funding time of the projects
 funding_time = 30
 

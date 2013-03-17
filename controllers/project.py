@@ -16,6 +16,12 @@ def show():
             db.project_categories.on(db.project_categories.id == db.project.id_category),
         ]
     )
+    for url_image in project_details:
+        if url_image.project.image =='': 
+            image_url = default_image
+        else: 
+            image_url = URL('download', args=url_image.project.image)
+
     updates = db(db.project_updates.id_project == project_id).select(orderby=~db.project_updates.id)
     #donation_sum = db.project_donation.donation_value.sum()
     #donors = db.project_donation.id.count()
@@ -33,7 +39,7 @@ def show():
     )
     show_rewards = db(db.project_rewards.id_project == project_id).select()
 
-    return dict(project_details=project_details, show_donors=show_donors, show_rewards=show_rewards, updates=updates, remaining_days = remaining_days)
+    return dict(image_url=image_url, project_details=project_details, show_donors=show_donors, show_rewards=show_rewards, updates=updates, remaining_days = remaining_days)
     
 @auth.requires_login()
 def project_send():
