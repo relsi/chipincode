@@ -71,9 +71,6 @@ auth.settings.on_failed_authorization = URL(c='default', f='not_autorized')
 
 ## configure email
 mail = auth.settings.mailer
-mail.settings.server = response.email_server
-mail.settings.sender = response.email_sender
-mail.settings.login = response.email_login
 
 ## configure auth policy
 auth.settings.registration_requires_verification = False

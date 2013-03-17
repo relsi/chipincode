@@ -44,8 +44,8 @@
         <![endif]-->
 
   <!-- include stylesheets -->
-	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700' rel='stylesheet' type='text/css'>
   {{  
   response.files.append(URL('static','css/style.css'))
   response.files.append(URL('static','css/bootstrap-responsive.min.css'))
@@ -83,7 +83,7 @@
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     {{=T("Help a Project")}}
                                   </a>
-                                   <ul class="dropdown-menu">
+                                   <ul class="dropdown-menu help_project">
                                       {{for menu_item in response.menu_categories:}}
                                       <li>
                                         <a href="{{=URL(c='project', f='show_category', args=menu_item.id)}}">
@@ -128,46 +128,46 @@
       {{include}}
 
       <footer class="footer-container">
-         	<div class="container">
-	            <div class="row-fluid sub-footer">	
-					<div class="span4">
-						<h3>{{=T("Find us")}}</h3>						
-						<ul class="lista-midias">
-							<li class="facebook-rod">
+          <div class="container">
+              <div class="row-fluid sub-footer">  
+          <div class="span4">
+            <h3>{{=T("Find us")}}</h3>            
+            <ul class="lista-midias">
+              <li class="facebook-rod">
                 <a href="http://www.facebook.com/codeupstudio" title="Facebook" target="_blank">
                   facebook.com/codeupstudio
                 </a>
               </li>
-							<li class="google-rod">
+              <li class="google-rod">
                 <a href="https://plus.google.com/u/1/104224628915734590243" title="Google +" target="_blank">
                   plus.google.com/codeupstudio
                 </a>
               </li>
-							<li class="twitter-rod">
+              <li class="twitter-rod">
                 <a href="http://www.twitter.com/codeupstudio" title="Twitter" target="_blank">
                   @codeupstudio
                 </a>
               </li>
-							<li class="youtube-rod">
+              <li class="youtube-rod">
                 <a href="http://www.youtube.com/codeupstudio" title="Youtube" target="_blank">
                   youtube.com/codeupstudio
                 </a>
               </li>
-							<li class="feed-rod">
+              <li class="feed-rod">
                 <a href="http://feedburner.google.com/fb/a/mailverify?uri=blog-codeupstudio&amp;loc=pt_BR" title="RSS" target="_blank">
                   codeup.com.br/blog
                 </a>
-              </li>		
-						</ul>
-						<h4>{{=T('Newsletter')}}</h4>
-						<form class="cadastra-news">
-							<input type="text" class="small-text" placeholder="Digite seu email">
-							<input type="submit" value="Cadastrar" class="btn btn-warning">
-						</form>						
-					</div>
-					<div class="span4">
-						<h3>{{=T('Categories')}}</h3>
-						<ul class="categories">
+              </li>   
+            </ul>
+            <h4>{{=T('Newsletter')}}</h4>
+            <form class="cadastra-news">
+              <input type="text" class="small-text" placeholder="Digite seu email">
+              <input type="submit" value="Cadastrar" class="btn btn-warning">
+            </form>           
+          </div>
+          <div class="span4">
+            <h3>{{=T('Categories')}}</h3>
+            <ul class="categories">
             {{for menu_footer in response.menu_categories:}}
               <li>
                 <a href="{{=URL(c='project', f='show_category', args=menu_footer.id)}}">
@@ -175,10 +175,10 @@
                 </a>
               </li>
             {{pass}}
-						</ul>					
-					</div>		      	
-					<div class="span4">
-					<div id="fb-root"></div>
+            </ul>         
+          </div>            
+          <div class="span4">
+          <div id="fb-root"></div>
           <script>
               (function(d, s, id) {
                   var js, fjs = d.getElementsByTagName(s)[0];
@@ -188,29 +188,29 @@
                   fjs.parentNode.insertBefore(js, fjs);
               }(document, 'script', 'facebook-jssdk'));
           </script>
-						<h3>{{=T('Be a fan')}}</h3>
-						<div>					
+            <h3>{{=T('Become a fan')}}</h3>
+            <div>         
             <div class="fb-like-box" data-href="http://facebook.com/codeupstudio" data-width="350" data-height="295" data-show-faces="true" data-stream="false" data-header="false"></div>
-						</div>						
-					</div>		
-				</div>
-				
-				<div class="row-fluid">
-					<hr>
-				</div>
-				<div class="row-fluid">
-					<div class="span6">
-						<p>{{=T('Copyright')}} &#169; {{=request.now.year}} Chip in Code</p>
-					</div>
-						<nav class="span6">
-							<ul>							
-								<li> <a href="{{=URL(c='default', f='faq')}}">{{=T("FAQ")}}</a></li>
-								<li><a href="{{=URL(c='default', f='contact')}}">{{=T("Contact us")}}</a></li>	
-							</ul>
-						</nav>
-				</div>
-			</div>
-	    </footer>
+            </div>            
+          </div>    
+        </div>
+        
+        <div class="row-fluid">
+          <hr>
+        </div>
+        <div class="row-fluid">
+          <div class="span6">
+            <p>{{=T('Copyright')}} &#169; {{=request.now.year}} Chip in Code</p>
+          </div>
+            <nav class="span6">
+              <ul>              
+                <li> <a href="{{=URL(c='default', f='faq')}}">{{=T("FAQ")}}</a></li>
+                <li><a href="{{=URL(c='default', f='contact')}}">{{=T("Contact us")}}</a></li>  
+              </ul>
+            </nav>
+        </div>
+      </div>
+      </footer>
   <!-- The javascript =============================================
        (Placed at the end of the document so the pages load faster) -->
   <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
