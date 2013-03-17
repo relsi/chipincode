@@ -64,13 +64,13 @@ funding_time = 30
 ## your http://google.com/analytics id
 response.google_analytics_id = None
 
-#email configuration
-response.email_server = 'smtp.gmail.com:587'
-response.email_sender = 'chipincode@gmail.com'
-response.email_login = 'chipincode:B612cseth'
-
 #the email that will receive notifications about registered projects
 response.projects_email = "chipincode@gmail.com"
+
+#email configuration
+mail.settings.server = 'smtp.gmail.com:587'
+mail.settings.sender = 'chipincode@gmail.com'
+mail.settings.login = 'chipincode:B612cseth'
 
 #paypal configurations
 paypal_enable = True

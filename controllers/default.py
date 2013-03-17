@@ -111,7 +111,7 @@ def contact():
         email = request.vars.email
         message = request.vars.message
         body = '<html>'+T("Data Sender")+'<br><strong>'+T("Name")+'</strong>: '+name+'<br /><strong>'+T("Email")+'</strong>: '+email+'<br /><strong>'+T("Message")+'</strong>: '+message+'</html>'
-        mail.send(response.email_sender, T("User Message Contact"), body)
+        mail.send(response.projects_email, T("User Message Contact"), body)
         response.flash = T("Email sent successfully")
     return locals()
 
