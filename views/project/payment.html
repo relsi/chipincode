@@ -6,7 +6,7 @@
                     <h1>{{=T("Payment")}}</h1>
                     <hr>                     
                 </div>
-                <div class="span12 well form-project">
+                <div class="span12 well form-project m_left">
                 <table class="table">
                   {{if float(total_credits) > float(session.payment_data.value): }}
                   <tr>
@@ -21,7 +21,7 @@
                         <input type="hidden" name="id_project_rewards" value="{{=session.payment_data.id_project_rewards or 0}}">
                         <input type="hidden" name="value" value="{{=session.payment_data.value}}">
                         <input type="hidden" name="payment_gateway" value="credits">
-                         <button type="submit">
+                         <button type="submit" class="btn-warning">
                           {{=T('Confirm Payment')}}
                         </button>
                       </form>
@@ -42,7 +42,7 @@
                         <input type="hidden" name="id_project_rewards" value="{{=session.payment_data.id_project_rewards or 0}}">
                         <input type="hidden" name="value" value="{{=session.payment_data.value}}">
                         <input type="hidden" name="payment_gateway" value="paypal">
-                        <button type="submit">
+                        <button type="submit" class="btn-warning">
                           {{=T('Confirm Payment')}}
                         </button>
                       </form>
@@ -63,7 +63,7 @@
                         <input type="hidden" name="id_project_rewards" value="{{=session.payment_data.id_project_rewards or 0}}">
                         <input type="hidden" name="value" value="{{=session.payment_data.value}}">
                         <input type="hidden" name="payment_gateway" value="moip">
-                      <button type="submit">
+                      <button type="submit" class="btn-warning">
                         {{=T('Confirm Payment')}}
                       </button>
                       </form>

@@ -27,7 +27,7 @@
                     <a href="{{=URL(c='user', f='request_password', args='request_reset_password')}}">{{=T("Lost my password")}}</a>
                   </p>
                   <p>
-                    <input type="submit" value="Efetuar login" class="btn btn-warning">
+                    <input type="submit" value="Efetuar login" class="btn btn-large btn-warning">
                   </p>
                 {{=form_login.custom.end}}
             </div>
@@ -51,11 +51,11 @@
                       {{=form_register.custom.widget.password}}
                   </p>
                   <p>
-                    <label for="resenha-cadastro">{{=T("Confirm the password")}}:</label>
+                    <label for="resenha-cadastro">{{=T("Confirm your password")}}:</label>
                     {{=form_register.custom.widget.password_two}}
                   </p>
                     <input type="hidden" value="" id="set_username" name="username">
-                    <input type="submit" value="{{=T('Register')}}" class="btn btn-warning">
+                    <input type="submit" value="{{=T('Register')}}" class="btn btn-large btn-warning">
                   </p>                         
                 {{=form_register.custom.end}}                      
             </div>
