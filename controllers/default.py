@@ -110,8 +110,9 @@ def contact():
         name = request.vars.name
         email = request.vars.email
         message = request.vars.message
+        subject = request.vars.subject
         body = '<html>'+T("Data Sender")+'<br><strong>'+T("Name")+'</strong>: '+name+'<br /><strong>'+T("Email")+'</strong>: '+email+'<br /><strong>'+T("Message")+'</strong>: '+message+'</html>'
-        mail.send(response.projects_email, T("User Message Contact"), body)
+        mail.send(response.projects_email, subject, body)
         response.flash = T("Email sent successfully")
     return locals()
 
@@ -122,10 +123,20 @@ def user():
         @auth.requires_permission('read','table name',record_id)
     to decorate functions that need access control
     """
+
     form_login = auth()
+    form_login.element(_name="password")["_class"] = "span9"
+    form_login.element(_name="email")["_class"] = "span9"
+    
     form_register = auth.register()
     form_register.element(_name="password")["_id"] = "password"
     form_register.element(_name="email")["_id"] = "user_email"
+    form_register.element(_name="email")['_class'] = "span9"
+    form_register.element(_name="password")['_class'] = "span9"
+    form_register.element(_name="first_name")['_class'] = "span9"
+    form_register.element(_name="last_name")['_class'] = "span9"
+    form_register.element(_name="password_two")['_class'] = "span9"
+
     return dict(form_login=form_login, form_register=form_register)
 
 

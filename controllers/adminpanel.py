@@ -72,6 +72,37 @@ def list_actives_projects():
     )
     return locals()
 
+def show_project():
+    project_id = request.args(0) or redirect(URL('project', 'index'))
+    project_slug = request.args(1)
+
+    project_details = db(db.project.id == project_id).select(
+        db.project.ALL,
+        db.auth_user.ALL,
+        db.project_categories.ALL,
+        left = [
+            db.auth_user.on(db.auth_user.id == db.project.id_auth_user),
+            db.project_categories.on(db.project_categories.id == db.project.id_category),
+        ]
+    )
+    updates = db(db.project_updates.id_project == project_id).select(orderby=~db.project_updates.id)
+    #donation_sum = db.project_donation.donation_value.sum()
+    #donors = db.project_donation.id.count()
+    for item in project_details:
+        #donations=db(db.project_donation.id_project == item.project.id).select(donation_sum).first()[donation_sum] or 0
+        remaining_days = item.project.end_date - date.today()
+        #amount_donors = db(db.project_donation.id_project == item.project.id).select(donors).first()[donors] or 0
+
+    show_donors = db((db.project_donation.id_project == project_id)&(db.project_donation.status == True)).select(
+        db.project_donation.ALL,
+        db.auth_user.ALL,
+        left=[
+            db.auth_user.on(db.auth_user.id == db.project_donation.id_auth_user)
+        ]
+    )
+    show_rewards = db(db.project_rewards.id_project == project_id).select()
+
+    return dict(project_details=project_details, show_donors=show_donors, show_rewards=show_rewards, updates=updates, remaining_days = remaining_days)
 
 def list_pending_projects():
     query = ((db.project.status == False)&(db.project.finalized == False))

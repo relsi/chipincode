@@ -78,7 +78,10 @@ def request_password():
         @auth.requires_permission('read','table name',record_id)
     to decorate functions that need access control
     """ 
-    return dict(form=auth())
+    auth.settings.formstyle = 'divs'
+    form = auth()
+    form.element(_type='submit')['_class'] = "btn btn-warning"
+    return dict(form=form)
 
 
 def download():

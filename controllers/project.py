@@ -67,6 +67,7 @@ def project_send():
         form_project.element(_name='project_name')['_placeholder'] = T("A cool name here! (max 55 characters)")
         form_project.element(_name='status_text')['_type'] = "hidden"
         form_project.element(_name='register_date')['_type'] = "hidden"
+        form_project.element(_name='terms_of_use')['_class'] = "remember"
 
         #goo.gl short url 
         #tks to http://axiacore.com/blog/2012/06/usar-toggl-desde-python-para-acortar-urls/
