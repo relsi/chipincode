@@ -5,41 +5,41 @@
             <div class="span12">
                 <h1>{{=T("User profile")}}</h1>
                 <hr>
+            </div>                        
+            <div class="row-fluid">
+              <div class="span2">
+                {{if not auth.user.avatar:}}
+                <img src="{{=default_avatar}}" class="avatar" alt="{{=auth.user.first_name}} {{=auth.user.last_name}}">
+                {{else:}}
+                <img src="{{=URL('download', args=auth.user.avatar)}}" class="avatar" alt="{{=auth.user.first_name}} {{=auth.user.last_name}}">
+                {{pass}}
               </div>
+              <div class="span10">
+                <h2>{{=auth.user.first_name}} {{=auth.user.last_name}}</h2>
+                <a href="{{=URL(c='user', f='profile_edit')}}" class="btn btn-warning btn-small">{{=T("Edit profile")}}</a>
+              </div> 
+            </div>
+            <div class="row-fluid">
+              <div class="span12 nav-profile">
+                <ul class="nav nav-tabs">
+                  <li class="active">
+                    <a href="#your-data" data-toggle="tab">{{=T("Your info")}}</a>
+                  </li>
+                  <li>
+                    <a href="#supported-projects" data-toggle="tab">{{=T("Pojects that you help")}}</a>
+                  </li>
+                  <li>
+                    <a href="#created-projects" data-toggle="tab">{{=T("Your Projects")}}</a>
+                  </li>
+                  <li>
+                    <a href="#your-credits" data-toggle="tab">{{=T("Your credits")}}</a>
+                  </li>
+                </ul>         
+              </div>
+            </div>
           </section>
           <section>
-            <div class="span12 well">                 
-              <div class="row-fluid">
-                <div class="span2">
-                  {{if not auth.user.avatar:}}
-                  <img src="{{=default_avatar}}" class="avatar" alt="{{=auth.user.first_name}} {{=auth.user.last_name}}">
-                  {{else:}}
-                  <img src="{{=URL('download', args=auth.user.avatar)}}" class="avatar" alt="{{=auth.user.first_name}} {{=auth.user.last_name}}">
-                  {{pass}}
-                </div>
-                <div class="span10">
-                  <h2>{{=auth.user.first_name}} {{=auth.user.last_name}}</h2>
-                  <a href="{{=URL(c='user', f='profile_edit')}}" class="btn btn-warning btn-small">{{=T("Edit profile")}}</a>
-                </div> 
-              </div>
-              <div class="row-fluid">
-                <div class="span12 nav-profile">
-                  <ul class="nav nav-tabs">
-                    <li class="active">
-                      <a href="#your-data" data-toggle="tab">{{=T("Your info")}}</a>
-                    </li>
-                    <li>
-                      <a href="#supported-projects" data-toggle="tab">{{=T("Pojects that you help")}}</a>
-                    </li>
-                    <li>
-                      <a href="#created-projects" data-toggle="tab">{{=T("Your Projects")}}</a>
-                    </li>
-                    <li>
-                      <a href="#your-credits" data-toggle="tab">{{=T("Your credits")}}</a>
-                    </li>
-                  </ul>         
-                </div>
-              </div>
+            <div class="span12 well">  
               <div class="row-fluid tab-content side-project">
                 <div id="your-data" class="tab-pane  active">
                   <p class="alert">

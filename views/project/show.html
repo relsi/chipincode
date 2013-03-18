@@ -6,68 +6,68 @@
               			<h1>{{=T("Project details")}}</h1>
               			<hr>
 	              	</div>
-	            </section>
 	            {{for item in project_details:}}
-	            <section>
-	          		<div class="span12 well">	          			
-	          			<div class="row-fluid">
-	          				<div class="span2">
-								<img src="{{=image_url}}" class="thumb-project" alt="{{=item.project.project_name}}">
-	          				</div>
-	          				<div class="span10">
-	          					<h2>{{=item.project.project_name}}</h2>
-	          					<p>{{=T("A project of")}} 
-		          					<span>
-		          						<a href="{{=URL(c='project', f='show_category', args=item.project_categories.id)}}" title="{{=item.project_categories.category_name}}">
-		          							{{=item.project_categories.category_name}}
-		          						</a>
-		          					</span> 
-		          					{{=T("A project by")}} 
-		          					<span>
-		          						<a href="{{=URL(c='user', f='show_user', args=item.auth_user.id)}}" title="{{=item.auth_user.first_name}} {{=item.auth_user.last_name}}">
-		          							{{=item.auth_user.first_name}} {{=item.auth_user.last_name}}
-		          						</a>
-		          					</span>
-		          				</p>
-		          				<p>
-		          					{{=item.project.short_description}}
-		          				</p>
-		          				<p>
-								<!-- social buttons-->
-								<div class="fb-like" data-href="{{=item.project.short_url}}" data-send="true" data-width="300" data-show-faces="false"></div>
-								<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{=URL(c='default', f='index')}}" data-text="{{=T('I liked this project in')}} {{=response.title or request.application}}: {{=item.project.short_url}}" data-lang="pt">{{=T('Tweet')}}</a>
-								<script>
-									!function(d,s,id){
-										var js,fjs=d.getElementsByTagName(s)[0];
-										if(!d.getElementById(id)){
-											js=d.createElement(s);
-											js.id=id;js.src="//platform.twitter.com/widgets.js";
-											fjs.parentNode.insertBefore(js,fjs);
-										}
-									}(document,"script","twitter-wjs");
-								</script>
-		          				</p>	
-	          				</div>          				
-	          			</div>
-	          			<div class="row-fluid">
-	          				<div class="span12 nav-profile">
-	          					<ul class="nav nav-tabs">
-								    <li class="active">
-								  	  <a href="#project" data-toggle="tab">{{=T("About the project")}}</a>
-								    </li>
-								    <li>
-								    	<a href="#updates" data-toggle="tab">{{=T("Project Updates")}}</a>
-								    </li>
-								    <li >
-								    	<a href="#donors" data-toggle="tab">{{=T("Backers")}}</a>
-								    </li>
-								    <li>
-								    	<a href="#comments" data-toggle="tab">{{=T("Comments")}}</a>
-								    </li>
-								</ul>	        
-          					</div>
+	            	<div class="row-fluid">
+          				<div class="span2">
+							<img src="{{=image_url}}" class="thumb-project" alt="{{=item.project.project_name}}">
           				</div>
-          				<div class="row-fluid side-project">
+          				<div class="span10">
+          					<h2>{{=item.project.project_name}}</h2>
+          					<p>{{=T("A project of")}} 
+	          					<span>
+	          						<a href="{{=URL(c='project', f='show_category', args=item.project_categories.id)}}" title="{{=item.project_categories.category_name}}">
+	          							{{=item.project_categories.category_name}}
+	          						</a>
+	          					</span> 
+	          					{{=T("created by")}} 
+	          					<span>
+	          						<a href="{{=URL(c='user', f='show_user', args=item.auth_user.id)}}" title="{{=item.auth_user.first_name}} {{=item.auth_user.last_name}}">
+	          							{{=item.auth_user.first_name}} {{=item.auth_user.last_name}}
+	          						</a>
+	          					</span>
+	          				</p>
+	          				<p>
+	          					{{=item.project.short_description}}
+	          				</p>
+	          				<p>
+							<!-- social buttons-->
+							<div class="fb-like" data-href="{{=item.project.short_url}}" data-send="true" data-width="300" data-show-faces="false"></div>
+							<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{=URL(c='default', f='index')}}" data-text="{{=T('I liked this project in')}} {{=response.title or request.application}}: {{=item.project.short_url}}" data-lang="pt">{{=T('Tweet')}}</a>
+							<script>
+								!function(d,s,id){
+									var js,fjs=d.getElementsByTagName(s)[0];
+									if(!d.getElementById(id)){
+										js=d.createElement(s);
+										js.id=id;js.src="//platform.twitter.com/widgets.js";
+										fjs.parentNode.insertBefore(js,fjs);
+									}
+								}(document,"script","twitter-wjs");
+							</script>
+	          				</p>	
+          				</div>          				
+          			</div>
+          			<div class="row-fluid">
+          				<div class="span12 nav-profile">
+          					<ul class="nav nav-tabs">
+							    <li class="active">
+							  	  <a href="#project" data-toggle="tab">{{=T("About the project")}}</a>
+							    </li>
+							    <li>
+							    	<a href="#updates" data-toggle="tab">{{=T("Project Updates")}}</a>
+							    </li>
+							    <li >
+							    	<a href="#donors" data-toggle="tab">{{=T("Backers")}}</a>
+							    </li>
+							    <li>
+							    	<a href="#comments" data-toggle="tab">{{=T("Comments")}}</a>
+							    </li>
+							</ul>	        
+      					</div>
+      				</div>
+      			</section>
+      			<section>
+      				<div class="span12 well m_left side_project">
+          				<div class="row-fluid">
           					<div class="span8 project tab-content">
 								<div id="project" class="tab-pane  active">
 									{{if not item.project.video:}}
