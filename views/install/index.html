@@ -1,0 +1,47 @@
+{{extend 'layout.html'}}
+      <div class="container">       
+            <div class="row-fluid">  
+              <section>
+                <div class="span12">
+                    <h1>{{=T("System Install")}}</h1>
+                    <p>Set here the admin system data</p>
+                    <hr>
+                  </div>
+              </section>
+              <section>
+            <div class="span12 well form-project">                  
+            <div class="span4">
+                {{=form_register.custom.begin}}
+                  <p>
+                    <label for="nome-cadastro">{{=T("Name")}}:</label>
+                      {{=form_register.custom.widget.first_name}}
+                  </p>
+                  <p>
+                    <label for="sobre-nome-cadastro">{{=T("Last name")}}:</label>
+                      {{=form_register.custom.widget.last_name}}  
+                  </p>
+                  <p>
+                    <label for="email-cadastro">E-mail:</label>
+                      {{=form_register.custom.widget.email}}
+                  </p>
+                  <p>
+                    <label for="senha-cadastro">{{=T("Password")}}:</label>
+                      {{=form_register.custom.widget.password}}
+                  </p>
+                    <input type="hidden" value="" id="set_username" name="username">
+                    <input type="submit" value="{{=T('Install')}}" class="btn btn-warning btn-large">
+                  </p>                         
+                {{=form_register.custom.end}}                      
+            </div>
+          </div>
+              </section>
+          </div>
+      </div>
+      <script type="text/javascript">
+        $(function(){
+          $("#password").focus(function(){
+            var username = $("#user_email").val();
+            $("#set_username").val(username);
+          });
+        })
+      </script>

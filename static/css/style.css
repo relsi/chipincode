@@ -193,3 +193,7 @@ div.web2py_console .hidden{
     visibility: visible!important; 
 }	
 
+.nav-header{
+    font-size: 100%!important;
+    color: #483737!important;
+}

@@ -57,7 +57,6 @@
   <noscript>
     <link href="{{=URL('static', 'css/web2py_bootstrap_nojs.css')}}" rel="stylesheet" type="text/css" />
   </noscript>
-
 </head>
 <body>
   <header>
@@ -74,7 +73,9 @@
           </a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
-              {{=T("Logged in as")}} <a href="#" class="navbar-link">User</a>
+              {{=T("Logged in as")}} 
+              <a href="{{=URL(c='user', f='profile')}}" class="navbar-link">{{=auth.user.first_name}}</a> |
+              <a href="{{=URL(c='default', f='user/logout')}}" class="navbar-link">{{=T('Logout')}}</a>
             </p>
             <ul class="nav">
               <li class="active"><a href="{{=URL(c='adminpanel', f='index')}}">Home</a></li>
@@ -113,7 +114,6 @@
   		<div class="span6">
   			<p>&#169; {{=request.now.year}} 
           <a href="http://codeup.com.br" title="CodeUP Apps Studio" target="_blank">CodeUp Apps Studio</a>
-            <a href="http://codeup.com.br" title="CodeUP Apps Studio" target="_blank">{{=T("Google Groups")}}</a>
         </p>
   		</div>
   	</div>

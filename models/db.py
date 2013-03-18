@@ -68,6 +68,7 @@ auth.settings.extra_fields['auth_user']= [
 auth.define_tables(username=True)
 auth.settings.login_userfield = 'email'
 auth.settings.on_failed_authorization = URL(c='default', f='not_autorized')
+auth.settings.logged_url = URL(c='user', f='profile')
 
 ## configure email
 mail = auth.settings.mailer
@@ -101,26 +102,16 @@ if session.auth_with == 'facebook':
 
 from datetime import *
 
-#image for home
-db.define_table("home_banner",
-  Field("image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Home Banner.'))
+db.define_table("system_install",
+  Field("status", "boolean", default=False)
 )
 
-#image for logo
-db.define_table("logo_image",
-  Field("image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Logo Image.'))
-)
-
-db.define_table("default_avatar",
-  Field("image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Default Avatar.'))
-)
-
-db.define_table("anonymous_avatar",
-  Field("image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Anonymous avatar.'))
-)
-
-db.define_table("default_image",
-  Field("image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Default Image.'))
+db.define_table("website_images",
+  Field("home_banner", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Home Banner.')),
+  Field("logo_image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Logo Image.')),
+  Field("default_avatar", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Default Avatar.')),
+  Field("anonymous_avatar", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Anonymous avatar.')),
+  Field("default_image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Default Image.'))
 )
 
 db.define_table("website_info",
