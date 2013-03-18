@@ -9,7 +9,7 @@ body {padding-top: 120px; font-family: Arial, Verdana, sans-serif;}
 a {color: #ff7f2a;}
 a:hover {color: #442300; text-decoration: none;}
 
-h1, h2, h3, h4, h5 {font-family: 'Roboto Condensed', sans-serif !important; font-weight: normal; color: #483737;}
+h1, h2, h3, h4, h5 {font-family: 'Roboto Condensed', sans-serif !important; font-weight: normal !important; color: #483737;}
 
 .sidebar-nav {padding: 9px 0;}
 
@@ -81,7 +81,7 @@ input[type="file"] {background: #fff !important;}
 .sign-project ul li {padding-bottom: 15px;}
 .sign-project ul li h1 {margin-bottom: 0px;}
 .sign-project p {margin: 10px 0px 20px 0px !important; font-style: italic;}
-.sign-project button {margin-left: 70px; margin-bottom: 15px;}
+.sign-project button {margin-left: 70px !important; margin-bottom: 15px !important;}
 .project-author {margin: 46px 0px !important;}
 .project-author img {width: 120px; height: 140px; border: 1px solid #DDD;}
 .project-author h5 {width: 62.5%; float: right; margin-right: 0px; margin-top: 30px;}
@@ -90,7 +90,10 @@ input[type="file"] {background: #fff !important;}
 .project-sup h4 {width: 40.5%; float: right; margin-right: 150px; margin-top: 5px;}
 .project-sup ul {list-style-type: none; font-size: 90%; float: right; margin-right: 55px; margin-top: -70px;}
 
-ul.help_project {left: auto; right: 470px !important;}
+#help_li {position: relative;}
+ul.help_project {left: auto; right: 0px !important;}
+
+div.side-project {border-top: none !important; border-top-left-radius: 0 !important; border-top-right-radius: 0 !important; -webkit}
 
 .modal-body {
   background:#FFFFFF!important;
@@ -100,10 +103,6 @@ table .th_action{
     text-align: center!important;
 }
 
-.side-project {
-    background: #ffffff;
-    padding: 5px;
-}
 
 /*********** niceedit ***********/
 #update_content > div{
