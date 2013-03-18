@@ -74,13 +74,25 @@ else:
 
 default_image = image
 
-#the email that will receive notifications about registered projects
-response.projects_email = "chipincode@gmail.com"
+email_settings = db(db.email_settings.id > 0).select()
+if not email_settings:
+	email_sender = ""
+	email_server = ""
+	email_port = ""
+	email_login = ""
+	email_pass = ""
+else:
+	for s_email in email_settings:
+		email_sender = s_email.email_sender
+		email_server = s_email.email_server
+		email_port = str(s_email.email_server_port)
+		email_login = s_email.email_login
+		email_pass = s_email.email_pass
 
-#email configuration
-mail.settings.server = 'smtp.gmail.com:587'
-mail.settings.sender = 'chipincode@gmail.com'
-mail.settings.login = 'chipincode:B612cseth'
+response.projects_email = email_sender
+mail.settings.server = email_server+':'+email_port
+mail.settings.sender = email_sender
+mail.settings.login = email_login+':'+email_pass
 
 #paypal configurations
 paypal_enable = True
