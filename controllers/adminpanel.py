@@ -280,6 +280,7 @@ def config_website_meta():
     form.element(_name='meta_author')['_class'] = "span6"
     form.element(_name='meta_description')['_class'] = "span6"
     form.element(_name='meta_keywords')['_class'] = "span6"
+    form.element(_name='google_analytics_id')['_class'] = "span6"
     return dict(form=form)
 
 def config_website_images():

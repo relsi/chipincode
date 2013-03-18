@@ -194,6 +194,7 @@
 'First name': 'Nome',
 'Forgot username?': 'Esqueceu seu nome de usuário?',
 'Goal of the project.': 'Objetivo concluido?',
+'Google Analytics id': 'Google Analytics id',
 'Google Groups': 'Grupo de Usuários',
 'Group %(group_id)s created': 'O grupo %(group_id)s foi criado',
 'Group ID': 'Grupo ID',

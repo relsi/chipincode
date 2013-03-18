@@ -9,18 +9,21 @@ if not website_meta:
 	author = 'CodeUp - Apps Studio - http://codeup.com.br <contato@codeup.com.br>'
 	description = 'Chip in Code - Plataforma de Crowdfunding Open Source'
 	keywords = 'web2py, python, Crowdfunding, Chip in Code, CodeUp'
+	google_analytics_id = None
 else:
 	for meta in website_meta:
 		title = meta.site_title or ''
 		author = meta.meta_author or ''
 		description = meta.meta_description or ''
 		keywords = meta.meta_keywords or ''
+		google_analytics_id = meta.google_analytics_id or ''
 
 response.title = title
 response.meta.author = author
 response.meta.description = description
 response.meta.keywords = keywords
 response.meta.generator = 'Chip in Code'
+response.google_analytics_id = google_analytics_id
 
 website_logo = db(db.logo_image.id > 0).select()
 if not website_logo:
@@ -70,9 +73,6 @@ default_image = image
 #funding time of the projects
 funding_time = 30
 
-## your http://google.com/analytics id
-response.google_analytics_id = None
-
 #the email that will receive notifications about registered projects
 response.projects_email = "chipincode@gmail.com"
 
@@ -83,12 +83,14 @@ mail.settings.login = 'chipincode:B612cseth'
 
 #paypal configurations
 paypal_enable = True
+paypal_send_url = ""
 paypal_id = "DKGSERZBL6RKS"
 ipn_handler = URL(c='project', f='ipn', host=True, scheme=True)
 paypal_return_url =  URL(c='project', f='paypal_return', args='paypal', host=True, scheme=True)
 
 #moip configurations
 moip_enable = True
+moip_send_url = ""
 moip_id = 'relsi'
 nasp_url = URL(c='project', f='nasp', host=True, scheme=True)
 moip_return_url =  URL(c='project', f='moip_return', host=True, scheme=True)
