@@ -94,16 +94,18 @@ mail.settings.server = email_server+':'+email_port
 mail.settings.sender = email_sender
 mail.settings.login = email_login+':'+email_pass
 
+
+
 #paypal configurations
 paypal_enable = True
-paypal_send_url = ""
+paypal_send_url = "https://www.sandbox.paypal.com/cgi-bin/webscr"
 paypal_id = "DKGSERZBL6RKS"
 ipn_handler = URL(c='project', f='ipn', host=True, scheme=True)
 paypal_return_url =  URL(c='project', f='paypal_return', args='paypal', host=True, scheme=True)
 
 #moip configurations
 moip_enable = True
-moip_send_url = ""
+moip_send_url = "https://desenvolvedor.moip.com.br/sandbox/PagamentoMoIP.do"
 moip_id = 'relsi'
 nasp_url = URL(c='project', f='nasp', host=True, scheme=True)
 moip_return_url =  URL(c='project', f='moip_return', host=True, scheme=True)

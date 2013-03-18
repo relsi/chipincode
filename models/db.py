@@ -140,6 +140,15 @@ db.define_table("email_settings",
     Field('email_pass', 'string', label=T('Email Password'))
  )
 
+db.define_table("payment_settings",
+    Field('paypal_enable', 'string', label=T('Enable Paypal'), requires = IS_IN_SET([('True',T('Enable')),('False',T('Disable'))])),
+    Field('paypal_id', 'string', label=T('Paypal ID')),
+    Field('paypal_send_url', 'string', label=T('Paypal URL')),
+    Field('moip_enable', 'string', label=T('Enable MoIP'), requires = IS_IN_SET([('True',T('Enable')),('False',T('Disable'))])),
+    Field('moip_id', 'string', label=T('MoIP id')),
+    Field('moip_send_url', 'string', label=T('MoIP URL'))
+ )
+
 #project categories
 db.define_table("project_categories",
     Field("category_name", "string", label=T('Category Name'))
