@@ -112,11 +112,15 @@ db.define_table("logo_image",
 )
 
 db.define_table("default_avatar",
-  Field("image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Logo Image.'))
+  Field("image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Default Avatar.'))
 )
 
 db.define_table("anonymous_avatar",
-  Field("image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Logo Image.'))
+  Field("image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Anonymous avatar.'))
+)
+
+db.define_table("default_image",
+  Field("image", "upload", uploadfolder=request.folder+'uploads/website_images', autodelete=True, label=T('Default Image.'))
 )
 
 db.define_table("website_meta",

@@ -139,6 +139,8 @@
 											<h1>0</h1>
 											<span>{{=T("days left")}}</span>
 											<p>{{=T("This project is closed.")}}</p>
+											{{elif item.project.status == False:}}
+											<p>{{=T("This project is closed.")}}</p>
 											{{else:}}
 											<h1>{{=remaining_days.days}}</h1>
 											<span>{{=T("days left")}}</span>

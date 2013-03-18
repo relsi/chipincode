@@ -16,30 +16,32 @@ def show():
             db.project_categories.on(db.project_categories.id == db.project.id_category),
         ]
     )
-    for url_image in project_details:
-        if url_image.project.image =='': 
-            image_url = default_image
-        else: 
-            image_url = URL('download', args=url_image.project.image)
 
-    updates = db(db.project_updates.id_project == project_id).select(orderby=~db.project_updates.id)
-    #donation_sum = db.project_donation.donation_value.sum()
-    #donors = db.project_donation.id.count()
-    for item in project_details:
-        #donations=db(db.project_donation.id_project == item.project.id).select(donation_sum).first()[donation_sum] or 0
-        remaining_days = item.project.end_date - date.today()
-        #amount_donors = db(db.project_donation.id_project == item.project.id).select(donors).first()[donors] or 0
+    if not project_details:
+        redirect(URL('default', 'not_found'))
+    else:
+        updates = db(db.project_updates.id_project == project_id).select(orderby=~db.project_updates.id)
+        #donation_sum = db.project_donation.donation_value.sum()
+        #donors = db.project_donation.id.count()
+        for item in project_details:
+            #donations=db(db.project_donation.id_project == item.project.id).select(donation_sum).first()[donation_sum] or 0
+            remaining_days = item.project.end_date - date.today()
+            #amount_donors = db(db.project_donation.id_project == item.project.id).select(donors).first()[donors] or 0
+            if item.project.image =='': 
+                image_url = default_image
+            else: 
+                image_url = URL('download', args=item.project.image)
 
-    show_donors = db((db.project_donation.id_project == project_id)&(db.project_donation.status == True)).select(
-        db.project_donation.ALL,
-        db.auth_user.ALL,
-        left=[
-            db.auth_user.on(db.auth_user.id == db.project_donation.id_auth_user)
-        ]
-    )
-    show_rewards = db(db.project_rewards.id_project == project_id).select()
+        show_donors = db((db.project_donation.id_project == project_id)&(db.project_donation.status == True)).select(
+            db.project_donation.ALL,
+            db.auth_user.ALL,
+            left=[
+                db.auth_user.on(db.auth_user.id == db.project_donation.id_auth_user)
+            ]
+        )
+        show_rewards = db(db.project_rewards.id_project == project_id).select()
 
-    return dict(image_url=image_url, project_details=project_details, show_donors=show_donors, show_rewards=show_rewards, updates=updates, remaining_days = remaining_days)
+        return dict(image_url=image_url, project_details=project_details, show_donors=show_donors, show_rewards=show_rewards, updates=updates, remaining_days = remaining_days)
     
 @auth.requires_login()
 def project_send():
