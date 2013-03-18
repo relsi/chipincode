@@ -128,8 +128,19 @@ db.define_table("website_meta",
     Field('meta_author', 'string', label=T('Website Author')),
     Field('meta_description', 'string', label=T('Website description')),
     Field('meta_keywords', 'string', label=T('Website keywords')),
-    Field('google_analytics_id', 'string', label=T('Google Analytics id'))
+    Field('google_analytics_id', 'string', label=T('Google Analytics id')),
+    Field('funding_time', 'integer', label=T('Funding Time'))
  )
+
+db.define_table("website_info",
+    Field('site_title', 'string', label=T('Website Title')),
+    Field('meta_author', 'string', label=T('Website Author')),
+    Field('meta_description', 'string', label=T('Website description')),
+    Field('meta_keywords', 'string', label=T('Website keywords')),
+    Field('google_analytics_id', 'string', label=T('Google Analytics id')),
+    Field('funding_time', 'integer', label=T('Funding Time'))
+ )
+
 
 #project categories
 db.define_table("project_categories",

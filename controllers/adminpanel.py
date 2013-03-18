@@ -266,21 +266,22 @@ def finish_unsuccessfully():
        
     return locals()
 
-def config_website_meta():
+def config_website_info():
     crud.settings.formstyle = 'divs'
     crud.messages.submit_button = T('Insert')
-    meta_data = db(db.website_meta.id > 0).select()
+    meta_data = db(db.website_info.id > 0).select()
     for item in meta_data:
         data_id = item.id
     if not meta_data:
-        form = crud.create(db.website_meta, next=URL('adminpanel', 'config_website_meta'))
+        form = crud.create(db.website_info, next=URL('adminpanel', 'config_website_info'))
     else:
-        form = crud.update(db.website_meta, data_id)
+        form = crud.update(db.website_info, data_id)
     form.element(_name='site_title')['_class'] = "span6"
     form.element(_name='meta_author')['_class'] = "span6"
     form.element(_name='meta_description')['_class'] = "span6"
     form.element(_name='meta_keywords')['_class'] = "span6"
     form.element(_name='google_analytics_id')['_class'] = "span6"
+    form.element(_name='funding_time')['_class'] = "span1"
     return dict(form=form)
 
 def config_website_images():

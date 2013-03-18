@@ -3,20 +3,22 @@
 ## Customize your APP 
 #########################################################################
 ## read more at http://dev.w3.org/html5/markup/meta.name.html
-website_meta = db(db.website_meta.id > 0).select()
-if not website_meta:
+website_info = db(db.website_info.id > 0).select()
+if not website_info:
 	title = 'Chip in Code - Plataforma de Crowdfunding Open Source'
 	author = 'CodeUp - Apps Studio - http://codeup.com.br <contato@codeup.com.br>'
 	description = 'Chip in Code - Plataforma de Crowdfunding Open Source'
 	keywords = 'web2py, python, Crowdfunding, Chip in Code, CodeUp'
 	google_analytics_id = None
+	site_funding_time = 30
 else:
-	for meta in website_meta:
-		title = meta.site_title or ''
-		author = meta.meta_author or ''
-		description = meta.meta_description or ''
-		keywords = meta.meta_keywords or ''
-		google_analytics_id = meta.google_analytics_id or ''
+	for info in website_info:
+		title = info.site_title or ''
+		author = info.meta_author or ''
+		description = info.meta_description or ''
+		keywords = info.meta_keywords or ''
+		google_analytics_id = info.google_analytics_id or ''
+		site_funding_time = info.funding_time or 30
 
 response.title = title
 response.meta.author = author
@@ -24,6 +26,8 @@ response.meta.description = description
 response.meta.keywords = keywords
 response.meta.generator = 'Chip in Code'
 response.google_analytics_id = google_analytics_id
+
+funding_time = site_funding_time
 
 website_logo = db(db.logo_image.id > 0).select()
 if not website_logo:
@@ -69,9 +73,6 @@ else:
 		image = URL('download', args=img.image)
 
 default_image = image
-
-#funding time of the projects
-funding_time = 30
 
 #the email that will receive notifications about registered projects
 response.projects_email = "chipincode@gmail.com"
