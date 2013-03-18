@@ -284,6 +284,26 @@ def config_website_info():
     form.element(_name='funding_time')['_class'] = "span1"
     return dict(form=form)
 
+def config_website_email():
+    crud.settings.formstyle = 'divs'
+    crud.messages.submit_button = T('Insert')
+    meta_data = db(db.email_settings.id > 0).select()
+    for item in meta_data:
+        data_id = item.id
+    if not meta_data:
+        form = crud.create(db.email_settings, next=URL('adminpanel', 'config_website_email'))
+    else:
+        form = crud.update(db.email_settings, data_id)
+    form.element(_name='email_sender')['_class'] = "span6"
+    form.element(_name='email_server')['_class'] = "span6"
+    form.element(_name='email_server_port')['_class'] = "span6"
+    form.element(_name='email_login')['_class'] = "span6"
+    form.element(_name='email_pass')['_class'] = "span6"
+    form.element(_name='email_pass')['_type'] = "password"
+    return dict(form=form)
+
+
+
 def config_website_images():
     crud.settings.formstyle = 'divs'
     logo_data = db(db.logo_image.id > 0).select()
