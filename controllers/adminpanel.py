@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-#@auth.requires_membership('admin')
+@auth.requires_membership('admin')
 def index():
     return locals()
 
+@auth.requires_membership('admin')
 def list_all_projects():
     query = db.project
     maxtextlength = {
@@ -37,6 +38,7 @@ def list_all_projects():
     )
     return locals()
 
+@auth.requires_membership('admin')
 def list_actives_projects():
     query = db.project.status == True
     maxtextlength = {
@@ -72,6 +74,7 @@ def list_actives_projects():
     )
     return locals()
 
+@auth.requires_membership('admin')
 def show_project():
     project_id = request.args(0) or redirect(URL('project', 'index'))
     project_slug = request.args(1)
@@ -104,6 +107,7 @@ def show_project():
 
     return dict(project_details=project_details, show_donors=show_donors, show_rewards=show_rewards, updates=updates, remaining_days = remaining_days)
 
+@auth.requires_membership('admin')
 def list_pending_projects():
     query = ((db.project.status == False)&(db.project.finalized == False))
     extra_links = [
@@ -141,6 +145,7 @@ def list_pending_projects():
     )
     return locals()
 
+@auth.requires_membership('admin')
 def authorize_project():
     id_project = request.args(0) or redirect(URL('adminpanel', 'index'))
 
@@ -160,6 +165,7 @@ def authorize_project():
 
     pass
 
+@auth.requires_membership('admin')
 def list_expired_projects():
     query = ((db.project.end_date < date.today())&(db.project.finalized == False))
     extra_links = [
@@ -195,6 +201,7 @@ def list_expired_projects():
     )
     return locals()
 
+@auth.requires_membership('admin')
 def finish_successfully():
     if request.post_vars:
         project_data = db(db.project.id == request.post_vars.project_id).select()
@@ -218,6 +225,7 @@ def finish_successfully():
         redirect(URL('adminpanel', 'list_expired_projects'))
     return locals()
 
+@auth.requires_membership('admin')
 def finish_unsuccessfully():
     if request.post_vars:
         project_data = db(db.project.id == request.post_vars.project_id).select()
@@ -266,6 +274,7 @@ def finish_unsuccessfully():
        
     return locals()
 
+@auth.requires_membership('admin')
 def config_website_info():
     crud.settings.formstyle = 'divs'
     crud.messages.submit_button = T('Insert')
@@ -284,6 +293,7 @@ def config_website_info():
     form.element(_name='funding_time')['_class'] = "span1"
     return dict(form=form)
 
+@auth.requires_membership('admin')
 def config_website_email():
     crud.settings.formstyle = 'divs'
     crud.messages.submit_button = T('Insert')
@@ -302,6 +312,7 @@ def config_website_email():
     form.element(_name='email_pass')['_type'] = "password"
     return dict(form=form)
 
+@auth.requires_membership('admin')
 def config_website_payment():
     crud.settings.formstyle = 'divs'
     crud.messages.submit_button = T('Insert')
@@ -320,54 +331,19 @@ def config_website_payment():
     form.element(_name='moip_send_url')['_class'] = "span6"
     return dict(form=form)
 
-
-
+@auth.requires_membership('admin')
 def config_website_images():
     crud.settings.formstyle = 'divs'
-    logo_data = db(db.logo_image.id > 0).select()
-    for item in logo_data:
-        logo_id = item.id
-    if not logo_data:
-        form_logo = crud.create(db.logo_image, next=URL('adminpanel', 'config_website_images'))
+    img_data = db(db.website_images.id > 0).select()
+    for item in img_data:
+        img_id = item.id
+    if not img_data:
+        form_images = crud.create(db.website_images, next=URL('adminpanel', 'config_website_images'))
     else:
-        form_logo = crud.update(db.logo_image, logo_id)
+        form_images = crud.update(db.website_images, img_id)
 
-    banner_data = db(db.home_banner.id > 0).select()
-    for banner in banner_data:
-        banner_id = banner.id
-    if not banner_data:
-        form_banner = crud.create(db.home_banner, next=URL('adminpanel', 'config_website_images'))
-    else:
-        form_banner = crud.update(db.home_banner, banner_id)
-
-    default_avatar = db(db.default_avatar.id > 0).select()
-    for avatar in default_avatar:
-        avatar_id = avatar.id
-    if not default_avatar:
-        form_avatar = crud.create(db.default_avatar, next=URL('adminpanel', 'config_website_images'))
-    else:
-        form_avatar = crud.update(db.default_avatar, avatar_id)
-
-    anonymous_avatar = db(db.anonymous_avatar.id > 0).select()
-    for anonymous in anonymous_avatar:
-        anonymous_id = anonymous.id
-    if not anonymous_avatar:
-        form_anonymous = crud.create(db.anonymous_avatar, next=URL('adminpanel', 'config_website_images'))
-    else:
-        form_anonymous = crud.update(db.anonymous_avatar, anonymous_id)
-
-    default_image = db(db.default_image.id > 0).select()
-    for image in default_image:
-        image_id = image.id
-    if not default_image:
-        form_default = crud.create(db.default_image, next=URL('adminpanel', 'config_website_images'))
-    else:
-        form_default = crud.update(db.default_image, image_id)
-
-    return dict(form_default=form_default, form_logo=form_logo, form_banner=form_banner, form_avatar=form_avatar, form_anonymous=form_anonymous)
-
-
-
+    return dict(form_images=form_images)
+ 
 def request_password():
     """
     use @auth.requires_login()
@@ -376,7 +352,6 @@ def request_password():
     to decorate functions that need access control
     """ 
     return dict(form=auth())
-
 
 def download():
     """

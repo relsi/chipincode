@@ -108,6 +108,9 @@
                                   <li>
                                     <a href="{{=URL(c= 'default', f='user', args='logout')}}">{{=T("Logout")}}</a>
                                     <a href="{{=URL(c= 'user', f='profile')}}">{{=T("Your profile")}}</a>
+                                    {{if auth.has_membership('admin'):}}
+                                    <a href="{{=URL(c='adminpanel', f='index')}}">{{=T("Admin Panel")}}</a>
+                                    {{pass}}
                                   </li>
                                 </ul>
                                 {{else:}}
