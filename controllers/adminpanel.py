@@ -316,8 +316,15 @@ def config_website_images():
     else:
         form_anonymous = crud.update(db.anonymous_avatar, anonymous_id)
 
+    default_image = db(db.default_image.id > 0).select()
+    for image in default_image:
+        image_id = image.id
+    if not default_image:
+        form_default = crud.create(db.default_image, next=URL('adminpanel', 'config_website_images'))
+    else:
+        form_default = crud.update(db.default_image, image_id)
 
-    return dict(form_logo=form_logo, form_banner=form_banner, form_avatar=form_avatar, form_anonymous=form_anonymous)
+    return dict(form_default=form_default, form_logo=form_logo, form_banner=form_banner, form_avatar=form_avatar, form_anonymous=form_anonymous)
 
 
 

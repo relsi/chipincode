@@ -58,7 +58,14 @@ else:
 
 anonymous_avatar = anonymous
 
-default_image = URL('static', 'images/default_image.png')
+default_img = db(db.default_image.id > 0).select()
+if not default_img:
+	image = URL('static', 'images/default_image.png')
+else:
+	for img in default_img:
+		image = URL('download', args=img.image)
+
+default_image = image
 
 #funding time of the projects
 funding_time = 30
