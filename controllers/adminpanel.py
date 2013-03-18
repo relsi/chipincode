@@ -302,6 +302,24 @@ def config_website_email():
     form.element(_name='email_pass')['_type'] = "password"
     return dict(form=form)
 
+def config_website_payment():
+    crud.settings.formstyle = 'divs'
+    crud.messages.submit_button = T('Insert')
+    meta_data = db(db.payment_settings.id > 0).select()
+    for item in meta_data:
+        data_id = item.id
+    if not meta_data:
+        form = crud.create(db.payment_settings, next=URL('adminpanel', 'config_website_payment'))
+    else:
+        form = crud.update(db.payment_settings, data_id)
+    form.element(_name='paypal_enable')['_class'] = "span2"
+    form.element(_name='paypal_id')['_class'] = "span3"
+    form.element(_name='paypal_send_url')['_class'] = "span6"
+    form.element(_name='moip_enable')['_class'] = "span2"
+    form.element(_name='moip_id')['_class'] = "span3"
+    form.element(_name='moip_send_url')['_class'] = "span6"
+    return dict(form=form)
+
 
 
 def config_website_images():

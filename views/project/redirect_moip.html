@@ -12,7 +12,7 @@
                   <hr>                     
               </div>
               <div class="span12 well form-project m_left">
-                <form id="moip_form" method='post' action='https://desenvolvedor.moip.com.br/sandbox/PagamentoMoIP.do'>
+                <form id="moip_form" method='post' action='{{=moip_send_url}}'>
                   <input type='hidden' name='id_carteira' value='{{=moip_id}}'/>
                   <input type='hidden' name='valor' value='{{=session.payment_data.value.replace(".","")}}'/>
                   <input type='hidden' name='nome' value='Doação Chip in code'/>
