@@ -79,7 +79,7 @@
                               <li {{if request.url == URL(c='default', f='index'):}}class="active"{{pass}}>
                                   <a href="{{=URL(c='default', f='index')}}">Home</a>
                               </li>
-                              <li {{if request.url == URL(c='project', f='show_category', args=request.args(0)):}}class="active"{{pass}}>
+                              <li {{if request.url == URL(c='project', f='show_category', args=request.args(0)):}}class="active"{{pass}} id="help_li">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     {{=T("Help a Project")}}
                                   </a>
