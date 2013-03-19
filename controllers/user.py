@@ -45,19 +45,28 @@ def profile_edit():
     db.auth_user.username.readable = db.auth_user.username.writable = False 
     db.auth_user.completed_registration.readable = db.auth_user.completed_registration.writable = False 
     form_profile_edit=auth.profile(next=URL(c='user', f='profile'))
-    form_profile_edit.element(_name='first_name')['_class'] = "span2"
+    form_profile_edit.element(_name='first_name')['_class'] = "span3"
+    form_profile_edit.element(_name='last_name')['_class'] = "span3"
+    form_profile_edit.element(_name='email')['_class'] = "span3"
     form_profile_edit.element(_name='about')['_class'] = "span5"
     form_profile_edit.element(_name='about')['_rows'] = "3"
-    form_profile_edit.element(_name='address')['_class'] = "span6"
+    form_profile_edit.element(_name='address')['_class'] = "span3"
     form_profile_edit.element(_name='u_state')['_class'] = "span1"
-    form_profile_edit.element(_name='zip')['_class'] = "span2"
+    form_profile_edit.element(_name='zip')['_class'] = "span3"
+    form_profile_edit.element(_name='phone')['_class'] = "span3"
+    form_profile_edit.element(_name='ein')['_class'] = "span3"
+    form_profile_edit.element(_name='website')['_class'] = "span3"
+    form_profile_edit.element(_name='facebook')['_class'] = "span3"
+    form_profile_edit.element(_name='twitter')['_class'] = "span3"
     return dict(form_profile_edit=form_profile_edit)
 
 @auth.requires_login()
 def profile_complete():
     db.auth_user.username.readable = db.auth_user.username.writable = False 
     form_profile_complete=auth.profile(next=URL(c='project', f='project_send'))
-    form_profile_complete.element(_name='first_name')['_class'] = "span2"
+    form_profile_complete.element(_name='first_name')['_class'] = "span3"
+    form_profile_complete.element(_name='last_name')['_class'] = "span3"
+    form_profile_complete.element(_name='email')['_class'] = "span3"
     form_profile_complete.element(_name='ein')['_required'] = "required"
     form_profile_complete.element(_name='zip')['_required'] = "required"
     form_profile_complete.element(_name='address')['_required'] = "required"
@@ -66,9 +75,14 @@ def profile_complete():
     form_profile_complete.element(_name='phone')['_required'] = "required"
     form_profile_complete.element(_name='about')['_class'] = "span5"
     form_profile_complete.element(_name='about')['_rows'] = "3"
-    form_profile_complete.element(_name='address')['_class'] = "span6"
+    form_profile_complete.element(_name='address')['_class'] = "span3"
     form_profile_complete.element(_name='u_state')['_class'] = "span1"
-    form_profile_complete.element(_name='zip')['_class'] = "span2"
+    form_profile_complete.element(_name='zip')['_class'] = "span3"
+    form_profile_complete.element(_name='phone')['_class'] = "span3"
+    form_profile_complete.element(_name='ein')['_class'] = "span3"
+    form_profile_complete.element(_name='website')['_class'] = "span3"
+    form_profile_complete.element(_name='facebook')['_class'] = "span3"
+    form_profile_complete.element(_name='twitter')['_class'] = "span3"
     return dict(form_profile_complete=form_profile_complete)
 
 def request_password():

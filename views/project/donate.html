@@ -77,7 +77,7 @@ $(function(){
           						{{for info in project_info:}}
           							{{remaining_days = info.project.end_date - date.today()}}
           							<h4>{{=info.project.project_name}}</h4>
-          							<img src="{{=URL('download', args=info.project.image)}}" class="payment-img" alt="{{=info.project.project_name}}">
+          							<img src="{{=URL('download', args=info.project.image)}}" class="payment-img" alt="{{=info.project.project_name}}"><br><br>
           							<p>Projeto de <a href="#">{{=info.auth_user.first_name}} {{=info.auth_user.last_name}}</a></p>
           							<p>{{=info.project.short_description}}</p>
           							<p>{{=remaining_days.days}} dias restantes</p>
