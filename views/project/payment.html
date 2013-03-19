@@ -7,71 +7,69 @@
                     <hr>                     
                 </div>
                 <div class="span12 well form-project m_left">
-                <table class="table">
                   {{if float(total_credits) > float(session.payment_data.value): }}
-                  <tr>
-                    <td>
-                      <img src="{{=URL('static', 'images/btn_credit.png')}}">
-                    </td>
-                    <td>
-                      <form>
+                  <div class="span4">
+                    <img src="{{=URL('static', 'images/btn_credit.png')}}">                    
+                  </div>
+                  <div class="span4">
+                    <form>
                         <input type="hidden" name="donation_visibility" value="{{=session.payment_data.donation_visibility or True}}">
                         <input type="hidden" name="id_auth_user" value="{{=session.payment_data.id_auth_user}}">
                         <input type="hidden" name="id_project" value="{{=session.payment_data.id_project}}">
                         <input type="hidden" name="id_project_rewards" value="{{=session.payment_data.id_project_rewards or 0}}">
                         <input type="hidden" name="value" value="{{=session.payment_data.value}}">
                         <input type="hidden" name="payment_gateway" value="credits">
-                         <button type="submit" class="btn-warning">
+                         <button type="submit" class="btn-warning btn-payment">
                           {{=T('Confirm Payment')}}
                         </button>
                       </form>
-                    </td>
-                    <td>{{=T('You have R$')}} {{=('%.2f' % total_credits)}} {{=T('in credits.')}}</td>
-                  </tr>
+                  </div>
+                  <div class="span4 btn-payment">
+                    {{=T('You have R$')}} {{=('%.2f' % total_credits)}} {{=T('in credits.')}}
+                  </div>
                   {{pass}}
                   {{if paypal_enable == True:}}
-                  <tr>
-                    <td>
-                      <img src="{{=URL('static', 'images/btn_paypal.png')}}">
-                    </td>
-                    <td>
-                      <form>
-                        <input type="hidden" name="donation_visibility" value="{{=session.payment_data.donation_visibility or True}}">
-                        <input type="hidden" name="id_auth_user" value="{{=session.payment_data.id_auth_user}}">
-                        <input type="hidden" name="id_project" value="{{=session.payment_data.id_project}}">
-                        <input type="hidden" name="id_project_rewards" value="{{=session.payment_data.id_project_rewards or 0}}">
-                        <input type="hidden" name="value" value="{{=session.payment_data.value}}">
-                        <input type="hidden" name="payment_gateway" value="paypal">
-                        <button type="submit" class="btn-warning">
-                          {{=T('Confirm Payment')}}
-                        </button>
-                      </form>
-                    </td>
-                    <td>{{=T('You will be directed to Paypal page.')}}</td>
-                  </tr>
-                  {{pass}}
-                  {{if moip_enable == True:}}
-                  <tr>
-                    <td>
-                      <img src="{{=URL('static', 'images/btn_moip.png')}}">
-                    </td>
-                    <td>
-                      <form>
-                        <input type="hidden" name="donation_visibility" value="{{=session.payment_data.donation_visibility or True}}">
-                        <input type="hidden" name="id_auth_user" value="{{=session.payment_data.id_auth_user}}">
-                        <input type="hidden" name="id_project" value="{{=session.payment_data.id_project}}">
-                        <input type="hidden" name="id_project_rewards" value="{{=session.payment_data.id_project_rewards or 0}}">
-                        <input type="hidden" name="value" value="{{=session.payment_data.value}}">
-                        <input type="hidden" name="payment_gateway" value="moip">
-                      <button type="submit" class="btn-warning">
+                  <div class="span4">
+                    <img src="{{=URL('static', 'images/btn_paypal.png')}}">
+                  </div>
+                  <div class="span4">
+                    <form>
+                      <input type="hidden" name="donation_visibility" value="{{=session.payment_data.donation_visibility or True}}">
+                      <input type="hidden" name="id_auth_user" value="{{=session.payment_data.id_auth_user}}">
+                      <input type="hidden" name="id_project" value="{{=session.payment_data.id_project}}">
+                      <input type="hidden" name="id_project_rewards" value="{{=session.payment_data.id_project_rewards or 0}}">
+                      <input type="hidden" name="value" value="{{=session.payment_data.value}}">
+                      <input type="hidden" name="payment_gateway" value="paypal">
+                      <button type="submit" class="btn-warning btn-payment">
                         {{=T('Confirm Payment')}}
                       </button>
-                      </form>
-                    </td>
-                    <td>{{=T('You will be directed to MoIP page.')}}</td>
-                  </tr>
+                    </form>
+                  </div>
+                  <div class="span4">
+                    {{=T('You will be directed to Paypal page.')}}
+                  </div>
                   {{pass}}
-                </table>
+                  {{if moip_enable == True:}}
+                  <div class="span4">
+                    <img src="{{=URL('static', 'images/btn_moip.png')}}">
+                  </div>
+                  <div class="span4">
+                    <form>
+                      <input type="hidden" name="donation_visibility" value="{{=session.payment_data.donation_visibility or True}}">
+                      <input type="hidden" name="id_auth_user" value="{{=session.payment_data.id_auth_user}}">
+                      <input type="hidden" name="id_project" value="{{=session.payment_data.id_project}}">
+                      <input type="hidden" name="id_project_rewards" value="{{=session.payment_data.id_project_rewards or 0}}">
+                      <input type="hidden" name="value" value="{{=session.payment_data.value}}">
+                      <input type="hidden" name="payment_gateway" value="moip">
+                    <button type="submit" class="btn-warning btn-payment">
+                      {{=T('Confirm Payment')}}
+                    </button>
+                    </form>
+                  </div>
+                  <div class="span4 btn-payment">
+                    {{=T('You will be directed to MoIP page.')}}
+                  </div>
+                  {{pass}}
                 </div>
               </section>           
             </div>           
