@@ -5,25 +5,25 @@
             <div class="span12">
               <h1>
                 {{=T("Edit the Project")}}
-                <a class="btn a-return" href="{{=URL(c='user', f='profile')}}">{{=T("Back")}}</a>
+                <a class="btn btn-warning a-return" href="{{=URL(c='user', f='profile')}}">{{=T("Back")}}</a>
               </h1>
               <hr>
             </div>
+            <div class="row-fluid">
+              <div class="span12 nav-profile">
+                <ul class="nav nav-tabs">
+                  <li class="active">
+                    <a href="#project-description" data-toggle="tab">{{=T("Project Description")}}</a>
+                  </li>
+                  <li>
+                    <a href="#project-data" data-toggle="tab">{{=T("Other Data")}}</a>
+                  </li>
+                </ul>         
+              </div>
+            </div>
           </section>
           <section>
-            <div class="span12 well form-project">
-              <div class="row-fluid">
-                <div class="span12 nav-profile">
-                  <ul class="nav nav-tabs">
-                    <li class="active">
-                      <a href="#project-description" data-toggle="tab">{{=T("Project Description")}}</a>
-                    </li>
-                    <li>
-                      <a href="#project-data" data-toggle="tab">{{=T("Other Data")}}</a>
-                    </li>
-                  </ul>         
-                </div>
-              </div>
+            <div class="span12 well form-project projeto_pronto">
               {{=form_edit.custom.begin}}
               <div class="row-fluid tab-content side-project">
                 <div id="project-description" class="tab-pane  active">
@@ -58,7 +58,7 @@
                         {{=form_edit.custom.widget.twitter}}
                       </p>
                       <p>
-                        <label for="project_video">{{=T("ID of the video in vimeo.com")}}:</label>
+                        <label for="project_video">{{=T("Video ID on vimeo.com")}}:</label>
                         {{=form_edit.custom.widget.video}}
                       </p>
                       <p>
@@ -67,7 +67,7 @@
                       </p>
                 </div>
                 <p class="btn-submit">
-                  <input type="submit" value="Salvar Alterações" class="btn btn-warning btn-large">
+                  <button type="submit" name="Submit" class="btn btn-large btn-warning"/>{{=T("Save changes")}}</button>
                 </p>  
               </div>
             </div>

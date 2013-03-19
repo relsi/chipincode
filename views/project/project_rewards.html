@@ -5,24 +5,24 @@
             <div class="span12">
                 <h1>
                   {{=T("Rewards")}}
-                  <a class="btn a-return" href="{{=URL(c='user', f='profile')}}">{{=T("Back")}}</a>
+                  <a class="btn btn-warning a-return" href="{{=URL(c='user', f='profile')}}">{{=T("Back")}}</a>
                 </h1>
                 <hr>
             </div>
+            <div class="row-fluid">
+              <div class="span12 nav-profile">
+                <ul class="nav nav-tabs">
+                  <li class="active">
+                    <a href="#list-rewards" data-toggle="tab">{{=T("Rewards")}}</a>
+                  </li>
+                  <li>
+                    <a href="#new-reward" data-toggle="tab">{{=T("New Reward")}}</a>
+                  </li>
+                </ul>         
+              </div>
           </section>
           <section>
-            <div class="span12 well">                 
-              <div class="row-fluid">
-                <div class="span12 nav-profile">
-                  <ul class="nav nav-tabs">
-                    <li class="active">
-                      <a href="#list-rewards" data-toggle="tab">{{=T("Rewards")}}</a>
-                    </li>
-                    <li>
-                      <a href="#new-reward" data-toggle="tab">{{=T("New Reward")}}</a>
-                    </li>
-                  </ul>         
-                </div>
+            <div class="span12 well projeto_pronto"> 
                 <div class="row-fluid tab-content side-project">
                   <div id="list-rewards" class="tab-pane active">
                     <table class="table table-bordered table-striped">

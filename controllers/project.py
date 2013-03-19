@@ -102,9 +102,9 @@ def project_send():
             session.flash = T("Project Registered Successfully!")
             #send confirmation email to user, after send project
             body_user ="""<html>
-                """+T('His project was registered and is awaiting approval.')+"""<br>
+                """+T('Your project was registered and is awaiting for approval.')+"""<br>
                """+T('You can track the status of your project, and register rewards, accessing your user profile')+""": """+URL(c='user', f='profile',scheme=True,host=True)+"""</html>"""
-            mail.send(auth.user.email, T('His project was registered.'), body_user)
+            mail.send(auth.user.email, T('Your project was registered.'), body_user)
             #send email to Chip In Code admin, after user send project
             body_admin ="""<html>
                 """+T('A new project was registered.')+""":<br>
@@ -358,9 +358,14 @@ def project_edit():
         form_edit = crud.update(db.project, request.args(0), next=URL(c='user', f='profile'))
         form_edit.element(_name='description')['_class'] = "span8"
         form_edit.element(_name='description')['_rows'] = "30"
-        form_edit.element(_name='project_name')['_class'] = "span6"
-        form_edit.element(_name='short_description')['_class'] = "span6"
+        form_edit.element(_name='project_name')['_class'] = "span5"
+        form_edit.element(_name='short_description')['_class'] = "span5"
         form_edit.element(_name='short_description')['_rows'] = "2"
+        form_edit.element(_name='id_category')['_class'] = "span3"
+        form_edit.element(_name='website')['_class'] = "span3"
+        form_edit.element(_name='facebook')['_class'] = "span3"
+        form_edit.element(_name='twitter')['_class'] = "span3"
+        form_edit.element(_name='video')['_class'] = "span3"
 
         return dict(form_edit=form_edit)
 
