@@ -11,6 +11,8 @@ a:hover {color: #442300; text-decoration: none;}
 
 h1, h2, h3, h4, h5 {font-family: 'Roboto Condensed', sans-serif !important; font-weight: normal !important; color: #483737;}
 
+.table {background: #fff;}
+
 .home_title {margin-top: 20px;}
 
 .sidebar-nav {padding: 9px 0;}
@@ -122,6 +124,7 @@ table .th_action{
 .nicEdit-main  {
     min-width: 720px!important;
     min-height: 500px!important;
+    background: #fff !important;
 }
 
 .a-return{
