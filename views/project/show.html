@@ -12,7 +12,7 @@
 							<img src="{{=image_url}}" class="thumb-project" alt="{{=item.project.project_name}}">
           				</div>
           				<div class="span10">
-          					<h2>{{=item.project.project_name}}</h2>
+          					<h2 class="project_title">{{=item.project.project_name}}</h2>
           					<p>{{=T("A project of")}} 
 	          					<span>
 	          						<a href="{{=URL(c='project', f='show_category', args=item.project_categories.id)}}" title="{{=item.project_categories.category_name}}">
@@ -66,7 +66,7 @@
       				</div>
       			</section>
       			<section>
-      				<div class="span12 well m_left side_project">
+      				<div class="side_project span12 well m_left projeto_pronto">
           				<div class="row-fluid">
           					<div class="span8 project tab-content">
 								<div id="project" class="tab-pane  active">
@@ -144,7 +144,7 @@
 											{{else:}}
 											<h1>{{=remaining_days.days}}</h1>
 											<span>{{=T("days left")}}</span>
-											<p>
+											<p class="help_project_a">
 												<a class="btn btn-warning btn-large" href="{{=URL(c='project', f='donate', args=item.project.id)}}">
 													{{=T("Help the Project")}}
 												</a>
@@ -162,7 +162,7 @@
 									{{else:}}
 										<img src="{{=URL('download', args=item.auth_user.avatar)}}">
 									{{pass}}
-									{{=item.auth_user.u_city}}/{{=item.auth_user.u_state}}<br>
+									{{=item.auth_user.u_city}}/{{=item.auth_user.u_state}}<br><br>
 									{{=item.auth_user.website or ''}}<br>
 									{{=item.auth_user.facebook or ''}}<br>
 									{{=item.auth_user.twitter or ''}}<br>

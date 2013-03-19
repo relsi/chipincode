@@ -4,12 +4,14 @@
 /* http://www.codeup.com.br
 /* ----------------------------------*/
 
-body {padding-top: 120px; font-family: Arial, Verdana, sans-serif;}
+body {padding-top: 120px; font-family: Arial, Verdana, sans-serif; color: #703d2b !important;}
 
 a {color: #ff7f2a;}
 a:hover {color: #442300; text-decoration: none;}
 
 h1, h2, h3, h4, h5 {font-family: 'Roboto Condensed', sans-serif !important; font-weight: normal !important; color: #483737;}
+
+.home_title {margin-top: 20px;}
 
 .sidebar-nav {padding: 9px 0;}
 
@@ -21,7 +23,7 @@ h1, h2, h3, h4, h5 {font-family: 'Roboto Condensed', sans-serif !important; font
 .details h4 {line-height: 1.1em; width: 230px;}
 .details h4 a {text-decoration: none; color: #ff7f2a;}
 .details h4 a:hover {color: #442300;}
-.details p {font-family: Arial, Verdana, sans-serif; font-size: 0.9em; margin-top: 10px; margin-bottom: 7px; color: #333; }
+.details p {font-family: Arial, Verdana, sans-serif; font-size: 0.9em; margin-top: 10px; margin-bottom: 7px;}
 .details p.details-author {font-size: 0.8em; margin-top: 10px;}
 .details .progress {margin-bottom: 0px;}
 .details ul {list-style: none; margin-left: -4px; width: 255px;}
@@ -80,7 +82,7 @@ input[type="file"] {background: #fff !important;}
 .sign-project ul {list-style-type: none;}
 .sign-project ul li {padding-bottom: 15px;}
 .sign-project ul li h1 {margin-bottom: 0px;}
-.sign-project p {margin: 10px 0px 20px 0px !important; font-style: italic;}
+.sign-project p {margin: 20px 0px 20px 0px !important; font-style: italic;}
 .sign-project button {margin-left: 70px !important; margin-bottom: 15px !important;}
 .project-author {margin: 46px 0px !important;}
 .project-author img {width: 120px; height: 140px; border: 1px solid #DDD;}
@@ -89,11 +91,19 @@ input[type="file"] {background: #fff !important;}
 .project-sup img {width: 50px; height: 60px; border: 1px solid #DDD;}
 .project-sup h4 {width: 40.5%; float: right; margin-right: 150px; margin-top: 5px;}
 .project-sup ul {list-style-type: none; font-size: 90%; float: right; margin-right: 55px; margin-top: -70px;}
+.project_title {margin-top: -5px;}
 
 #help_li {position: relative;}
 ul.help_project {left: auto; right: 0px !important;}
+.help_project_a a {margin-left: 50px;}
 
-div.side-project {border-top: none !important; border-top-left-radius: 0 !important; border-top-right-radius: 0 !important; -webkit}
+.nav-tabs {border-bottom: 1px solid #c4c4c4 !important;}
+.nav-tabs>.active>a, .nav-tabs>.active>a:hover {color: #fb7d29 !important; background-color: #f5f5f5 !important; border: 1px solid #c4c4c4 !important; border-bottom-color: #f5f5f5 !important;}
+.nav-tabs>li>a:hover{background: #aa6f88 !important; border-color:#aa6f88 #aa6f88 #c4c4c4 !important; color: #fef5d6 !important;}
+
+.alert {color: #703d2b !important;}
+
+.projeto_pronto {border-top: 0px !important; border-top-left-radius: 0px !important; border-top-right-radius: 0px !important; -webkit-box-shadow: inset 0 0px 1px rgba(0, 0, 0, 0.05) !important; -moz-box-shadow: inset 0 0px 1px rgba(0, 0, 0, 0.05) !important; box-shadow: inset 0 0px 1px rgba(0, 0, 0, 0.05) !important;}
 
 .modal-body {
   background:#FFFFFF!important;
