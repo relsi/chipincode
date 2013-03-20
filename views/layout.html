@@ -131,31 +131,13 @@
           <div class="span4">
             <h3>{{=T("Find us")}}</h3>            
             <ul class="lista-midias">
-              <li class="facebook-rod">
-                <a href="http://www.facebook.com/codeupstudio" title="Facebook" target="_blank">
-                  facebook.com/codeupstudio
+              {{for link in social_network:}}
+              <li class="{{=link.network_name}}">
+                <a href="{{=link.link_url}}" title="{{=link.network_name}}" target="_blank">
+                  {{=link.link_text}}
                 </a>
               </li>
-              <li class="google-rod">
-                <a href="https://plus.google.com/u/1/104224628915734590243" title="Google +" target="_blank">
-                  plus.google.com/codeupstudio
-                </a>
-              </li>
-              <li class="twitter-rod">
-                <a href="http://www.twitter.com/codeupstudio" title="Twitter" target="_blank">
-                  @codeupstudio
-                </a>
-              </li>
-              <li class="youtube-rod">
-                <a href="http://www.youtube.com/codeupstudio" title="Youtube" target="_blank">
-                  youtube.com/codeupstudio
-                </a>
-              </li>
-              <li class="feed-rod">
-                <a href="http://feedburner.google.com/fb/a/mailverify?uri=blog-codeupstudio&amp;loc=pt_BR" title="RSS" target="_blank">
-                  codeup.com.br/blog
-                </a>
-              </li>   
+              {{pass}}
             </ul>
             <h4>{{=T('Newsletter')}}</h4>
             <form class="cadastra-news">

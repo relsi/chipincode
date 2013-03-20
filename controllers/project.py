@@ -133,13 +133,21 @@ def show_category():
     )
 
     projects = []
+    x = 0
     for item in random_projects:
+        x = x+1
+        if x == 5:
+            align_class = "m_left"
+            x = 1
+        else:
+            align_class = ""
         donations=db(db.project_donation.id_project == item.project.id).select(donation_sum).first()[donation_sum] or 0
         percent = int((donations*100)/item.project.project_value)      
         remaining_days = item.project.end_date - date.today()
         category_name = item.project_categories.category_name or ''
+
         projects, projects.append("""
-                 <div class="span3 well">
+                 <div class="span3 well """+align_class+""" ">
                       <div class="details">
                           <a href='"""+URL(c='project', f='show', args=[item.project.id, item.project.project_slug])+"""' title='"""+item.project.project_name+"""'>
                               <img src='"""+URL('download',args=item.project.image)+"""' alt='"""+item.project.project_name+"""'>  
