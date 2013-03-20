@@ -75,6 +75,18 @@ def list_actives_projects():
     return locals()
 
 @auth.requires_membership('admin')
+def config_website_links():
+    query = db.social_network
+    grid = SQLFORM.grid(
+        query=query, 
+        _class='table table-striped',
+        deletable=True,
+        editable=True,
+        create=True
+    )
+    return locals()
+
+@auth.requires_membership('admin')
 def show_project():
     project_id = request.args(0) or redirect(URL('project', 'index'))
     project_slug = request.args(1)

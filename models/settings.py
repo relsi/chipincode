@@ -103,3 +103,5 @@ moip_send_url = m_send_url
 moip_id = m_id
 nasp_url = URL(c='project', f='nasp', host=True, scheme=True)
 moip_return_url =  URL(c='project', f='moip_return', host=True, scheme=True)
+
+social_network = db(db.social_network.id >0).select()

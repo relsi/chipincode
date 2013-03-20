@@ -28,7 +28,7 @@
                     {{=T('You have R$')}} {{=('%.2f' % total_credits)}} {{=T('in credits.')}}
                   </div>
                   {{pass}}
-                  {{if paypal_enable == True:}}
+                  {{if paypal_enable == 1:}}
                   <div class="span4">
                     <img src="{{=URL('static', 'images/btn_paypal.png')}}">
                   </div>
@@ -49,7 +49,7 @@
                     {{=T('You will be directed to Paypal page.')}}
                   </div>
                   {{pass}}
-                  {{if moip_enable == True:}}
+                  {{if moip_enable == 1:}}
                   <div class="span4">
                     <img src="{{=URL('static', 'images/btn_moip.png')}}">
                   </div>

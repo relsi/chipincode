@@ -131,11 +131,24 @@ db.define_table("email_settings",
     Field('email_pass', 'string', label=T('Email Password'))
  )
 
+db.define_table("social_network",
+    Field('network_name', 'string', label=T('Network'), requires = IS_IN_SET([
+        ('facebook',T('Facebook')),
+        ('google',T('G+')),
+        ('twitter',T('Twitter')),
+        ('youtube',T('Youtube')),
+        ('feed',T('Blog')),
+        ('vimeo',T('Vimeo')),
+            ])),
+    Field('link_text', 'string', label=T('Link Description')),
+    Field('link_url', 'string', label=T('Link URL')),
+ )
+
 db.define_table("payment_settings",
-    Field('paypal_enable', 'string', label=T('Enable Paypal'), requires = IS_IN_SET([('True',T('Enable')),('False',T('Disable'))])),
+    Field('paypal_enable', 'integer', label=T('Enable Paypal'), requires = IS_IN_SET([('1',T('Enable')),('0',T('Disable'))])),
     Field('paypal_id', 'string', label=T('Paypal ID')),
     Field('paypal_send_url', 'string', label=T('Paypal URL')),
-    Field('moip_enable', 'string', label=T('Enable MoIP'), requires = IS_IN_SET([('True',T('Enable')),('False',T('Disable'))])),
+    Field('moip_enable', 'integer', label=T('Enable MoIP'), requires = IS_IN_SET([('1',T('Enable')),('0',T('Disable'))])),
     Field('moip_id', 'string', label=T('MoIP id')),
     Field('moip_send_url', 'string', label=T('MoIP URL'))
  )

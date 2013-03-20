@@ -44,11 +44,13 @@ h1, h2, h3, h4, h5 {font-family: 'Roboto Condensed', sans-serif !important; font
 
 ul.lista-midias {margin-left: -2px; float: none;}
 ul.lista-midias li {line-height: 25px; display: block; font-size: 1.2em;}
-ul.lista-midias li.facebook-rod {background: url(../images/facebook-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
-ul.lista-midias li.twitter-rod {background: url(../images/twitter-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
-ul.lista-midias li.youtube-rod {background: url(../images/youtube-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
-ul.lista-midias li.feed-rod {background: url(../images/feed-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
-ul.lista-midias li.google-rod{background: url(../images/google-rod.png) no-repeat left center; padding: 10px;  padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.facebook {background: url(../images/facebook-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.twitter {background: url(../images/twitter-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.youtube {background: url(../images/youtube-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.feed {background: url(../images/feed-rod.png) no-repeat left center; padding: 10px; padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.google{background: url(../images/google-rod.png) no-repeat left center; padding: 10px;  padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.web{background: url(../images/web-rod.png) no-repeat left center; padding: 10px;  padding-left: 40px; margin-left: 3px;}
+ul.lista-midias li.vimeo{background: url(../images/vimeo-rod.png) no-repeat left center; padding: 10px;  padding-left: 40px; margin-left: 3px;}
 
 ul.categories {width: 300px; margin-right: 83px;}
 ul.categories li {line-height: 35px; display: block; font-size: 1.2em;}
