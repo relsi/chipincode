@@ -110,6 +110,15 @@ ul.help_project {left: auto; right: 0px !important;}
 .navbar .brand img {height: 60px;}
 .btn-payment {margin-top: 20px;}
 
+#w2p_keywords {margin-left: -20px;}
+
+input[type="submit"].btn {margin-top: -10px; margin-left: 5px;}
+
+.web2py_counter, .web2py_table, .w2p_export_menu {position: relative; left: 0px;}
+
+.w2p_export_menu a {margin-right: 5px;}
+
+
 
 .modal-body {
   background:#FFFFFF!important;
