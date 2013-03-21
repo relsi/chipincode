@@ -26,6 +26,25 @@ def list_all_projects():
                 db.project.id_auth_user,
                 db.project.status_text
         ]
+
+    ui = dict(
+        widget='',
+        header='',
+        content='',
+        default='',
+        cornerall='',
+        cornertop='',
+        cornerbottom='',
+        button='btn btn-warning',
+        buttontext='buttontext button',
+        buttonadd='plus',
+        buttonback='leftarrow',
+        buttonexport='downarrow',
+        buttondelete='trash',
+        buttonedit='pen',
+        buttontable='rightarrow',
+        buttonview='magnifier')
+
     grid = SQLFORM.grid(
         query=query, 
         headers=headers, 
@@ -34,7 +53,8 @@ def list_all_projects():
         deletable=False,
         editable=False,
         create=False,
-        maxtextlength = maxtextlength
+        maxtextlength = maxtextlength,
+        ui = ui
     )
     return locals()
 
@@ -62,6 +82,25 @@ def list_actives_projects():
                 db.project.id_auth_user,
                 db.project.status_text
         ]
+
+    ui = dict(
+        widget='',
+        header='',
+        content='',
+        default='',
+        cornerall='',
+        cornertop='',
+        cornerbottom='',
+        button='btn btn-warning',
+        buttontext='buttontext button',
+        buttonadd='plus',
+        buttonback='leftarrow',
+        buttonexport='downarrow',
+        buttondelete='trash',
+        buttonedit='pen',
+        buttontable='rightarrow',
+        buttonview='magnifier')
+
     grid = SQLFORM.grid(
         query=query, 
         headers=headers, 
@@ -70,7 +109,8 @@ def list_actives_projects():
         deletable=False,
         editable=False,
         create=False,
-        maxtextlength = maxtextlength
+        maxtextlength = maxtextlength,
+        ui = ui
     )
     return locals()
 
@@ -143,6 +183,25 @@ def list_pending_projects():
                 db.project.status_text,
                 db.project.project_value
         ]
+
+    ui = dict(
+        widget='',
+        header='',
+        content='',
+        default='',
+        cornerall='',
+        cornertop='',
+        cornerbottom='',
+        button='btn btn-warning',
+        buttontext='buttontext button',
+        buttonadd='plus',
+        buttonback='leftarrow',
+        buttonexport='downarrow',
+        buttondelete='trash',
+        buttonedit='pen',
+        buttontable='rightarrow',
+        buttonview='magnifier')
+
     grid = SQLFORM.grid(
         searchable=False,
         links=extra_links,
@@ -153,7 +212,8 @@ def list_pending_projects():
         deletable=False,
         editable=False,
         create=False,
-        maxtextlength = maxtextlength
+        maxtextlength = maxtextlength,
+        ui = ui
     )
     return locals()
 
@@ -199,6 +259,25 @@ def list_expired_projects():
                 db.project.project_total_collected,
                 db.project.end_date
         ]
+
+    ui = dict(
+        widget='',
+        header='',
+        content='',
+        default='',
+        cornerall='',
+        cornertop='',
+        cornerbottom='',
+        button='btn btn-warning',
+        buttontext='buttontext button',
+        buttonadd='plus',
+        buttonback='leftarrow',
+        buttonexport='downarrow',
+        buttondelete='trash',
+        buttonedit='pen',
+        buttontable='rightarrow',
+        buttonview='magnifier')
+
     grid = SQLFORM.grid(
         links = extra_links,
         searchable=False,
@@ -209,7 +288,8 @@ def list_expired_projects():
         deletable=False,
         editable=False,
         create=False,
-        maxtextlength = maxtextlength
+        maxtextlength = maxtextlength,
+        ui = ui
     )
     return locals()
 
@@ -328,7 +408,7 @@ def config_website_email():
 def config_website_payment():
     crud.settings.formstyle = 'divs'
     crud.messages.submit_button = T('Insert')
-    meta_data = db(db.payment_settings.id > 0).select()
+    meta_data = db(db.payment_settings.id > 1).select()
     for item in meta_data:
         data_id = item.id
     if not meta_data:
