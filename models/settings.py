@@ -75,12 +75,12 @@ mail.settings.server = email_server+':'+email_port
 mail.settings.sender = email_sender
 mail.settings.login = email_login+':'+email_pass
 
-payment_settings = db(db.payment_settings.id > 0).select()
+payment_settings = db(db.payment_settings.id > 1).select()
 if not payment_settings:
-	p_enable = False
+	p_enable = 0
 	p_send_url = ''
 	p_id = ''
-	m_enable = False
+	m_enable = 0
 	m_send_url = ''
 	m_id = ''
 else:
