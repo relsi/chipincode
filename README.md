@@ -18,7 +18,8 @@ Principais características
 
 Instalando e configurando
 -------------------------
-Documentação em desenvolvimento aqui: 
+Documentação em desenvolvimento aqui:
+
 [https://github.com/codeupstudio/chipincode/wiki](https://github.com/codeupstudio/chipincode/wiki)
 
 
@@ -29,7 +30,10 @@ Como ajudar
 * Novas Funcionalidades
 
 Clone o repositório: 
-[https://github.com/relsi/chipincode](https://github.com/relsi/chipincode) e envie seu **pull request**
+
+[https://github.com/relsi/chipincode](https://github.com/relsi/chipincode) 
+
+e envie seu **pull request**
 
 Aonde procurar ajuda
 -------------------------
@@ -53,5 +57,5 @@ Por compartilhar a integração com o Paypal
 Diego Sorrilha - https://github.com/r4bugento
 Por compartilhar a integração com o Facebook
 
-Artitas do OpenClipart - http://openclipart.org
+Artistas do OpenClipart - http://openclipart.org
 Pelas imagens disponibilizadas livremente
