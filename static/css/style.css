@@ -28,10 +28,9 @@ h1, h2, h3, h4, h5 {font-family: 'Roboto Condensed', sans-serif !important; font
 .details p {font-family: Arial, Verdana, sans-serif; font-size: 0.9em; margin-top: 10px; margin-bottom: 7px;}
 .details p.details-author {font-size: 0.8em; margin-top: 10px;}
 .details .progress {margin-bottom: 0px;}
-.details ul {list-style: none; margin-left: -4px; width: 255px;}
-.details ul li {width: 85px; float: left; text-align: center;}
-.details ul li p {color: #000; font-size: 0.7em; letter-spacing: 1px; font-weight: bold; text-transform: uppercase;}
-.details ul li p span {color: #000; letter-spacing: 0px; font-weight: normal;}
+.details div.span4 p {color: #000; font-size: 0.7em; letter-spacing: 1px; font-weight: bold; text-align: center; text-transform: uppercase;}
+.details div.span4 p.percent {padding-left: 10px;}
+.details div.span4 p span {color: #000; letter-spacing: 0px; font-weight: normal;}
 
 .m_left {margin-left: 0px !important;}
 
@@ -112,11 +111,13 @@ ul.help_project {left: auto; right: 0px !important;}
 
 #w2p_keywords {margin-left: -20px;}
 
-input[type="submit"].btn {margin-top: -10px; margin-left: 5px;}
+.web2py_console input.btn {margin-top: -10px; margin-left: 5px;}
+.web2py_counter, .w2p_export_menu {margin-left: -18px; margin-bottom: 20px;}
+.web2py_table {position: relative; left: -20px; margin-bottom: 20px;}
+.w2p_export_menu a {margin-left: 20px;}
 
-.web2py_counter, .web2py_table, .w2p_export_menu {position: relative; left: 0px;}
+#auth_user_u_city {width: 15.9%;}
 
-.w2p_export_menu a {margin-right: 5px;}
 
 
 
