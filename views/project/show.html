@@ -91,11 +91,12 @@
 									{{for content in updates:}}
 									<div class="post">	      
 		      							<h4>{{=content.title}} - 
-		      								{{=T("Published on ")}}{{=content.created_on.strftime("%d/%m/%Y") or ''}}
+		      								{{=T("Published on ")}}{{=content.created_on.strftime(" %d/%m/%Y") or ''}}
 		      							</h4>
 		      							<p>{{=XML(content.update_content)}}</p>
 			      					</div>
 			      					<hr>
+			      					<div class="clear"></div>
 			      					{{pass}}
 			      				{{pass}}
 								</div>
