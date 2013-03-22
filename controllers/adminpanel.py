@@ -150,6 +150,37 @@ def config_website_links():
     return locals()
 
 @auth.requires_membership('admin')
+def config_website_faq():
+    query = db.website_faq
+    ui = dict(
+        widget='',
+        header='',
+        content='',
+        default='',
+        cornerall='',
+        cornertop='',
+        cornerbottom='',
+        button='btn btn-warning',
+        buttontext='buttontext button',
+        buttonadd='plus',
+        buttonback='leftarrow',
+        buttonexport='downarrow',
+        buttondelete='trash',
+        buttonedit='pen',
+        buttontable='rightarrow',
+        buttonview='magnifier')
+
+    grid = SQLFORM.grid(
+        ui = ui,
+        query=query, 
+        _class='table table-striped',
+        deletable=True,
+        editable=True,
+        create=True
+    )
+    return locals()
+
+@auth.requires_membership('admin')
 def show_project():
     project_id = request.args(0) or redirect(URL('project', 'index'))
     project_slug = request.args(1)
