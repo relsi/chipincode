@@ -165,19 +165,19 @@ def show_category():
                           <div class="progress">
                             <div class="bar bar-warning" style="width: """+str(percent)+"""%;"></div>     
                           </div>
-                          <ul>
-                            <li>
+                           <div class="row-fluid">
+                            <div class="span4">
                                 <p> 
                                 """+T('R$')+""" """+str(('%.2f' % donations) or 0)+"""<br /><span>"""+T('Collected')+"""</span>
                                 </p>
-                            </li>
-                            <li>
+                            </div>
+                            <div class="span4">
                                 <p>"""+str(percent)+"""%<br /><span>"""+T('Achieved')+"""</span></p>
-                            </li>
-                            <li>
+                            </div>
+                            <div class="span4">
                                 <p>"""+str(remaining_days.days)+""" """+T('days')+"""<br /><span>"""+T('Left')+"""</span></p>
-                            </li>
-                          </ul>
+                            </div>
+                          </div>
                       </div>                  
                   </div>""")
     

@@ -118,6 +118,8 @@ ul.help_project {left: auto; right: 0px !important;}
 
 #auth_user_u_city {width: 15.9%;}
 
+.clear {clear: both;}
+
 .modal-body {
   background:#FFFFFF!important;
 }
