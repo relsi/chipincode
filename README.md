@@ -10,19 +10,38 @@ Esse aplicativo esta licenciado sob a licença MIT
 
 Principais características
 ---------------------------
-EM BREVE
+* Multiplataforma
+* Desenvolvido em Python
+* Multi Banco de dados
+* Layout Responsivo
+* Multi Idiomas
 
 Instalando e configurando
 -------------------------
-EM BREVE
+Documentação em desenvolvimento aqui: 
+[https://github.com/codeupstudio/chipincode/wiki](https://github.com/codeupstudio/chipincode/wiki)
+
+
+Como ajudar
+------------------------
+* Traduções
+* Correções de Bugs
+* Novas Funcionalidades
+
+Clone o repositório: 
+[https://github.com/relsi/chipincode](https://github.com/relsi/chipincode) e envie seu **pull request**
+
+Aonde procurar ajuda
+-------------------------
+Cadastre-se no forum:
+
+[http://groups.google.com/group/chipincode](http://groups.google.com/group/chipincode)
+
 
 Personalizando o layout
 ------------------------
 EM BREVE
 
-Como ajudar
-------------------------
-EM BREVE
 
 
 Agradecimentos
@@ -33,3 +52,6 @@ Por compartilhar a integração com o Paypal
 
 Diego Sorrilha - https://github.com/r4bugento
 Por compartilhar a integração com o Facebook
+
+Artitas do OpenClipart - http://openclipart.org
+Pelas imagens disponibilizadas livremente
