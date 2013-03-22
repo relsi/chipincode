@@ -118,9 +118,6 @@ ul.help_project {left: auto; right: 0px !important;}
 
 #auth_user_u_city {width: 15.9%;}
 
-
-
-
 .modal-body {
   background:#FFFFFF!important;
 }
@@ -128,7 +125,6 @@ ul.help_project {left: auto; right: 0px !important;}
 table .th_action{
     text-align: center!important;
 }
-
 
 /*********** niceedit ***********/
 #update_content > div{
@@ -223,4 +219,46 @@ div.web2py_console .hidden{
 .nav-header{
     font-size: 100%!important;
     color: #483737!important;
+}
+
+
+/********************/
+/*      New         */
+/*******************/
+
+/*config_website_categories*/
+#config_website_categories .w2p_trap{
+    margin-bottom: 10px !important;
+    margin-left: 5px;
+}
+#config_website_categories .web2py_console .w2p_trap{
+    margin-left: -20px;
+}
+#w2p_query_panel{
+    margin-left: -20px;
+}
+
+/*config_website_links*/
+#config_website_links .w2p_trap{
+    margin-bottom: 10px !important;
+    margin-left: 5px;
+}
+#config_website_links .web2py_console .w2p_trap{
+    margin-left: -20px;
+}
+
+/*config_website_images*/
+#config_website_images input[type=file]{
+    display: block;
+}
+#config_website_images label{
+    display: inline;
+}
+#config_website_images img{
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+#config_website_images input[type=checkbox]{
+    margin-left: 5px;
+    margin-right: 5px;
 }

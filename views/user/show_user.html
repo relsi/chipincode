@@ -1,0 +1,64 @@
+{{extend 'layout.html'}}
+	    <div class="container">	    	
+            <div class="row-fluid">  
+            	<section>
+	            	<div class="span12">
+              			<h1>{{=T("User Profile")}}</h1>
+              			<hr>
+	              	</div>
+	            	{{for item in user_info:}}
+	            	<div class="row-fluid">
+          				<div class="span2">
+          					{{if not item.avatar:}}
+								<img src="{{=URL('static', 'images/default_avatar.png')}}" class="thumb-project" alt="{{=item.first_name}}">
+							{{else:}}
+								<img src="{{=URL('download', args=item.avatar)}}" class="thumb-project" alt="{{=item.first_name}}">
+							{{pass}}
+          				</div>
+          				<div class="span10">
+          					<h2 class="project_title">{{=item.first_name}} {{=item.last_name}}</h2>
+          					<p>{{=item.about}}</p>
+          				</div>          				
+          			</div>
+          			{{pass}}
+          			<div class="row-fluid">
+          				<div class="span12 nav-profile">
+          					<ul class="nav nav-tabs">
+							    <li class="active">
+							  	  <a href="" data-toggle="tab">{{=T("Projects Supported")}}</a>
+							    </li>
+							</ul>	        
+      					</div>
+      				</div>
+      			</section>
+      			<section>
+      				<div class="side_project span12 well m_left projeto_pronto">
+          				<div class="row-fluid">
+          					<div class="span8 project tab-content">
+								<div id="donors" class="tab-pane active">
+									{{for project in suported_projects:}}
+									<div id="donor" class="row-fluid">
+			      						<div class="span6">	      
+				      						<div class="project-sup">
+				      							{{if not project.project.image:}}
+													<img src="{{=default_image}}">
+												{{else:}}
+													<img src="{{=URL('download', args=project.project.image)}}">
+												{{pass}}
+												<h4>
+													{{=project.project.project_name}}
+												</h4>	
+											</div>	
+				      					</div>
+				      					<div class="span12 m_left">	 
+				      						<hr>
+				      					</div>
+				      				</div>
+				      				{{pass}}
+								</div>
+          					</div>
+	          			</div>
+	              	</div>
+	            </section>            
+	        </div>
+	    </div>

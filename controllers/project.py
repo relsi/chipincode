@@ -56,7 +56,7 @@ def project_send():
         form_project = SQLFORM(db.project)
         form_project.element(_name='id_category')['_class'] = "span7"
         form_project.element(_name='project_value')['_class'] = "span7 format_value"
-        form_project.element(_name='project_value')['_placeholder'] = T("eg. 4000 (only numbers)")
+        form_project.element(_name='project_value')['_placeholder'] = T("eg. 4000 (numbers only)")
         form_project.element(_name='description')['_class'] = "span9 textarea-send"
         form_project.element(_name='description')['_placeholder'] = T("Insert here the description of your project for us, what will you do with the money raised, etc.. Don't worry, you can improve it later")
         form_project.element(_name='short_description')['_class'] = "span7 short_description"
@@ -244,7 +244,7 @@ def payment():
             session.flash = T("Donation registered successfully")
             redirect(URL(c='user', f='profile'))
         elif request.vars.payment_gateway == 'paypal':
-            status_text = "Waiting gateway confirmation"
+            status_text = T("Waiting gateway confirmation")
             status = False
             donate_id = db.project_donation.insert(
                 id_auth_user=request.vars.id_auth_user,
@@ -322,7 +322,7 @@ def paypal_return():
             db(db.project_donation.id == request.vars.invoice).update(
                 status_text = request.vars.payment_status 
                 )
-            message = "<p class='alert alert-error'>Ooooops! The paypal sent the following warning "+request.vars.payment_status+".</p>"            
+            message = "<p class='alert alert-error'>"+T('Ooooops! The paypal sent the following warning')+""+request.vars.payment_status+".</p>"            
     else:
         redirect(URL(c='default', f='index'))
 
@@ -349,6 +349,7 @@ def ipn():
 
 @auth.requires_login()
 def project_edit():
+    id_project = request.args(0) or redirect(URL(c='default', f='index'))
     db.project.id_auth_user.readable = db.project.id_auth_user.writable = False 
     db.project.status_text.readable = db.project.status_text.writable=False
     db.project.project_value.readable = db.project.project_value.writable=False
@@ -358,7 +359,7 @@ def project_edit():
     db.project.start_date.readable = db.project.start_date.writable=False
     db.project.end_date.readable = db.project.end_date.writable=False
 
-    check_owner = db((db.project.id == request.args(0))&(db.project.id_auth_user == auth.user.id)).select()
+    check_owner = db((db.project.id == id_project)&(db.project.id_auth_user == auth.user.id)).select()
     if not check_owner:
         redirect(URL(c='project', f='inform', args=request.args(0)))
     else:
@@ -379,7 +380,8 @@ def project_edit():
 
 @auth.requires_login()
 def project_updates():
-    check_owner = db((db.project.id == request.args(0))&(db.project.id_auth_user == auth.user.id)).select()
+    id_project = request.args(0) or redirect(URL(c='default', f='index'))
+    check_owner = db((db.project.id == id_project)&(db.project.id_auth_user == auth.user.id)).select()
     if not check_owner:
         redirect(URL(c='project', f='inform', args=request.args(0)))
     else:
@@ -393,7 +395,8 @@ def project_updates():
 
 @auth.requires_login()
 def project_update_edit():
-    check_owner = db((db.project.id == request.args(0))&(db.project.id_auth_user == auth.user.id)).select()
+    id_project = request.args(0) or redirect(URL(c='default', f='index'))
+    check_owner = db((db.project.id == id_project)&(db.project.id_auth_user == auth.user.id)).select()
     if not check_owner:
         redirect(URL(c='project', f='inform', args=request.args(0)))
     else:
@@ -406,16 +409,18 @@ def project_update_edit():
 
 @auth.requires_login()
 def project_update_delete():
-    check_owner = db((db.project.id == request.args(0))&(db.project.id_auth_user == auth.user.id)).select()
+    id_project = request.args(0) or redirect(URL(c='default', f='index'))
+    check_owner = db((db.project.id == id_project)&(db.project.id_auth_user == auth.user.id)).select()
     if not check_owner:
         redirect(URL(c='project', f='inform', args=request.args(0)))
     else:
         crud.messages.record_deleted = T('Content Deleted')
-        crud.delete(db.project_updates,request.args(1))
+        crud.delete(db.project_updates, request.args(1), next=URL(c='project', f='project_updates', args=id_project))
 
 @auth.requires_login()
 def project_rewards():
-    check_owner = db((db.project.id == request.args(0))&(db.project.id_auth_user == auth.user.id)).select()
+    id_project = request.args(0) or redirect(URL(c='default', f='index'))
+    check_owner = db((db.project.id == id_project)&(db.project.id_auth_user == auth.user.id)).select()
     if not check_owner:
         redirect(URL(c='project', f='inform', args=request.args(0)))
     else:
@@ -429,7 +434,8 @@ def project_rewards():
 
 @auth.requires_login()
 def project_reward_edit():
-    check_owner = db((db.project.id == request.args(0))&(db.project.id_auth_user == auth.user.id)).select()
+    id_project = request.args(0) or redirect(URL(c='default', f='index'))
+    check_owner = db((db.project.id == id_project)&(db.project.id_auth_user == auth.user.id)).select()
     if not check_owner:
         redirect(URL(c='project', f='inform', args=request.args(0)))
     else:
@@ -442,7 +448,8 @@ def project_reward_edit():
 
 @auth.requires_login()
 def project_reward_delete():
-    check_owner = db((db.project.id == request.args(0))&(db.project.id_auth_user == auth.user.id)).select()
+    id_project = request.args(0) or redirect(URL(c='default', f='index'))
+    check_owner = db((db.project.id == id_project)&(db.project.id_auth_user == auth.user.id)).select()
     if not check_owner:
         redirect(URL(c='project', f='inform', args=request.args(0)))
     else:
@@ -451,12 +458,12 @@ def project_reward_delete():
 
 def inform():
     #send inform email to Chip In Code admin
-    body ="""<html>
-        """+T('A user tried to change a project that does not belong to him')+""":<br>
-        <strong>"""+T('Project')+""": </strong>"""+request.args(0)+"""<br>
-        <strong>"""+T('User')+""": </strong>"""+auth.user.first_name+""" """+auth.user.last_name+"""<br>
-        <strong>"""+T('View')+""": </strong> """+URL(c='adminpanel',f='show_project',args=request.args,scheme=True,host=True)+"""</html>"""
-    mail.send(response.projects_email, T("Suspect Operation!"), body)
+    #body ="""<html>
+    #    """+T('A user tried to change a project that does not belong to him')+""":<br>
+    #    <strong>"""+T('Project')+""": </strong>"""+request.args(0)+"""<br>
+    #    <strong>"""+T('User')+""": </strong>"""+auth.user.first_name+""" """+auth.user.last_name+"""<br>
+    #    <strong>"""+T('View')+""": </strong> """+URL(c='adminpanel',f='show_project',args=request.args,scheme=True,host=True)+"""</html>"""
+    #mail.send(response.projects_email, T("Suspect Operation!"), body)
 
     return locals()
 

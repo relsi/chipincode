@@ -4,6 +4,19 @@ def index():
     redirect(URL(c='default', f='index'))
     pass
 
+
+@auth.requires_login()
+def show_user():
+    id_user = request.args(0) or redirect(URL(c='default', f='index'))
+    user_info = db(db.auth_user.id == id_user).select()
+
+    suported_projects = db((db.project_donation.id_auth_user == id_user)&(db.project_donation.donation_visibility == True)&(db.project_donation.status == True)).select(
+        db.project.ALL,
+        db.project_donation.ALL,
+        left=[db.project.on(db.project.id == db.project_donation.id_project)]
+    )
+    return dict(user_info=user_info, suported_projects=suported_projects)
+
 @auth.requires_login()
 def profile():
     suported_projects = db(db.project_donation.id_auth_user == auth.user.id).select(
