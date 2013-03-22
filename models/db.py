@@ -97,6 +97,11 @@ db.define_table("website_info",
     Field('funding_time', 'integer', label=T('Funding Time'))
  )
 
+db.define_table("website_faq",
+    Field('faq_question', 'string', label=T('F.A.Q Question')),
+    Field('faq_answer', 'text', label=T('Website Answer'))
+ )
+
 db.define_table("email_settings",
     Field('email_sender', 'string', label=T('Website email')),
     Field('email_server', 'string', label=T('Email Server')),

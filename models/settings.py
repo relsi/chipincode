@@ -35,27 +35,36 @@ response.google_analytics_id = google_analytics_id
 funding_time = site_funding_time
 
 website_images = db(db.website_images.id > 0).select()
-for img in website_images:
-	if not img.logo_image:
+
+if not website_images:
 		logo = URL('static', 'images/logo.png')
-	else:
-		logo = URL('download', args=img.logo_image or 'images/logo.png')
-	if not img.home_banner:
 		banner = URL('static', '14.png')
-	else:
-		banner = URL('download', args=img.home_banner)
-	if  not img.default_avatar:
 		avatar = URL('static', 'images/default_avatar.png')
-	else:
-		avatar = URL('download', args=img.default_avatar)
-	if not img.anonymous_avatar:
 		anonymous = URL('static', 'images/anonymous_avatar.png')
-	else:
-		anonymous = URL('download', args=img.anonymous_avatar)
-	if not img.default_image:
 		image = URL('static', 'images/default_image.png')
-	else:
-		image = URL('download', args=img.default_image)
+else:
+	
+	for img in website_images:
+		if not img.logo_image:
+			logo = URL('static', 'images/logo.png')
+		else:
+			logo = URL('download', args=img.logo_image or 'images/logo.png')
+		if not img.home_banner:
+			banner = URL('static', '14.png')
+		else:
+			banner = URL('download', args=img.home_banner)
+		if  not img.default_avatar:
+			avatar = URL('static', 'images/default_avatar.png')
+		else:
+			avatar = URL('download', args=img.default_avatar)
+		if not img.anonymous_avatar:
+			anonymous = URL('static', 'images/anonymous_avatar.png')
+		else:
+			anonymous = URL('download', args=img.anonymous_avatar)
+		if not img.default_image:
+			image = URL('static', 'images/default_image.png')
+		else:
+			image = URL('download', args=img.default_image)
 
 response.logo = logo
 response.banner = banner

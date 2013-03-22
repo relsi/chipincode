@@ -116,6 +116,11 @@ def contact():
         response.flash = T("Email sent successfully")
     return locals()
 
+def faq():
+  list_faq = db(db.website_faq.id > 0).select()
+
+  return locals()
+
 def user():
     """
     use @auth.requires_login()

@@ -96,9 +96,13 @@
                               <li {{if request.url == URL(c='project', f='project_send'):}}class="active"{{pass}}>
                                   <a href="{{=URL(c='project', f='project_send')}}">{{=T("Send a Project")}}</a>
                               </li>
+                              <li {{if request.url == URL('default', 'faq'):}}class="active"{{pass}}>
+                                  <a href="{{=URL(c='default', f='faq')}}">{{=T("F.A.Q")}}</a>
+                              </li>
                               <li {{if request.url == URL('default', 'contact'):}}class="active"{{pass}}>
                                   <a href="{{=URL(c='default', f='contact')}}">{{=T("Contact us")}}</a>
                               </li>
+
                               <li {{if request.url == URL('default', 'user', args='login'):}}class="active"{{pass}}>
                                 {{if auth.is_logged_in():}}
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
