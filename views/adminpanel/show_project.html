@@ -105,7 +105,9 @@
 													<img src="{{=URL('download', args=donor.auth_user.avatar)}}">
 												{{pass}}
 												<h4>
-													{{=donor.auth_user.first_name}} {{=donor.auth_user.last_name}}
+													<a href="{{=URL(c='user', f='show_user', args=donor.auth_user.id)}}">
+														{{=donor.auth_user.first_name}} {{=donor.auth_user.last_name}}
+													</a>
 												</h4>
 												{{=T("Donated")}}: {{=("%.2f" % donor.project_donation.donation_value)}}
 											{{else:}}

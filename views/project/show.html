@@ -85,15 +85,24 @@
 		      						<p>{{=XML(item.project.description)}}</p>
 								</div>
 								<div id="updates"  class="tab-pane">
+								{{if not updates:}}
+				      				<p class="alert"> {{=T("No updates yet!")}}</p>
+				      			{{else:}}
 									{{for content in updates:}}
 									<div class="post">	      
-		      							<h4>{{=content.title}}</h4>
+		      							<h4>{{=content.title}} - 
+		      								{{=T("Published on ")}}{{=content.created_on.strftime("%d/%m/%Y") or ''}}
+		      							</h4>
 		      							<p>{{=XML(content.update_content)}}</p>
 			      					</div>
 			      					<hr>
 			      					{{pass}}
+			      				{{pass}}
 								</div>
 								<div id="donors" class="tab-pane">
+								{{if not show_donors:}}
+				      				<p class="alert">{{=T("No donation received yet! Be the first to donate.")}}</p>
+				      			{{else:}}
 									{{for donor in show_donors:}}
 									<div id="donor" class="row-fluid">
 			      						<div class="span6">	      
@@ -105,7 +114,9 @@
 													<img src="{{=URL('download', args=donor.auth_user.avatar)}}">
 												{{pass}}
 												<h4>
-													{{=donor.auth_user.first_name}} {{=donor.auth_user.last_name}}
+													<a href="{{=URL(c='user', f='show_user', args=donor.auth_user.id)}}">
+													    {{=donor.auth_user.first_name}} {{=donor.auth_user.last_name}}
+													</a>
 												</h4>
 												{{=T("Donated")}}: {{=("%.2f" % donor.project_donation.donation_value)}}
 											{{else:}}
@@ -120,6 +131,7 @@
 				      					</div>
 				      				</div>
 				      				{{pass}}
+				      			{{pass}}
 								</div>
 								<div id="comments" class="tab-pane">
 		          					<div class="fb-comments" data-href="{{=URL(c='project', f='show', args=[item.project.id, item.project.project_slug], host=True, scheme=True)}}" data-width="740" data-num-posts="100">

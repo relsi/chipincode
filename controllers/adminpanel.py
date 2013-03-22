@@ -117,7 +117,30 @@ def list_actives_projects():
 @auth.requires_membership('admin')
 def config_website_links():
     query = db.social_network
+    fields = [
+                db.social_network.network_name
+
+        ]
+    ui = dict(
+        widget='',
+        header='',
+        content='',
+        default='',
+        cornerall='',
+        cornertop='',
+        cornerbottom='',
+        button='btn btn-warning',
+        buttontext='buttontext button',
+        buttonadd='plus',
+        buttonback='leftarrow',
+        buttonexport='downarrow',
+        buttondelete='trash',
+        buttonedit='pen',
+        buttontable='rightarrow',
+        buttonview='magnifier')
     grid = SQLFORM.grid(
+        fields=fields,
+        ui = ui,
         query=query, 
         _class='table table-striped',
         deletable=True,
@@ -203,7 +226,7 @@ def list_pending_projects():
         buttonview='magnifier')
 
     grid = SQLFORM.grid(
-        searchable=False,
+        searchable=True,
         links=extra_links,
         query=query, 
         headers=headers, 
@@ -230,7 +253,7 @@ def authorize_project():
             start_date = start_date,
             end_date = end_date,
             status = True,
-            status_text = "Raising Funding"
+            status_text = T("Raising Funding")
             )
     session.flash="Project Authorized With Successful."
     redirect(URL('adminpanel', 'list_pending_projects'))
@@ -238,11 +261,38 @@ def authorize_project():
     pass
 
 @auth.requires_membership('admin')
+def config_website_categories():
+    query = (db.project_categories)
+    fields = [
+        db.project_categories.category_name
+    ]
+    ui = dict(
+        widget='',
+        header='',
+        content='',
+        default='',
+        cornerall='',
+        cornertop='',
+        cornerbottom='',
+        buttonadd='plus',
+        button='btn btn-warning'
+)
+
+    grid = SQLFORM.grid(
+        query = query,
+        ui = ui,
+        fields = fields,
+        deletable=False,
+        details=False,
+        )
+    return locals()
+
+@auth.requires_membership('admin')
 def list_expired_projects():
     query = ((db.project.end_date < date.today())&(db.project.finalized == False))
     extra_links = [
-        lambda row:A(T('Finish Successfully'),_class="btn btn-success",_href=URL("adminpanel","finish_successfully",user_signature=True,args=[row.id])),
-        lambda row:A(T('Finish Unsuccessfully'),_class="btn btn-danger",_href=URL("adminpanel","finish_unsuccessfully",user_signature=True,args=[row.id]))
+        lambda row:A(T('Approve'),_class="btn btn-success",_href=URL("adminpanel","finish_successfully",user_signature=True,args=[row.id])),
+        lambda row:A(T('Disapprove'),_class="btn btn-danger",_href=URL("adminpanel","finish_unsuccessfully",user_signature=True,args=[row.id]))
     ] 
     maxtextlength = {
                 'project.project_name':50,
@@ -280,7 +330,7 @@ def list_expired_projects():
 
     grid = SQLFORM.grid(
         links = extra_links,
-        searchable=False,
+        searchable=True,
         query=query, 
         headers=headers, 
         fields=fields,
@@ -426,6 +476,7 @@ def config_website_payment():
 @auth.requires_membership('admin')
 def config_website_images():
     crud.settings.formstyle = 'divs'
+    crud.settings.update_deletable = False
     img_data = db(db.website_images.id > 0).select()
     for item in img_data:
         img_id = item.id

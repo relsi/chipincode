@@ -1,32 +1,19 @@
 # -*- coding: utf-8 -*-
 
-#########################################################################
-## This scaffolding model makes your app work on Google App Engine too
-## File is released under public domain and you can use without limitations
-#########################################################################
 
 ## if SSL/HTTPS is properly configured and you want all HTTP requests to
 ## be redirected to HTTPS, uncomment the line below:
+
 # request.requires_https()
 
-if not request.env.web2py_runtime_gae:
-    ## if NOT running on Google App Engine use SQLite or other DB
-    db = DAL('sqlite://storage.sqlite',check_reserved=['all'])
-    #db = DAL('mysql://username:password@host/db',pool_size=10,check_reserved=['all'])
-    #db = DAL('postgres://username:password@host/db',,pool_size=10,check_reserved=['all'])
-    #db = DAL('mssql://username:password@host/db')
-    #db = DAL('firebird://username:password')
-    #db = DAL('oracle://username/password@db')
-    #db = DAL('mongodb://username:password@host/db')
-else:
-    ## connect to Google BigTable (optional 'google:datastore://namespace')
-    db = DAL('google:datastore')
-    ## store sessions and tickets there
-    session.connect(request, response, db=db)
-    ## or store session in Memcache, Redis, etc.
-    ## from gluon.contrib.memdb import MEMDB
-    ## from google.appengine.api.memcache import Client
-    ## session.connect(request, response, db = MEMDB(Client()))
+# Set the database conection:
+db = DAL('sqlite://storage.sqlite',check_reserved=['all'])
+#db = DAL('mysql://username:password@host/db',check_reserved=['all'])
+#db = DAL('postgres://username:password@host/db',check_reserved=['all'])
+#db = DAL('mssql://username:password@host/db')
+#db = DAL('firebird://username:password')
+#db = DAL('oracle://username/password@db')
+#db = DAL('mongodb://username:password@host/db')
 
 ## by default give a view/generic.extension to all actions from localhost
 ## none otherwise. a pattern can be 'controller/function.extension'
@@ -58,7 +45,7 @@ auth.settings.extra_fields['auth_user']= [
     Field("u_state", "string", label=T('State.')),
     Field("zip", "string", label=T('Zip code.')),
     Field("phone", "string", label=T('Contact phone.')),
-    Field("ein", "string", label=T('User EIN.')),
+    Field("ssc", "string", label=T('User SSC (social security card).')),
     Field("website", "string", label=T('Website.')),
     Field("facebook", "string", label=T('Facebook Profile.')),
     Field("twitter", "string", label=T('Twitter page.')),
@@ -84,20 +71,7 @@ if session.auth_with == 'facebook':
     auth.settings.login_form = facebook_account.FaceBookAccount(globals(), db)
         
 #########################################################################
-## Define your tables below (or better in another model file) for example
-##
-## >>> db.define_table('mytable',Field('myfield','string'))
-##
-## Fields can be 'string','text','password','integer','double','boolean'
-##       'date','time','datetime','blob','upload', 'reference TABLENAME'
-## There is an implicit 'id integer autoincrement' field
-## Consult manual for more options, validators, etc.
-##
-## More API examples for controllers:
-##
-## >>> db.mytable.insert(myfield='value')
-## >>> rows=db(db.mytable.myfield=='value').select(db.mytable.ALL)
-## >>> for row in rows: print row.id, row.myfield
+## App tables
 #########################################################################
 
 from datetime import *
@@ -239,7 +213,8 @@ db.define_table("project_updates",
     Field("id_project", "integer", label=T('Project')),
     Field("id_auth_user", "integer", label=T('User.')),
     Field("title", "string", label=T('Title.')),
-    Field("update_content", "text", label=T('Content.'))
+    Field("update_content", "text", label=T('Content.')),
+    auth.signature
 )
 
 ## after defining tables, uncomment below to enable auditing
