@@ -277,8 +277,8 @@ div.web2py_console .hidden{
 
 #list_pending, #list_expired {padding-left: 20px;}
 
-td.row_buttons a.w2p_trap{margin-left: 5px;}
-td.row_buttons a.btn-success, td.row_buttons a.btn-danger {margin-left: 5px; margin-bottom: 10px;}
+td.row_buttons a.w2p_trap {margin-left: 5px; margin-top: -10px;}
+td.row_buttons a.btn-success, td.row_buttons a.btn-danger{margin-left: 5px; margin-bottom: 10px;}
 
 .form_header a.w2p_trap, .form_header a.btn-success, .form_header a.btn-danger {margin-right: 5px; margin-bottom: 15px;}
 
