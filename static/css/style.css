@@ -92,7 +92,8 @@ input[type="file"] {background: #fff !important;}
 .project-author h5 {width: 62.5%; float: right; margin-right: 0px; margin-top: 30px;}
 .project-author p {font-size: 90%; float: right; margin-right: 125px; margin-top: -70px;}
 .project-sup img {width: 50px; height: 60px; border: 1px solid #DDD;}
-.project-sup h4 {width: 40.5%; float: right; margin-right: 150px; margin-top: 5px;}
+.project-sup h4 {float: right; margin-right: 320px; margin-top: 5px;}
+.project-sup p {float: right; margin-right: 470px; margin-top: -30px;}
 .project-sup ul {list-style-type: none; font-size: 90%; float: right; margin-right: 55px; margin-top: -70px;}
 .project_title {margin-top: -5px;}
 
@@ -274,6 +275,10 @@ div.web2py_console .hidden{
     margin-left: -20px;
 }
 
+
+.donors_user{
+    margin-bottom: 20px;
+}
 
 #list_pending, #list_expired {padding-left: 20px;}
 
