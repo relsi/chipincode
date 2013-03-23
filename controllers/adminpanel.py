@@ -306,7 +306,8 @@ def config_website_categories():
         cornertop='',
         cornerbottom='',
         buttonadd='plus',
-        button='btn btn-warning'
+        button='btn btn-warning',
+
 )
 
     grid = SQLFORM.grid(
@@ -458,12 +459,13 @@ def config_website_info():
         form = crud.create(db.website_info, next=URL('adminpanel', 'config_website_info'))
     else:
         form = crud.update(db.website_info, data_id)
-    form.element(_name='site_title')['_class'] = "span6"
-    form.element(_name='meta_author')['_class'] = "span6"
-    form.element(_name='meta_description')['_class'] = "span6"
-    form.element(_name='meta_keywords')['_class'] = "span6"
-    form.element(_name='google_analytics_id')['_class'] = "span6"
-    form.element(_name='funding_time')['_class'] = "span1"
+    form.element(_name='site_title')['_class'] = "span5"
+    form.element(_name='meta_author')['_class'] = "span5"
+    form.element(_name='meta_description')['_class'] = "span5"
+    form.element(_name='meta_keywords')['_class'] = "span5"
+    form.element(_name='google_analytics_id')['_class'] = "span5"
+    form.element(_name='funding_time')['_class'] = "span2"
+    form.element(_value='Inserir')['_class'] = "btn-warning"    
     return dict(form=form)
 
 @auth.requires_membership('admin')
@@ -477,12 +479,13 @@ def config_website_email():
         form = crud.create(db.email_settings, next=URL('adminpanel', 'config_website_email'))
     else:
         form = crud.update(db.email_settings, data_id)
-    form.element(_name='email_sender')['_class'] = "span6"
-    form.element(_name='email_server')['_class'] = "span6"
-    form.element(_name='email_server_port')['_class'] = "span6"
-    form.element(_name='email_login')['_class'] = "span6"
-    form.element(_name='email_pass')['_class'] = "span6"
+    form.element(_name='email_sender')['_class'] = "span5"
+    form.element(_name='email_server')['_class'] = "span5"
+    form.element(_name='email_server_port')['_class'] = "span5"
+    form.element(_name='email_login')['_class'] = "span5"
+    form.element(_name='email_pass')['_class'] = "span5"
     form.element(_name='email_pass')['_type'] = "password"
+    form.element(_value='Inserir')['_class'] = "btn-warning"   
     return dict(form=form)
 
 @auth.requires_membership('admin')
@@ -496,12 +499,13 @@ def config_website_payment():
         form = crud.create(db.payment_settings, next=URL('adminpanel', 'config_website_payment'))
     else:
         form = crud.update(db.payment_settings, data_id)
-    form.element(_name='paypal_enable')['_class'] = "span2"
-    form.element(_name='paypal_id')['_class'] = "span3"
-    form.element(_name='paypal_send_url')['_class'] = "span6"
-    form.element(_name='moip_enable')['_class'] = "span2"
-    form.element(_name='moip_id')['_class'] = "span3"
-    form.element(_name='moip_send_url')['_class'] = "span6"
+    form.element(_name='paypal_enable')['_class'] = "span3"
+    form.element(_name='paypal_id')['_class'] = "span5"
+    form.element(_name='paypal_send_url')['_class'] = "span5"
+    form.element(_name='moip_enable')['_class'] = "span3"
+    form.element(_name='moip_id')['_class'] = "span5"
+    form.element(_name='moip_send_url')['_class'] = "span5"
+    form.element(_value='Inserir')['_class'] = "btn-warning"   
     return dict(form=form)
 
 @auth.requires_membership('admin')
@@ -515,7 +519,7 @@ def config_website_images():
         form_images = crud.create(db.website_images, next=URL('adminpanel', 'config_website_images'))
     else:
         form_images = crud.update(db.website_images, img_id)
-
+    form_images.element(_value='Enviar')['_class'] = "btn-warning"
     return dict(form_images=form_images)
  
 def request_password():

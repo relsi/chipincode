@@ -1,11 +1,13 @@
 {{extend 'layoutadmin.html'}}
         <div class="span9">
-          <div class="container-fluid well">
+          <div class="container-fluid well admin_panel">
             <h1>{{=T("Expired Projects.")}}</h1>
             <p>{{=T("Here are listed all the projects that completed the period of funding")}}.</p>
           </div>
           <div class="row-fluid">
-            {{=grid}}
+            <div id="list_expired">
+              {{=grid}}
+            </div>
           </div><!--/row-->
         </div><!--/span-->
       </div><!--/row-->
