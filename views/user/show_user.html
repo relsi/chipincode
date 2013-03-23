@@ -12,7 +12,7 @@
           					{{if not item.avatar:}}
 								<img src="{{=URL('static', 'images/default_avatar.png')}}" class="avatar" alt="{{=item.first_name}}">
 							{{else:}}
-								<img src="{{=URL('download', args=item.avatar)}}" class="thumb-project" alt="{{=item.first_name}}">
+								<img src="{{=URL('download', args=item.avatar)}}" class="avatar" alt="{{=item.first_name}}">
 							{{pass}}
           				</div>
           				<div class="span10">
@@ -34,29 +34,24 @@
       			<section>
       				<div class="side_project span12 well m_left projeto_pronto">
           				<div class="row-fluid">
-          					<div class="span8 project tab-content">
-								<div id="donors" class="tab-pane active">
+          					<div class="span12 project tab-content">
+							
 									{{for project in suported_projects:}}
-									<div id="donor" class="row-fluid">
-			      						<div class="span6">	      
-				      						<div class="project-sup">
-				      							{{if not project.project.image:}}
-													<img src="{{=default_image}}">
-												{{else:}}
-													<img src="{{=URL('download', args=project.project.image)}}">
-												{{pass}}
-												<h4>
-													{{=project.project.project_name}}
-												</h4>	
-											</div>	
-				      					</div>
-				      					<div class="span12 m_left">	 
-				      						<hr>
-				      					</div>
+									<div class="span4 m_left donors_user">     
+			      						<div class="project-sup">
+			      							{{if not project.project.image:}}
+												<img src="{{=default_image}}">
+											{{else:}}
+												<img src="{{=URL('download', args=project.project.image)}}">
+											{{pass}}
+											<h4>
+												{{=project.project.project_name}}
+											</h4>	
+										</div>
 				      				</div>
 				      				{{pass}}
 								</div>
-          					</div>
+          					
 	          			</div>
 	              	</div>
 	            </section>            

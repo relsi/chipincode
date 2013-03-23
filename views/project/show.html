@@ -106,7 +106,7 @@
 				      			{{else:}}
 									{{for donor in show_donors:}}
 									<div id="donor" class="row-fluid">
-			      						<div class="span6">	      
+			      						<div class="span10">	      
 				      						<div class="project-sup">
 				      						{{if donor.project_donation.donation_visibility == True:}}
 				      							{{if not donor.auth_user.avatar:}}
@@ -119,11 +119,15 @@
 													    {{=donor.auth_user.first_name}} {{=donor.auth_user.last_name}}
 													</a>
 												</h4>
-												{{=T("Donated")}}: {{=("%.2f" % donor.project_donation.donation_value)}}
+												<p>
+													{{=("%.2f" % donor.project_donation.donation_value)}} {{=T("Donated")}}
+												</p>
 											{{else:}}
 												<img src="{{=anonymous_avatar}}">
 												<h4>{{=T("Anonymous ")}}</h4>
-												{{=T("Donated")}}: {{=("%.2f" % donor.project_donation.donation_value)}}
+												<p>
+													{{=("%.2f" % donor.project_donation.donation_value)}} {{=T("Donated")}}
+												</p>
 											{{pass}}
 											</div>	
 				      					</div>
