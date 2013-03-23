@@ -10,7 +10,7 @@
 	            	<div class="row-fluid">
           				<div class="span2">
           					{{if not item.avatar:}}
-								<img src="{{=URL('static', 'images/default_avatar.png')}}" class="thumb-project" alt="{{=item.first_name}}">
+								<img src="{{=URL('static', 'images/default_avatar.png')}}" class="avatar" alt="{{=item.first_name}}">
 							{{else:}}
 								<img src="{{=URL('download', args=item.avatar)}}" class="thumb-project" alt="{{=item.first_name}}">
 							{{pass}}
