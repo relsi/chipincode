@@ -8,10 +8,10 @@
                 </div>
                 <div class="span12 well form-project m_left">
                   {{if float(total_credits) > float(session.payment_data.value): }}
-                  <div class="span4">
+                  <div class="span4 pay_ajust">
                     <img src="{{=URL('static', 'images/btn_credit.png')}}">                    
                   </div>
-                  <div class="span4">
+                  <div class="span4 pay_ajust">
                     <form>
                         <input type="hidden" name="donation_visibility" value="{{=session.payment_data.donation_visibility or True}}">
                         <input type="hidden" name="id_auth_user" value="{{=session.payment_data.id_auth_user}}">
@@ -24,17 +24,15 @@
                         </button>
                       </form>
                   </div>
-                  <div class="span4 btn-payment">
+                  <div class="span4 btn-payment pay_ajust">
                     {{=T('You have R$')}} {{=('%.2f' % total_credits)}} {{=T('in credits.')}}
                   </div>
                   {{pass}}
-                </div>
-                <div class="span12 well form-project m_left">
                   {{if paypal_enable == 1:}}
-                  <div class="span4">
+                  <div class="span4 pay_ajust m_left">
                     <img src="{{=URL('static', 'images/btn_paypal.png')}}">
                   </div>
-                  <div class="span4">
+                  <div class="span4 pay_ajust">
                     <form>
                       <input type="hidden" name="donation_visibility" value="{{=session.payment_data.donation_visibility or True}}">
                       <input type="hidden" name="id_auth_user" value="{{=session.payment_data.id_auth_user}}">
@@ -47,17 +45,15 @@
                       </button>
                     </form>
                   </div>
-                  <div class="span4">
+                  <div class="span4 btn-payment pay_ajust">
                     {{=T('You will be directed to Paypal page.')}}
                   </div>
                   {{pass}}
-                </div>
-                <div class="span12 well form-project m_left">
                   {{if moip_enable == 1:}}
-                  <div class="span4">
+                  <div class="span4 pay_ajust m_left">
                     <img src="{{=URL('static', 'images/btn_moip.png')}}">
                   </div>
-                  <div class="span4">
+                  <div class="span4 pay_ajust">
                     <form>
                       <input type="hidden" name="donation_visibility" value="{{=session.payment_data.donation_visibility or True}}">
                       <input type="hidden" name="id_auth_user" value="{{=session.payment_data.id_auth_user}}">
@@ -70,7 +66,7 @@
                     </button>
                     </form>
                   </div>
-                  <div class="span4 btn-payment">
+                  <div class="span4 btn-payment pay_ajust">
                     {{=T('You will be directed to MoIP page.')}}
                   </div>
                   {{pass}}
