@@ -109,6 +109,7 @@ ul.help_project {left: auto; right: 0px !important;}
 .projeto_pronto {border-top: 0px !important; border-top-left-radius: 0px !important; border-top-right-radius: 0px !important; -webkit-box-shadow: inset 0 0px 1px rgba(0, 0, 0, 0.05) !important; -moz-box-shadow: inset 0 0px 1px rgba(0, 0, 0, 0.05) !important; box-shadow: inset 0 0px 1px rgba(0, 0, 0, 0.05) !important;}
 .navbar .brand img {height: 60px;}
 .btn-payment {margin-top: 20px;}
+.pay_ajust {height: 80px;}
 
 #w2p_keywords {margin-left: -20px;}
 
