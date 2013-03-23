@@ -81,7 +81,7 @@
                               </li>
                               <li {{if request.url == URL(c='project', f='show_category', args=request.args(0)):}}class="active"{{pass}} id="help_li">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    {{=T("Help a Project")}}
+                                    {{=T("Help Projects")}}
                                   </a>
                                    <ul class="dropdown-menu help_project">
                                       {{for menu_item in response.menu_categories:}}
@@ -94,7 +94,7 @@
                                    </ul>
                               </li>
                               <li {{if request.url == URL(c='project', f='project_send'):}}class="active"{{pass}}>
-                                  <a href="{{=URL(c='project', f='project_send')}}">{{=T("Send a Project")}}</a>
+                                  <a href="{{=URL(c='project', f='project_send')}}">{{=T("Send Projects")}}</a>
                               </li>
                               <li {{if request.url == URL('default', 'faq'):}}class="active"{{pass}}>
                                   <a href="{{=URL(c='default', f='faq')}}">{{=T("F.A.Q")}}</a>
@@ -145,7 +145,7 @@
             </ul>
             <h4>{{=T('Newsletter')}}</h4>
             <form class="cadastra-news">
-              <input type="text" class="small-text" placeholder="Digite seu email">
+              <input type="text" class="span7" placeholder="Digite seu email">
               <input type="submit" value="Cadastrar" class="btn btn-warning">
             </form>           
           </div>
@@ -173,9 +173,9 @@
               }(document, 'script', 'facebook-jssdk'));
           </script>
             <h3>{{=T('Become a fan')}}</h3>
-            <div>         
-            <div class="fb-like-box" data-href="http://facebook.com/codeupstudio" data-width="350" data-height="295" data-show-faces="true" data-stream="false" data-header="false"></div>
-            </div>            
+            <div class="row-fluid">         
+              <div class="fb-like-box" data-href="http://facebook.com/codeupstudio" data-width="" data-height="" data-show-faces="true" data-stream="false" data-header="false"></div>
+              </div>            
           </div>    
         </div>
         

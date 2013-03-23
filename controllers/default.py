@@ -49,7 +49,8 @@ def index():
                                     <p>"""+str(remaining_days.days)+""" """+T('days')+"""<br /> <span>"""+T('Left')+"""</span></p>
                                 </div>
                               </div>
-                          </div>                  
+                          </div>    
+                            <div class="clear"></div>              
                       </div>""")
 
     finishing_projects = db((db.project.status == True)&(db.project.end_date > date.today())).select(
