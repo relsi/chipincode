@@ -57,5 +57,5 @@ Por compartilhar a integração com o Paypal
 Diego Sorrilha - https://github.com/r4bugento
 Por compartilhar a integração com o Facebook
 
-Artistas do OpenClipart - http://openclipart.org
-Pelas imagens disponibilizadas livremente
+Andy Lakin-Hall - http://openclipart.org/user-detail/Bibbleycheese
+Pelas imagens disponibilizadas
