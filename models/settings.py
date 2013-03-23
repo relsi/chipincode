@@ -3,9 +3,9 @@
 ## APP Settings
 #########################################################################
 
-verify_install = db(db.auth_group.role == 'admin').select()
+verify_install = db(db.system_install.id > 0).select()
 if not verify_install:
-	auth.add_group('admin', 'Administrative Group')
+	db.system_install.insert(status= False)
 	redirect(URL('install', 'index'))
 
 website_info = db(db.website_info.id > 0).select()
