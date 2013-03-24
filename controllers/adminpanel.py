@@ -469,6 +469,21 @@ def config_website_info():
     return dict(form=form)
 
 @auth.requires_membership('admin')
+def config_website_terms():
+    crud.settings.formstyle = 'divs'
+    crud.messages.submit_button = T('Insert')
+    meta_data = db(db.system_texts.id > 0).select()
+    for item in meta_data:
+        data_id = item.id
+    if not meta_data:
+        form = crud.create(db.system_texts, next=URL('adminpanel', 'config_website_terms'))
+    else:
+        form = crud.update(db.system_texts, data_id)
+    form.element(_name='terms')['_class'] = "span11"
+
+    return dict(form=form)
+
+@auth.requires_membership('admin')
 def config_website_email():
     crud.settings.formstyle = 'divs'
     crud.messages.submit_button = T('Insert')
