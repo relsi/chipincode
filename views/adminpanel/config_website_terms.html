@@ -1,0 +1,43 @@
+{{extend 'layoutadmin.html'}}
+        <div class="span9">
+          <div class="container-fluid well admin_panel">
+            <h1>{{=T("Terms of use")}}</h1>
+          </div>
+          <div class="container-fluid">
+            <div id="config_website_faq">
+              {{=form}}
+            </div>
+          </div><!--/row-->
+        </div><!--/span-->
+      </div><!--/row-->
+      <hr>
+      <!-- nicEdit"-->  
+<script type="text/javascript">
+//<![CDATA[
+  bkLib.onDomLoaded(function() {
+  new nicEditor({
+      buttonList :[
+    'bold',
+    'italic',
+    'underline',
+    'left',
+    'center',
+    'right',
+    'justify',
+    'ol',
+    'ul',
+    'subscript',
+    'superscript',
+    'strikethrough',
+    'removeformat',
+    'hr',
+    'image',
+    'link',
+    'unlink',
+    'fontSize',
+    'xhtml'],
+    maxHeight : 700,
+    iconsPath : '{{=URL("static", "nicEditIcons-latest.gif",scheme=True,host=True)}}'}).panelInstance('system_texts_terms');
+});
+//]]>
+</script>
