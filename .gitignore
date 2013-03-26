@@ -6,5 +6,3 @@ databases
 errors
 sessions
 modules/facebook_account.py
-models/config.py
-uploads/

@@ -465,7 +465,7 @@ def config_website_info():
     form.element(_name='meta_keywords')['_class'] = "span5"
     form.element(_name='google_analytics_id')['_class'] = "span5"
     form.element(_name='funding_time')['_class'] = "span2"
-    form.element(_value='Inserir')['_class'] = "btn-warning"    
+    form.element(_value='Insert')['_class'] = "btn-warning"    
     return dict(form=form)
 
 @auth.requires_membership('admin')
@@ -500,7 +500,7 @@ def config_website_email():
     form.element(_name='email_login')['_class'] = "span5"
     form.element(_name='email_pass')['_class'] = "span5"
     form.element(_name='email_pass')['_type'] = "password"
-    form.element(_value='Inserir')['_class'] = "btn-warning"   
+    form.element(_value='Insert')['_class'] = "btn-warning"   
     return dict(form=form)
 
 @auth.requires_membership('admin')
@@ -520,7 +520,7 @@ def config_website_payment():
     form.element(_name='moip_enable')['_class'] = "span3"
     form.element(_name='moip_id')['_class'] = "span5"
     form.element(_name='moip_send_url')['_class'] = "span5"
-    form.element(_value='Inserir')['_class'] = "btn-warning"   
+    form.element(_value='Insert')['_class'] = "btn-warning"   
     return dict(form=form)
 
 @auth.requires_membership('admin')
