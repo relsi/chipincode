@@ -1,6 +1,36 @@
 # -*- coding: utf-8 -*-
 @auth.requires_membership('admin')
 def index():
+    if db(db.project_categories.id > 0).count() == 0:
+        response_alert_categories = "<p class='alert alert-error'><strong>"+T("Please, configure the categories!")+"</strong></p>"
+    else:
+        response_alert_categories = "<p class='alert alert-success'><strong>"+T("Categories Configured")+"</strong></p>"
+
+    if db(db.website_info.id > 0).count() == 0:
+        response_alert_info = "<p class='alert alert-error'><strong>"+T("Please, enter the website info!")+"</strong></p>"
+    else:
+       response_alert_info = "<p class='alert alert-success'><strong>"+T("Website info Configured!")+"</strong></p>"
+    
+    if db(db.system_texts.id > 0).count() == 0:
+        response_alert_texts = "<p class='alert alert-error'><strong>"+T("Please, create the website terms of use text!")+"</strong></p>"
+    else:
+        response_alert_texts = "<p class='alert alert-success'><strong>"+T("Website terms of use Configured!")+"</strong></p>"
+    
+    if db(db.email_settings.id > 0).count() == 0:
+        response_alert_email = "<p class='alert alert-error'><strong>"+T("Please, configure the email data!")+"</strong></p>"
+    else:
+        response_alert_email = "<p class='alert alert-success'><strong>"+T("Email data Configured!")+"</strong></p>"
+    
+    if db(db.payment_settings.id > 0).count() == 0:
+        response_alert_payment = "<p class='alert alert-error'><strong>"+T("Please, configure the payment method!")+"</strong></p>"
+    else:
+        response_alert_payment = "<p class='alert alert-success'><strong>"+T("Payment method Configured!")+"</strong></p>"
+    
+    if db(db.website_images.id > 0).count() == 0:
+        response_alert_images = "<p class='alert alert-warning'><strong>"+T("Please, configure the website website_images!")+"</strong></p>"
+    else:
+        response_alert_images = "<p class='alert alert-success'><strong>"+T("Website images Configured!")+"</strong></p>"
+    
     return locals()
 
 @auth.requires_membership('admin')
@@ -308,7 +338,7 @@ def config_website_categories():
         buttonadd='plus',
         button='btn btn-warning',
 
-)
+    )
 
     grid = SQLFORM.grid(
         query = query,
@@ -465,7 +495,7 @@ def config_website_info():
     form.element(_name='meta_keywords')['_class'] = "span5"
     form.element(_name='google_analytics_id')['_class'] = "span5"
     form.element(_name='funding_time')['_class'] = "span2"
-    form.element(_value='Insert')['_class'] = "btn-warning"    
+    form.element(_type='submit')['_class'] = "btn-warning"       
     return dict(form=form)
 
 @auth.requires_membership('admin')
@@ -480,6 +510,7 @@ def config_website_terms():
     else:
         form = crud.update(db.system_texts, data_id)
     form.element(_name='terms')['_class'] = "span11"
+    form.element(_type='submit')['_class'] = "btn-warning btn-large"   
 
     return dict(form=form)
 
@@ -500,7 +531,7 @@ def config_website_email():
     form.element(_name='email_login')['_class'] = "span5"
     form.element(_name='email_pass')['_class'] = "span5"
     form.element(_name='email_pass')['_type'] = "password"
-    form.element(_value='Insert')['_class'] = "btn-warning"   
+    form.element(_type='submit')['_class'] = "btn-warning"   
     return dict(form=form)
 
 @auth.requires_membership('admin')
@@ -520,7 +551,7 @@ def config_website_payment():
     form.element(_name='moip_enable')['_class'] = "span3"
     form.element(_name='moip_id')['_class'] = "span5"
     form.element(_name='moip_send_url')['_class'] = "span5"
-    form.element(_value='Insert')['_class'] = "btn-warning"   
+    form.element(_type='submit')['_class'] = "btn-warning"   
     return dict(form=form)
 
 @auth.requires_membership('admin')

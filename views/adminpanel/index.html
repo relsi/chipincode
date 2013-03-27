@@ -4,6 +4,13 @@
           <div class="container-fluid well admin_panel">
             <h1>{{=T("Admin Panel")}}</h1>
             <p>{{=T("Use the left side menu to manage the system and the registered projects.")}}</p>
+            <p><h3>{{=T("Website Configurations")}}</h3></p>
+            {{=XML(response_alert_categories)}}
+            {{=XML(response_alert_texts)}}
+            {{=XML(response_alert_email)}}
+            {{=XML(response_alert_payment)}}
+            {{=XML(response_alert_info)}}
+            {{=XML(response_alert_images)}}
           </div>
           <div class="row-fluid">
           </div><!--/row-->
