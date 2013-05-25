@@ -156,6 +156,7 @@
 'done!': 'Concluído!',
 'Donor': 'Donor',
 'Donor Email': 'Donor Email',
+'Donor Email or Facebook ID': 'Donor Email or Facebook ID',
 'E-mail': 'E-mail',
 'E-mail inválido': 'E-mail inválido',
 'Edit': 'Editar',
