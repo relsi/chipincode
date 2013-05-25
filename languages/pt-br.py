@@ -437,6 +437,7 @@
 'Reward description.': 'Descrição da recompensa.',
 'Reward value.': 'Valor da recompensa',
 'Rewards': 'Recompensas',
+'Rewards ': 'Rewards ',
 'Role': 'Regra',
 'Rows in Table': 'Linhas na tabela',
 'Rows selected': 'Linhas selecionadas',

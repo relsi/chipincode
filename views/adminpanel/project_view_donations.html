@@ -17,6 +17,7 @@
                           <th>{{=T("Value")}}</th>
                           <th>{{=T("Donor")}}</th>
                           <th>{{=T("Donor Email")}}</th>
+                          <th>{{=T("Rewards ")}}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -28,6 +29,7 @@
                           <td>{{=("%.2f" % donation.project_donation.donation_value)}}</td>
                           <td>{{=donation.auth_user.first_name}} {{=donation.auth_user.last_name}}</td>
                           <td>{{=donation.auth_user.email}}</td>
+                          <td>{{if donation.project_donation.id_project_rewards != 0:}}Sim{{else:}}Não{{pass}}</td>
                         </tr>
                         {{pass}}                   
                       </tbody>
