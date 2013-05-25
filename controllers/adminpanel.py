@@ -56,7 +56,9 @@ def list_all_projects():
                 db.project.id_auth_user,
                 db.project.status_text
         ]
-
+    extra_links = [
+        lambda row:A(T('View donations'),_class="btn btn-success",_href=URL("adminpanel","project_view_donations",user_signature=True,args=[row.id]))
+    ]
     ui = dict(
         widget='',
         header='',
@@ -76,6 +78,7 @@ def list_all_projects():
         buttonview='magnifier')
 
     grid = SQLFORM.grid(
+        links=extra_links,
         query=query, 
         headers=headers, 
         fields=fields,
@@ -87,6 +90,24 @@ def list_all_projects():
         ui = ui
     )
     return locals()
+
+@auth.requires_membership('admin')
+def project_view_donations():
+    id_project = request.args(0) or redirect(URL(c='default', f='index'))
+    get_donation = db(db.project_donation.id_project == id_project).select(
+        db.auth_user.ALL,
+        db.project_donation.ALL,
+        db.project.project_name,
+        left=[
+            db.auth_user.on(db.auth_user.id == db.project_donation.id_auth_user),
+            db.project.on(db.project.id == db.project_donation.id_project)
+            ]
+        )
+    for data in get_donation:
+        project_name = data.project.project_name
+
+    return dict(project_name=project_name, get_donation=get_donation)   
+
 
 @auth.requires_membership('admin')
 def list_actives_projects():
