@@ -1,0 +1,42 @@
+{{extend 'layoutadmin.html'}}
+        <div class="span9">
+          <div class="container-fluid well admin_panel">
+            <h1>{{=T("View Donations")}}</h1>
+            <p>{{=T("Here are all donations of the project")}} {{=project_name}}.</p>
+          </div>
+          <section>
+            <div class="span12 well projeto_pronto">
+                <div class="row-fluid tab-content side-project">
+                  <div id="list-updates" class="tab-pane active">
+                    <table class="table table-bordered table-striped refund">
+                      <thead>
+                        <tr>
+                          <th>{{=T("Date")}}</th>
+                          <th>{{=T("Gateway")}}</th>
+                          <th>{{=T("Status")}}</th>
+                          <th>{{=T("Value")}}</th>
+                          <th>{{=T("Donor")}}</th>
+                          <th>{{=T("Donor Email")}}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{for donation in get_donation:}}
+                        <tr>
+                          <td>{{=donation.project_donation.donation_date.strftime(" %d/%m/%Y")}}</td>
+                          <td>{{=donation.project_donation.payment_gateway}}</td>
+                          <td>{{=donation.project_donation.status_text}}</td>
+                          <td>{{=("%.2f" % donation.project_donation.donation_value)}}</td>
+                          <td>{{=donation.auth_user.first_name}} {{=donation.auth_user.last_name}}</td>
+                          <td>{{=donation.auth_user.email}}</td>
+                        </tr>
+                        {{pass}}                   
+                      </tbody>
+                    </table>
+                  </div>
+                <div>
+              </div>
+          </section>  
+
+        </div><!--/span-->
+      </div><!--/row-->
+      <hr>

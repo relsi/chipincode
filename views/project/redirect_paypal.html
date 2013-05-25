@@ -21,7 +21,7 @@
                         <input type="hidden" name="notify_url" value="{{=ipn_handler}}">
                         <input type="hidden" name="return" value="{{=paypal_return_url}}">
                         <input type="hidden" name="custom" value="{{=session.payment_data.id_auth_user}}">
-                        <input type="hidden" name="invoice" value="{{=session.id_project}}">
+                        <input type="hidden" name="invoice" value="{{=session.donate_id}}">
                         <input type="hidden" name="amount" value="{{=session.payment_data.value}}">
                         <input type="hidden" name="item_name" value="Chip in Code Project Donation">
                         <input type="hidden" name="item_number" value="{{=session.donate_id}}">

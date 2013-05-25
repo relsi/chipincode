@@ -1,0 +1,50 @@
+{{extend 'layout.html'}}
+      <div class="container">       
+        <div class="row-fluid">  
+          <section>
+            <div class="span12">
+                <h1>
+                  {{=T("View Donations")}}
+                  <a class="btn btn-warning a-return" href="{{=URL(c='user', f='profile')}}">{{=T("Back")}}</a>
+                </h1>
+                <hr>
+            </div>                          
+            <div class="row-fluid">
+              <div class="span12 nav-profile">
+                <ul class="nav nav-tabs">
+                  <li class="active">
+                    <a href="#list-updates" data-toggle="tab">{{=T("Donations")}}</a>
+                  </li>
+                </ul>         
+              </div>
+          </section>
+          <section>
+            <div class="span12 well projeto_pronto">
+                <div class="row-fluid tab-content side-project">
+                  <div id="list-updates" class="tab-pane active">
+                    <table class="table table-bordered table-striped refund">
+                      <thead>
+                        <tr>
+                          <th>{{=T("Date")}}</th>
+                          <th>{{=T("Gateway")}}</th>
+                          <th>{{=T("Status")}}</th>
+                          <th>{{=T("Value")}}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{for donation in get_donation:}}
+                        <tr>
+                          <td>{{=donation.donation_date.strftime(" %d/%m/%Y")}}</td>
+                          <td>{{=donation.payment_gateway}}</td>
+                          <td>{{=donation.status_text}}</td>
+                          <td>{{=("%.2f" % donation.donation_value)}}</td>
+                        </tr>
+                        {{pass}}                   
+                      </tbody>
+                    </table>
+                  </div>
+                <div>
+              </div>
+          </section>              
+        </div>
+      </div>
