@@ -1,0 +1,16 @@
+diff --cc controllers/install.py
+index c22f13c,564e6bb..0000000
+--- a/controllers/install.py
++++ b/controllers/install.py
+@@@ -2,7 -2,7 +2,11 @@@
+  def index():
+      
+      db.auth_user.username.readable = db.auth_user.username.writable=False
+++<<<<<<< HEAD
+ +    
+++=======
++ 
+++>>>>>>> 3479695486fe96cb8fda1526ea0d0350ae72f71f
+      verify_install = db(db.system_install.id>0).select().first()
+  
+      if verify_install.status == False:      
