@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 def index():
+    if request.is_local:
+        response.flash="Localhost"
+    else:
+        response.flash="web"
     #donation_sum = db.project_donation.donation_value.sum()
     random_projects = db((db.project.status == True)&(db.project.end_date > date.today())).select(
         db.auth_user.ALL,

@@ -7,7 +7,16 @@
 # request.requires_https()
 
 # Set the database conection:
-db = DAL('sqlite://storage.sqlite',check_reserved=['all'])
+
+
+if request.is_local:
+    db = DAL('sqlite://sto.sqlti',check_reserved=['all'])
+else:
+    db = DAL('sqlite://storage.sqlite',check_reserved=['all'])
+
+
+
+
 #db = DAL('mysql://username:password@host/db',check_reserved=['all'])
 #db = DAL('postgres://username:password@host/db',check_reserved=['all'])
 #db = DAL('mssql://username:password@host/db')

@@ -4,8 +4,8 @@ from facebook import GraphAPI, GraphAPIError
 from gluon.contrib.login_methods.oauth20_account import OAuthAccount
 
 #Facebook credentials
-CLIENT_ID = 'YOUR-FACEBOOK-CLIENT-ID'
-CLIENT_SECRET = 'YOUR-FACEBOOK-CLIENT-SECRET'
+CLIENT_ID = 'CLIENT_ID'
+CLIENT_SECRET = 'CLIENT_SECRET'
 
 class FaceBookAccount(OAuthAccount):
     """OAuth impl for FaceBook"""

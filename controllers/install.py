@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 def index():
     
+    db.auth_user.username.readable = db.auth_user.username.writable=False
+    
     verify_install = db(db.system_install.id>0).select().first()
 
     if verify_install.status == False:      
